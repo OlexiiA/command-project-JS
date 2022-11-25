@@ -1,0 +1,21 @@
+// секции Hero, header, Products, About, Advantages используют этот контейнер
+.container{
+  padding: 0 20px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: $mobile) {
+    min-width: $mobile;
+    width: 100%;
+  }
+
+  @media screen and (min-width: $tablet) {
+    max-width: $tablet;
+    padding: 0 32px;
+  }
+
+  @media screen and (min-width: $comp) {
+    max-width: $comp;
+    padding: 0 32px;
+  }
+}
