@@ -1,5 +1,5 @@
 import Choices from 'choices.js';
-let selectStateInputEl = document.querySelector('.header__select');
+let selectStateInputEl = document.querySelector('.genre-filter');
 const choices = new Choices(selectStateInputEl, {
   searchEnabled: false,
   itemSelectText: '',
