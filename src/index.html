@@ -1,58 +1,56 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Filmoteka</title>
-    <link rel="stylesheet" href="./sass/index.css" />
-  </head>
 
-  <body>
-    <header class="header">
-      <a class="logo" href="./index.html">Filmoteka</a>
-      <nav class="main-nav">
-        <a class="main-nav__btn" href="./index.html">Home</a>
-        <a class="main-nav__btn" href="./library.html">my library</a>
-      </nav>
-    </header>
-    <main>
-      <form class="search-form" id="search-form">
-        <input
-          type="text"
-          class="search-input"
-          name="searchQuery"
-          autocomplete="off"
-          placeholder="Movie search"
-        />
-        <button class="search-btn" type="submit">SRCh</button>
-        <div class="genre-filter">
-          <input type="checkbox" id="genre_1" /><label for="genre_1"></label>
-          <input type="checkbox" id="genre_2" /><label for="genre_2"></label>
-          <input type="checkbox" id="genre_3" /><label for="genre_3"></label>
-          <input type="checkbox" id="genre_4" /><label for="genre_4"></label>
-          <input type="checkbox" id="genre_5" /><label for="genre_5"></label>
-          <input type="checkbox" id="genre_6" /><label for="genre_6"></label>
-        </div>
-      </form>
-      <div class="gallery">
-        <!-- --------------------------------------------------------------- -->
-        <!--                     Example code for render                     -->
-        <!-- --------------------------------------------------------------- -->
-        <div class="film-card">
-          <img class="film-photo" src="" alt="" />
-          <h2 class="film-title"></h2>
-          <p class="film-genre"></p>
-          <p class="film-year"></p>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Filmoteka</title>
+  <link rel="stylesheet" href="./sass/index.css" />
+</head>
+
+<body>
+  <header class="header">
+    <a class="logo" href="./index.html">Filmoteka</a>
+    <nav class="main-nav">
+      <a class="main-nav__btn" href="./index.html">Home</a>
+      <a class="main-nav__btn" href="./My-libruary.html">my library</a>
+    </nav>
+  </header>
+  <main>
+    <form class="search-form" id="search-form">
+      <input type="text" class="search-input" name="searchQuery" autocomplete="off" placeholder="Movie search" />
+      <button class="search-btn" type="submit">SRCh</button>
+      <div class="genre-filter">
+        <input type="checkbox" id="genre_1" /><label for="genre_1"></label>
+        <input type="checkbox" id="genre_2" /><label for="genre_2"></label>
+        <input type="checkbox" id="genre_3" /><label for="genre_3"></label>
+        <input type="checkbox" id="genre_4" /><label for="genre_4"></label>
+        <input type="checkbox" id="genre_5" /><label for="genre_5"></label>
+        <input type="checkbox" id="genre_6" /><label for="genre_6"></label>
       </div>
-    </main>
-    <footer class="footer">
-      <p class="copyright">
-        © 2020 | All Rights Reserved | Developed with
-        <a href="">by GoIT Students</a>
-        <!-- <button>by GoIT Students</button> -->
-      </p>
-    </footer>
-    <script type="module" src="./index.js"></script>
-  </body>
+    </form>
+    <div class="gallery">
+      <!-- --------------------------------------------------------------- -->
+      <!--                     Example code for render                     -->
+      <!-- --------------------------------------------------------------- -->
+      <div class="film-card">
+        <img class="film-photo"
+          src="https://www.film.ru/sites/default/files/styles/thumb_260x400/public/movies/posters/10032141-925032.jpg"
+          alt="ЗАГЛУШКА т.к. src не может быть пустым" />
+        <h2 class="film-title"></h2>
+        <p class="film-genre"></p>
+        <p class="film-year"></p>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <p class="copyright">
+      © 2020 | All Rights Reserved | Developed with
+      <a href="">by GoIT Students</a>
+      <!-- <button>by GoIT Students</button> -->
+    </p>
+  </footer>
+  <script type="module" src="./index.js"></script>
+</body>
+
 </html>
