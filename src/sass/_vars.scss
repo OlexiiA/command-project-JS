@@ -6,9 +6,12 @@
     --text-films-second:#FF6B08;
     --background-footer: #F7F7F7;
     --textcolor-footer: #545454;
+  
+  //animation
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
-
     // breakpoints
     $mobile: 320px;
     $tablet: 768px;
     $comp: 1280px;
+  
