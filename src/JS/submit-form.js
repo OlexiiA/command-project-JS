@@ -1,7 +1,7 @@
 import searchMove from "./search-move";
 
 export const form = document.querySelector('form#search-form');
-const gallery = document.querySelector('.film-card');
+// const gallery = document.querySelector('.film-card');
 let searchQuery = '';
 
 const divRef = document.querySelector(`.film-card`)
@@ -16,7 +16,7 @@ function renderCard(arr) {
         <p class="film-year"> ${releaseYear} </p>
       </div>`;  
 }).join('');
-    gallery.insertAdjacentHTML('beforeend', markup)
+    divRef.insertAdjacentHTML('beforeend', markup)
 }
 
 export async function onSubmitForm(event) {
@@ -31,7 +31,7 @@ export async function onSubmitForm(event) {
         console.log(searchResponse.total_pages)
         console.log(searchResponse.total_results)
         if (searchResponse.total_results > 0) {
-            gallery.innerHTML = ''
+            divRef.innerHTML = ''
             renderCard(searchResponse.results)
         }
     }
