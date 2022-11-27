@@ -11,17 +11,33 @@
 <body>
   <header class="header">
     <div class="container header_container">
-    <a class="logo" href="./index.html">Filmoteka</a>
-    <nav class="main-nav">
-      <a class="main-nav__btn" href="./index.html">Home</a>
+      <nav class="main-nav"> 
+    <a class="logo" href="./index.html"><svg class="header__icon" width="24">
+      <use href="./images/icons.svg#icon-film"></use>
+    </svg>Filmoteka</a>
+    <ul class="header__list">
+      <li class="header__list-item">
+      <a class="main-nav__btn current" href="./index.html">Home</a>
+      </li>
+      <li class="header__list-item">
       <a class="main-nav__btn" href="./My-libruary.html">my library</a>
+      </li>
     </nav>
-    </div>
-  </header>
-  <main>
+
+
+   
+  
+ 
     <form class="search-form" id="search-form">
+      <div class="header__form">
       <input type="text" class="search-input" name="searchQuery" autocomplete="off" placeholder="Movie search" />
       <button class="search-btn" type="submit">SRCh</button>
+      </div>
+    </form>
+  
+    </div>
+    </header>
+    <main>
       <div class="genre-filter">
         <input type="checkbox" id="genre_1" />Action<label for="genre_1"></label>
         <input type="checkbox" id="genre_2" />Comedy<label for="genre_2"></label>
@@ -32,7 +48,7 @@
         <input type="checkbox" id="genre_7" />Mystery<label for="genre_7"></label>
         <input type="checkbox" id="genre_8" />Thriller<label for="genre_8"></label>
       </div>
-    </form>
+    
     <div class="gallery">
       <!-- --------------------------------------------------------------- -->
       <!--                     Example code for render                     -->
