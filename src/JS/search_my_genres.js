@@ -5,7 +5,7 @@
 
 // async function genre() {
 //    const apiData = await axios.get(
-//    `https://api.themoviedb.org/3/genre/movie/list?api_key=2913964819360854cc0ff757d62600b5&language=en-US`
+//    `https://api.themoviedb.org/3/discover/movie?${KEY}&with_genres=28,12`
 //    );
 //    return apiData;
 // }
