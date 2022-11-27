@@ -1,64 +1,87 @@
 <!DOCTYPE html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filmoteka</title>
+    <link rel="stylesheet" href="./sass/index.scss" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Filmoteka</title>
-  <link rel="stylesheet" href="./sass/index.scss" />
-</head>
-
-<body>
-  <header class="header">
-    <div class="container header_container">
-    <a class="logo" href="./index.html">Filmoteka</a>
-    <nav class="main-nav">
-      <a class="main-nav__btn" href="./index.html">Home</a>
-      <a class="main-nav__btn" href="./My-libruary.html">my library</a>
-    </nav>
-    </div>
-  </header>
-  <main>
-    <form class="search-form" id="search-form">
-      <input type="text" class="search-input" name="searchQuery" autocomplete="off" placeholder="Movie search" />
-      <button class="search-btn" type="submit">SRCh</button>
-      <div class="genre-filter">
-        <input type="checkbox" id="genre_1" />Action<label for="genre_1"></label>
-        <input type="checkbox" id="genre_2" />Comedy<label for="genre_2"></label>
-        <input type="checkbox" id="genre_3" />Drama<label for="genre_3"></label>
-        <input type="checkbox" id="genre_4" />Animation<label for="genre_4"></label>
-        <input type="checkbox" id="genre_5" />Fantasy<label for="genre_5"></label>
-        <input type="checkbox" id="genre_6" />Horror<label for="genre_6"></label>
-        <input type="checkbox" id="genre_7" />Mystery<label for="genre_7"></label>
-        <input type="checkbox" id="genre_8" />Thriller<label for="genre_8"></label>
+  <body>
+    <header class="header">
+      <div class="container header_container">
+        <a class="logo" href="./index.html">Filmoteka</a>
+        <nav class="main-nav">
+          <a class="main-nav__btn" href="./index.html">Home</a>
+          <a class="main-nav__btn" href="./My-libruary.html">my library</a>
+        </nav>
       </div>
-    </form>
-    <div class="gallery">
-      <!-- --------------------------------------------------------------- -->
-      <!--                     Example code for render                     -->
-      <!-- --------------------------------------------------------------- -->
-      <div class="film-card">
-        <!-- <img class="film-photo"
+    </header>
+    <main>
+      <form class="search-form" id="search-form">
+        <input
+          type="text"
+          class="search-input"
+          name="searchQuery"
+          autocomplete="off"
+          placeholder="Movie search"
+        />
+        <button class="search-btn" type="submit">SRCh</button>
+        <div class="genre-filter">
+          <input type="checkbox" id="genre_1" />Action<label
+            for="genre_1"
+          ></label>
+          <input type="checkbox" id="genre_2" />Comedy<label
+            for="genre_2"
+          ></label>
+          <input type="checkbox" id="genre_3" />Drama<label
+            for="genre_3"
+          ></label>
+          <input type="checkbox" id="genre_4" />Animation<label
+            for="genre_4"
+          ></label>
+          <input type="checkbox" id="genre_5" />Fantasy<label
+            for="genre_5"
+          ></label>
+          <input type="checkbox" id="genre_6" />Horror<label
+            for="genre_6"
+          ></label>
+          <input type="checkbox" id="genre_7" />Mystery<label
+            for="genre_7"
+          ></label>
+          <input type="checkbox" id="genre_8" />Thriller<label
+            for="genre_8"
+          ></label>
+        </div>
+      </form>
+      <div class="gallery">
+        <!-- --------------------------------------------------------------- -->
+        <!--                     Example code for render                     -->
+        <!-- --------------------------------------------------------------- -->
+        <div class="film-card">
+          <!-- <img class="film-photo"
           src="https://www.film.ru/sites/default/files/styles/thumb_260x400/public/movies/posters/10032141-925032.jpg"
           alt="ЗАГЛУШКА т.к. src не может быть пустым" />
         <h2 class="film-title"></h2>
         <p class="film-genre"></p>
         <p class="film-year"></p> -->
+        </div>
       </div>
-    </div>
-  </main>
-  <footer class="footer">
-    <div class="container footer_container">
-    <p class="copyright">
-      © 2022 | All Rights Reserved | Developed with
-      <svg class="footer__icon" width="16" height="14">
-        <use href="./images/icons.svg#icon-favorite"></use></svg>by <button type="button" class="footer__button">GoIT Students</button>
-      <!-- <button>by GoIT Students</button> -->
-    </p>
-    </div>
-  </footer>
-  <script type="module" src="./index.js"></script>
-  <!-- <script type="module" src="./JS/search_my_genres.js"></script> -->
-</body>
-
+    </main>
+    <footer class="footer">
+      <div class="container footer_container">
+        <p class="copyright">
+          © 2022 | All Rights Reserved | Developed with
+          <svg class="footer__icon" width="16" height="14">
+            <use href="./images/icons.svg#icon-favorite"></use></svg
+          >by
+          <button type="button" class="footer__button">GoIT Students</button>
+          <!-- <button>by GoIT Students</button> -->
+        </p>
+      </div>
+    </footer>
+    <include src="./partials/main-modal.html"></include>
+    <script type="module" src="./index.js"></script>
+    <!-- <script type="module" src="./JS/search_my_genres.js"></script> -->
+  </body>
 </html>
