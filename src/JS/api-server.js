@@ -1,4 +1,4 @@
-
+import genresArray from './genresArray';
 import axios from 'axios';
 
 const KEY = 'api_key=2913964819360854cc0ff757d62600b5'
