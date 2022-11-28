@@ -178,6 +178,7 @@ body.dark-theme {
 
 .header {
   max-height: 230px;
+  padding: 40px 32px 60px 32px;
   margin-bottom: 30px;
   background-image: url(../images/pictures/jpeg/header-comp.jpg);
   background-position: center;
@@ -185,13 +186,36 @@ body.dark-theme {
   background-color: rgba(0, 0, 0, 0.56);
   background-size: cover;
 }
-
-.main-nav {
-  margin-bottom: 44px;
-  color: var(--text-main-color);
+.header__link-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.library-header {
+  max-height: 230px;
+  padding: 40px 32px 60px 32px;
+  margin-bottom: 30px;
+  background-image: url(../images/pictures/jpeg/hall-comp.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.56);
+  background-size: cover;
+}
+.library-header__link-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.main-nav {
+  color: var(--text-main-color);
+  display: flex;
+  align-items: center;
+  justify-content: c;
+  gap: 39px;
 }
 
 .logo {
@@ -199,6 +223,11 @@ body.dark-theme {
   align-items: center;
   color: var(--text-main-color);
   gap: 10px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 35px;
+  display: flex;
 }
 
 .main-nav__btn {
@@ -218,6 +247,11 @@ body.dark-theme {
 }
 .main-nav__btn:hover, .main-nav__btn:focus {
   color: #ff6b08;
+}
+
+.main-nav__btn--currant {
+  -webkit-text-decoration: 2px underline #ff6b08;
+          text-decoration: 2px underline #ff6b08;
 }
 
 .header__list {
@@ -310,40 +344,73 @@ body.dark-theme {
   fill: var(--text-clr-second);
 }
 
-@media screen and (min-width: 768px) {
-  .film-card {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
+.button-list {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.button-list__switch {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #ffffff;
+  background-color: transparent;
+  border: 1px solid #FFFFFF;
+  border-radius: 5px;
+  padding: 13px 41px 11px 41px;
+}
+.button-list__switch:hover, .button-list__switch:focus, .button-list__switch :active {
+  background-color: #ff6b08;
+  border-color: #FF6B02;
+}
+
+li {
+  list-style-type: none;
+}
+
+.gallery {
+  margin: 0;
+  padding: 0;
+}
+@media screen and (min-width: 1280px) {
+  .gallery {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1216px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 60px;
   }
 }
 
 .film-card {
-  display: flex;
-  flex-direction: column;
+  display: block;
   padding-bottom: 16px;
   margin: 0 auto;
-  max-width: 500px;
+  max-width: 727px;
   cursor: pointer;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  transform: scale(1);
   margin-bottom: 20px;
-}
-.film-card:hover {
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  transform: scale(1.03);
 }
 @media screen and (min-width: 768px) {
   .film-card {
-    width: calc((100% - 32px) / 2);
-    margin: 0 auto;
+    min-width: 728px;
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    flex-wrap: wrap;
   }
 }
 @media screen and (min-width: 1280px) {
   .film-card {
-    width: calc((100% - 32px) / 3);
-    margin: 0 auto;
+    min-width: 1280px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 0px;
   }
 }
 
@@ -352,6 +419,34 @@ body.dark-theme {
   max-width: 100%;
   margin: 0 auto 8px;
   border-radius: 5px;
+}
+
+.card {
+  min-width: 280px;
+  justify-content: center;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+@media screen and (min-width: 768px) {
+  .card {
+    width: 336px;
+    display: inline-flex;
+    flex-wrap: wrap;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .card {
+    width: 296px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.card__img {
+  height: 490px;
 }
 
 .film-title {

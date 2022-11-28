@@ -28,7 +28,7 @@ const genresArray = {
 const form = document.querySelector('form#search-form');
 const gallery = document.querySelector('.film-card');
 
-export const form = document.querySelector('form#search-form');
+
 // const gallery = document.querySelector('.film-card');
 
 let searchQuery = '';
@@ -62,7 +62,7 @@ function renderCard(arr) {
     </a>
   </li>`;
 }).join('');
-    divRef.insertAdjacentHTML('beforeend', markup)
+    gallery.insertAdjacentHTML('beforeend', markup)
 }
 
 async function onSubmitForm(event) {
@@ -77,7 +77,7 @@ async function onSubmitForm(event) {
         console.log(searchResponse.total_pages)
         console.log(searchResponse.total_results)
         if (searchResponse.total_results > 0) {
-            divRef.innerHTML = ''
+            gallery.innerHTML = ''
             renderCard(searchResponse.results)
         } else {
             gallery.innerHTML = ''
