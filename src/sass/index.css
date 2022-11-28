@@ -82,6 +82,9 @@ a {
   cursor: pointer;
   color: var(--text-main-color);
   background-color: var(--text-films-second);
+
+}/*# sourceMappingURL=index.css.map */
+
 }
 
 .header {
@@ -317,3 +320,4 @@ a {
 .footer .footer__button :focus {
   color: var(--text-films-second);
 }/*# sourceMappingURL=index.css.map */
+

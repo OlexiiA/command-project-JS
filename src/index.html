@@ -15,11 +15,31 @@
       <a class="main-nav__btn" href="./index.html">Home</a>
       <a class="main-nav__btn" href="./My-libruary.html">my library</a>
     </nav>
-  </header>
-  <main>
-    <form class="search-form" id="search-form">
+    <div class="toolbar">
+      <div class="theme-switch">
+          <svg class="theme-switch__icon" width="20" height="20" role="img" aria-label="Солнце">
+            <use href="/src/images/icons.svg#icon-sun"></use>
+          </svg>
+      
+          <div class="theme-switch__control">
+            <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle"
+              aria-label="Переключить между тёмной и светлой темой" />
+            <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle">
+            </label>
+            <div aria-hidden="true" class="theme-switch__marker"></div>
+          </div>
+      
+          <svg class="theme-switch__icon" width="20" height="20" aria-label="Луна">
+            <use href="/src/images/icons.svg#icon-moon-o"></use>
+          </svg>
+        </div> 
+        </div>
+        <form class="search-form" id="search-form">
       <input type="text" class="search-input" name="searchQuery" autocomplete="off" placeholder="Movie search" />
       <button class="search-btn" type="submit">SRCh</button>
+  </header>
+  <main>
+    
       <div class="genre-filter">
         <input type="checkbox" id="28" />Action</>
         <input type="checkbox" id="35" />Comedy</>
@@ -55,6 +75,8 @@
   </footer>
   <include src="./partials/main-modal.html"></include>
   <script type="module" src="./index.js"></script>
+black/white-theme
+  <script type="module" src="../src/JS/switcher.js"></script>
   <script type="module" src="./JS/search_my_genres.js"></script>
 </body>
 
