@@ -1,5 +1,6 @@
 import searchMove from "./search-move";
 
+
 // import genresArray from './genresArray';
 const genresArray = {
      28: "Action",
@@ -26,6 +27,10 @@ const genresArray = {
 
 const form = document.querySelector('form#search-form');
 const gallery = document.querySelector('.film-card');
+
+export const form = document.querySelector('form#search-form');
+// const gallery = document.querySelector('.film-card');
+
 let searchQuery = '';
 
 export const formListener = form.addEventListener('submit', onSubmitForm)
@@ -57,7 +62,7 @@ function renderCard(arr) {
     </a>
   </li>`;
 }).join('');
-    gallery.insertAdjacentHTML('beforeend', markup)
+    divRef.insertAdjacentHTML('beforeend', markup)
 }
 
 async function onSubmitForm(event) {
@@ -72,7 +77,7 @@ async function onSubmitForm(event) {
         console.log(searchResponse.total_pages)
         console.log(searchResponse.total_results)
         if (searchResponse.total_results > 0) {
-            gallery.innerHTML = ''
+            divRef.innerHTML = ''
             renderCard(searchResponse.results)
         } else {
             gallery.innerHTML = ''

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Filmoteka</title>
-  <link rel="stylesheet" href="./sass/index.css" />
+  <link rel="stylesheet" href="./sass/index.scss" />
 </head>
 
 <body>
@@ -15,32 +15,55 @@
       <a class="main-nav__btn" href="./index.html">Home</a>
       <a class="main-nav__btn" href="./My-libruary.html">my library</a>
     </nav>
-  </header>
-  <main>
-    <form class="search-form" id="search-form">
+    <div class="toolbar">
+      <div class="theme-switch">
+          <svg class="theme-switch__icon" width="20" height="20" role="img" aria-label="Солнце">
+            <use href="/src/images/icons.svg#icon-sun"></use>
+          </svg>
+      
+          <div class="theme-switch__control">
+            <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle"
+              aria-label="Переключить между тёмной и светлой темой" />
+            <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle">
+            </label>
+            <div aria-hidden="true" class="theme-switch__marker"></div>
+          </div>
+      
+          <svg class="theme-switch__icon" width="20" height="20" aria-label="Луна">
+            <use href="/src/images/icons.svg#icon-moon-o"></use>
+          </svg>
+        </div> 
+        </div>
+        <form class="search-form" id="search-form">
       <input type="text" class="search-input" name="searchQuery" autocomplete="off" placeholder="Movie search" />
       <button class="search-btn" type="submit">SRCh</button>
+  </header>
+  <main>
+    
       <div class="genre-filter">
-        <input type="checkbox" id="genre_1" /><label for="genre_1"></label>
-        <input type="checkbox" id="genre_2" /><label for="genre_2"></label>
-        <input type="checkbox" id="genre_3" /><label for="genre_3"></label>
-        <input type="checkbox" id="genre_4" /><label for="genre_4"></label>
-        <input type="checkbox" id="genre_5" /><label for="genre_5"></label>
-        <input type="checkbox" id="genre_6" /><label for="genre_6"></label>
+        <input type="checkbox" id="28" />Action</>
+        <input type="checkbox" id="35" />Comedy</>
+        <input type="checkbox" id="18" />Drama</>
+        <input type="checkbox" id="16" />Animation</>
+        <button class="genres-btn" type="button">Show movies with selected genres </button>
+        <input type="checkbox" id="14" />Fantasy</>
+        <input type="checkbox" id="27" />Horror</>
+        <input type="checkbox" id="9648" />Mystery</>
+        <input type="checkbox" id="53" />Thriller</>
       </div>
     </form>
     <div class="gallery">
       <!-- --------------------------------------------------------------- -->
       <!--                     Example code for render                     -->
       <!-- --------------------------------------------------------------- -->
-      <div class="film-card">
+      <ul class="film-card">
         <!-- <img class="film-photo"
           src="https://www.film.ru/sites/default/files/styles/thumb_260x400/public/movies/posters/10032141-925032.jpg"
           alt="ЗАГЛУШКА т.к. src не может быть пустым" />
         <h2 class="film-title"></h2>
         <p class="film-genre"></p>
         <p class="film-year"></p> -->
-      </div>
+        </ul>
     </div>
   </main>
   <footer class="footer">
@@ -50,7 +73,10 @@
       <!-- <button>by GoIT Students</button> -->
     </p>
   </footer>
+  <include src="./partials/main-modal.html"></include>
   <script type="module" src="./index.js"></script>
+  <script type="module" src="../src/JS/switcher.js"></script>
+  <script type="module" src="./JS/search_my_genres.js"></script>
 </body>
 
 </html>
