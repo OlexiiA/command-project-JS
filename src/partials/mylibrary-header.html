@@ -1,0 +1,36 @@
+<header class="library-header">
+    <div class="library-header__link-container">
+        <a class="logo" href="./index.html">Filmoteka</a>
+        <nav class="main-nav">
+            <a class="main-nav__btn" href="./index.html">Home</a>
+            <a class="main-nav__btn main-nav__btn--currant" href="./My-libruary.html">my library</a>
+        </nav>
+    </div>
+    <div class="toolbar">
+        <div class="theme-switch">
+            <svg class="theme-switch__icon" width="20" height="20" role="img" aria-label="Солнце">
+                <use href="/src/images/icons.svg#icon-sun"></use>
+            </svg>
+
+            <div class="theme-switch__control">
+                <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle"
+                    aria-label="Переключить между тёмной и светлой темой" />
+                <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle">
+                </label>
+                <div aria-hidden="true" class="theme-switch__marker"></div>
+            </div>
+
+            <svg class="theme-switch__icon" width="20" height="20" aria-label="Луна">
+                <use href="/src/images/icons.svg#icon-moon-o"></use>
+            </svg>
+        </div>
+    </div>
+    <ul class="button-list">
+        <li class="button-list__item">
+            <button class="button-list__switch">Watched</button>
+        </li>
+        <li class="button-list__item">
+            <button class="button-list__switch">QUEUE</button>
+        </li>
+    </ul>
+</header>
