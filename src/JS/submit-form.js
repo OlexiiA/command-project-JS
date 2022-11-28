@@ -1,27 +1,61 @@
 import searchMove from "./search-move";
 
+// import genresArray from './genresArray';
+const genresArray = {
+     28: "Action",
+     12: "Adventure",
+     16: "Animation",
+     35: "Comedy",
+     80: "Crime",
+     99: "Documentary",
+     18: "Drama",
+     10751: "Family",
+     14: "Fantasy",
+     36: "History",
+     27: "Horror",
+     10402: "Music",
+     9648: "Mystery",
+     10749: "Romance",
+     878: "Science Fiction",
+     10770: "TV Movie",
+     53: "Thriller",
+     10752: "War",
+     37: "Western"
+  }
+
+
 export const form = document.querySelector('form#search-form');
 const gallery = document.querySelector('.film-card');
 let searchQuery = '';
 
-export function formListener() {form.addEventListener('submit', onSubmitForm)}
+// export function formListener() {form.addEventListener('submit', onSubmitForm)}
 
 function renderCard(arr) {
-    const markup = arr.map(({ poster_path, release_date, title, original_title }) => {
+    const markup = arr.map(({ poster_path, release_date, title, genre_ids }) => {
+        // заглушка на отсутствующий постер
         let poster = `https://image.tmdb.org/t/p/w780${poster_path}`
-        console.log(poster)
         if (poster_path === null) {
-            poster = '../images/not-found.png'
+            poster = './src/images/not-found.png'
         }
         console.log(poster)
+        // ================================
         let releaseYear = release_date.slice(0, 4);
-    return `<div class="film-card">
-        <img class="film-photo"
-          src=${poster}
-          alt="Poster: ${original_title}" />
-        <h2 class="film-title"> ${title} </h2>
-        <p class="film-year"> ${releaseYear} </p>
-      </div>`;  
+         let genresText = [] //! Перевод ID жанра в текст
+  genre_ids.forEach(genre => {
+    genresText.push(genresArray[genre])
+  });
+  let genresTextWithCommas = genresText.map(genre => genre).join(', ')
+        return `<li class="card gallery__item">
+    <a href="#" class="card__link">
+        <div class="card__wrapper-img">
+        <img class="card__img" src="https://image.tmdb.org/t/p/w780/${poster}" alt="movie's poster">
+        </div>
+        <div class="card__wrapper">
+        <h3 class="card__title">${title}</h3>
+        <p class="card__info">${genresTextWithCommas} | <span class="card__info-genre">${releaseYear}</span></p>
+        </div>
+    </a>
+  </li>`;
 }).join('');
     gallery.insertAdjacentHTML('beforeend', markup)
 }

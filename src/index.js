@@ -1,2 +1,3 @@
 import { getData, addMarkup } from './JS/api-server';
-import {formListener} from './JS/submit-form'
+import { onSubmitForm, form } from './JS/submit-form'
+form.addEventListener('submit', onSubmitForm)
