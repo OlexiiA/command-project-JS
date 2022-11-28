@@ -1,11 +1,18 @@
 .header {
-  max-height: 230px;
+  height: 216px;
+  width: 100vw;
   margin-bottom: 30px;
   background-image: url(/src/images/pictures/jpeg/header-comp.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0.56);
   background-size: cover;
+
+  @media screen and (max-width: 767px) {
+    background-image: url(/src/images/pictures/jpeg/header-mobile.jpg);
+    height: 320px;
+    width: 100vw;
+  }
 }
 
 .main-nav {
