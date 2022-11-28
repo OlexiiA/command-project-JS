@@ -92,28 +92,57 @@ body.dark-theme {
 
 .header {
 max-height: 230px;
+padding: 40px 32px 60px 32px;
 margin-bottom: 30px;
   background-image: url(../images/pictures/jpeg/header-comp.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0.56);
   background-size: cover;
-
+  &__link-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
 }
 
+.library-header{
+  max-height: 230px;
+  padding: 40px 32px 60px 32px;
+  margin-bottom: 30px;
+  background-image: url(../images/pictures/jpeg/hall-comp.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.56);
+  background-size: cover;
+
+  &__link-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+}
 
 .main-nav {
-  margin-bottom: 44px;
   color: var(--text-main-color);
   display: flex;
   align-items: center;
-justify-content: space-between;
+  justify-content: c;
+  gap: 39px;
+
 }
   .logo {
     display: flex;
     align-items: center;
     color:  var(--text-main-color);
     gap: 10px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    display: flex;
 
   }
   .main-nav__btn {
@@ -131,13 +160,15 @@ justify-content: space-between;
   
     padding-top: 10px;
     padding-bottom: 10px;
-    
+
   &:hover,
   &:focus {
     color: #ff6b08;
   }
   }
-  
+.main-nav__btn--currant{
+  text-decoration: 2px underline #ff6b08;
+}
 .header__list {
   display: flex;
   align-items: center;
@@ -215,4 +246,27 @@ justify-content: space-between;
   stroke: var(--text-clr-second);
   fill: var(--text-clr-second);
 
+}
+.button-list {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 16px
+
+}    
+.button-list__switch{
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #ffffff;
+  background-color: transparent;
+  border: 1px solid #FFFFFF;
+  border-radius: 5px;
+  padding: 13px 41px 11px 41px;
+  &:hover, &:focus, :active{
+    background-color: #ff6b08;
+    border-color: #FF6B02;
+  }
 }
