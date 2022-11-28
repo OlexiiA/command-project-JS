@@ -6,7 +6,4 @@ export default async function searchMove(value) {
     const url = 'https://api.themoviedb.org/3/search/movie'
     const filter = `?${KEY}&query=${value}&language=en-US&page=1&include_adult=false`
     return await axios.get(`${url}${filter}`).then(response => response.data);
-
-    // return searchResult.data.results
-  
   }
