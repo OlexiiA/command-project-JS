@@ -1,4 +1,4 @@
-import './JS/switcher';
+
 
 import API from "./JS/api-server";
 
