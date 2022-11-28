@@ -24,11 +24,11 @@ const genresArray = {
   }
 
 
-export const form = document.querySelector('form#search-form');
+const form = document.querySelector('form#search-form');
 const gallery = document.querySelector('.film-card');
 let searchQuery = '';
 
-// export function formListener() {form.addEventListener('submit', onSubmitForm)}
+export const formListener = form.addEventListener('submit', onSubmitForm)
 
 function renderCard(arr) {
     const markup = arr.map(({ poster_path, release_date, title, genre_ids }) => {
@@ -60,7 +60,7 @@ function renderCard(arr) {
     gallery.insertAdjacentHTML('beforeend', markup)
 }
 
-export async function onSubmitForm(event) {
+async function onSubmitForm(event) {
     event.preventDefault()
     searchQuery = event.currentTarget.searchQuery.value.trim()
      if (searchQuery === '') {
