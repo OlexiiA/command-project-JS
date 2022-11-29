@@ -515,90 +515,101 @@ li {
 }
 
 .gallery {
-  margin: 0;
-  padding: 0;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 @media screen and (min-width: 1280px) {
   .gallery {
     margin-left: auto;
     margin-right: auto;
-    width: 1216px;
-    padding-left: 32px;
-    padding-right: 32px;
     padding-top: 60px;
   }
 }
 
 .film-card {
-  display: block;
+  display: flex;
+  flex-direction: column;
   padding-bottom: 16px;
-  margin: 0 auto;
-  max-width: 727px;
   cursor: pointer;
+  width: 100%;
+  justify-content: center;
   margin-bottom: 20px;
 }
 @media screen and (min-width: 768px) {
   .film-card {
     min-width: 728px;
-    margin: 0;
-    padding: 0;
+    margin-left: 32px;
+    margin-bottom: 32px;
     display: inline-flex;
     flex-wrap: wrap;
+    flex-direction: row;
+    gap: 32px;
   }
 }
 @media screen and (min-width: 1280px) {
   .film-card {
-    min-width: 1280px;
-    display: inline-flex;
+    display: flex;
     flex-wrap: wrap;
+    margin-left: 16px;
+    margin-bottom: 32px;
     gap: 16px;
-    margin: 0px;
   }
 }
 
-.film-photo {
-  flex-grow: 1;
-  max-width: 100%;
-  margin: 0 auto 8px;
-  border-radius: 5px;
-}
-
 .card {
-  min-width: 280px;
+  box-sizing: content-box;
+  display: flex;
+  width: 100%;
   justify-content: center;
-  margin-left: 20px;
-  margin-right: 20px;
 }
 @media screen and (min-width: 768px) {
   .card {
     width: 336px;
-    display: inline-flex;
-    flex-wrap: wrap;
   }
 }
 @media screen and (min-width: 1280px) {
   .card {
     width: 296px;
-    display: inline-flex;
+    display: flex;
     flex-wrap: wrap;
     gap: 16px;
     margin: 0;
     padding: 0;
+    flex-direction: row;
   }
 }
 
 .card__img {
-  height: 490px;
+  height: 400px;
+  max-width: 100%;
+  margin-bottom: 10px;
+}
+@media screen and (min-width: 768px) {
+  .card__img {
+    height: 455px;
+    width: 336px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .card__img {
+    height: 485px;
+  }
 }
 
-.film-title {
+.card__title {
+  font-style: Roboto;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.3;
   text-transform: uppercase;
+  color: var(--text-films-main);
 }
 
-.film-genre {
+.card__info {
+  font-style: Roboto;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.3;
@@ -650,4 +661,49 @@ li {
 .footer .footer__button.dark {
   color: #fff;
   background: #191919;
+}
+
+.allert-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  background: rgb(171, 48, 48);
+  background: linear-gradient(135deg, rgb(171, 48, 48) 0%, rgb(227, 209, 209) 5%, rgb(171, 48, 48) 10%, rgb(227, 209, 209) 15%, rgb(171, 48, 48) 20%, rgb(227, 209, 209) 25%, rgb(171, 48, 48) 30%, rgb(227, 209, 209) 35%, rgb(171, 48, 48) 40%, rgb(227, 209, 209) 45%, rgb(171, 48, 48) 50%, rgb(227, 209, 209) 55%, rgb(171, 48, 48) 60%, rgb(227, 209, 209) 65%, rgb(171, 48, 48) 70%, rgb(227, 209, 209) 75%, rgb(171, 48, 48) 80%, rgb(227, 209, 209) 85%, rgb(171, 48, 48) 90%, rgb(227, 209, 209) 95%, rgb(171, 48, 48) 100%);
+}
+@media screen and (min-width: 320px) {
+  .allert-box {
+    height: 150px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .allert-box {
+    height: 200px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .allert-box {
+    height: 300px;
+  }
+}
+
+.not-found {
+  font-size: 14px;
+  color: var(--text-films-main);
+}
+@media screen and (min-width: 320px) {
+  .not-found {
+    font-size: 16px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .not-found {
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .not-found {
+    font-size: 28px;
+  }
 }/*# sourceMappingURL=index.css.map */
