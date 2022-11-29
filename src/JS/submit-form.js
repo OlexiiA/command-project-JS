@@ -80,8 +80,10 @@ async function onSubmitForm(event) {
             gallery.innerHTML = ''
             renderCard(searchResponse.results)
         } else {
+            const allertNotFound = document.querySelector('.gallery')
             gallery.innerHTML = ''
-            alert('Sorry, nothing was found for your search.')
+            allertNotFound.innerHTML = '<h2 class="not-found">Sorry, nothing was found for your search.</h2>'
+            // alert('Sorry, nothing was found for your search.')
         }
     }
     catch (error) {
