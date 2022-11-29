@@ -40,7 +40,7 @@ function renderCard(arr) {
         // заглушка на отсутствующий постер
         let poster = `https://image.tmdb.org/t/p/w780${poster_path}`
         if (poster_path === null) {
-            poster = './src/images/not-found.png'
+            poster = 'https://upload.wikimedia.org/wikipedia/commons/2/26/512pxIcon-sunset_photo_not_found.png'
         }
         console.log(poster)
         // ================================
@@ -53,7 +53,7 @@ function renderCard(arr) {
         return `<li class="card gallery__item">
     <a href="#" class="card__link">
         <div class="card__wrapper-img">
-        <img class="card__img" src="https://image.tmdb.org/t/p/w780/${poster}" id="${id}" >
+        <img class="card__img" src="${poster}" id="${id}" >
         </div>
         <div class="card__wrapper">
         <h3 class="card__title">${title}</h3>
