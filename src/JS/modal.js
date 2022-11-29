@@ -22,7 +22,7 @@ async function loadMoreInfo(ID) {
   const KEY = 'api_key=2913964819360854cc0ff757d62600b5';
   const url = `https://api.themoviedb.org/3/movie/${ID}?${KEY}&language=en-US`;
   const answer = await axios.get(url).then(response => response.data);
-  console.log(answer);
+  console.log("answer ", answer);
   return answer;
 }
 
@@ -70,13 +70,13 @@ function renderModal(ans) {
   modalRef.insertAdjacentHTML('beforeend', modalMarkup);
 }
 
-function getModalCard(evt) {
+async function getModalCard(evt) {
   if (evt.target.nodeName !== 'IMG') {
     return;
   }
   openModal();
   const currentId = evt.target.id;
-  let doModal = { ...loadMoreInfo(currentId) };
+  let doModal = await loadMoreInfo(currentId);
   console.log('doModal', doModal);
   try {
     // if (doModal.length > 0) {
