@@ -1,0 +1,17 @@
+.modal__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  background-color: rgba(0,0,0,0.3);
+  opacity: 1;
+  transition: opacity var(--transition-var), visibility var(--transition-var);
+}
+
+.backdrop.visually-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
