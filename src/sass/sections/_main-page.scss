@@ -24,12 +24,10 @@ li {
     .film-card {
       display: flex;
       flex-direction: column;
-      padding-bottom: 16px;
-      // margin: 0 auto;
       cursor: pointer;
        width: 100%;
       justify-content: center;
-      margin-bottom: 20px;
+      
   
     
       @media screen and (min-width: $tablet) {
@@ -60,6 +58,7 @@ li {
       display: flex;
       width: 100%;
       justify-content: center;
+      margin-bottom: 20px;
       @media screen and (min-width: $tablet){
         width: 336px;
         
@@ -75,13 +74,28 @@ li {
             }
     }
 
-  
-    
-
-    .card__img{
-      height: 400px;
-      max-width: 100%;
+  // .card__link{
    
+  //   width: 100%;
+  //   padding-right: 20px;
+  //   padding-left: 20px;
+  //   margin-left: auto;
+  //     margin-right: auto;
+  //   justify-content: center;
+  //   align-items: center;
+  // }
+    
+  // .card__wrapper-img{
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  // }
+
+ 
+    .card__img{
+      height: 402px;
+      min-width: 280px;
+      width: 100%;
         margin-bottom: 10px;
         @media screen and (min-width: $tablet) {
             height: 455px;
@@ -90,7 +104,7 @@ li {
           }
                     @media screen and (min-width: $comp) {
                       height: 485px;
-          
+                      width: 296px;
                     }
      
     }

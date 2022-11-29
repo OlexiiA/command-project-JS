@@ -84,7 +84,10 @@ body.light-theme {
 
 body.dark-theme {
   background-color: #333333;
-  color: #ffffff;
+  color: var(--text-main-color);
+  .card__title{
+    color: var(--text-main-color);
+  }
 }
 
 .header {
