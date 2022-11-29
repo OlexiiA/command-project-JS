@@ -1,4 +1,5 @@
 // import { save, load, remove } from "./storage";
+import axios from 'axios';
 
 const closeBtn = document.querySelector(".modal__close");
 const backdrop = document.querySelector(".modal__backdrop");
@@ -18,11 +19,11 @@ function openModal() {
 }
 
 function getModalCard(evt) {
-  // if (evt.target.nodeName !== "LI") {
-  //   return;
-  // }
+  if (evt.target.nodeName !== "IMG") {
+    return;
+  }
   openModal();
-  const currentId = evt.target.data.results.id;
+  const currentId = evt.target.id;
   const doModal = loadMoreInfo(currentId);
   try {
     if (doModal.length > 0) {
