@@ -10,12 +10,83 @@
 
 <body>
   <header class="header">
-    <a class="logo" href="./index.html">Filmoteka</a>
-    <nav class="main-nav">
-      <a class="main-nav__btn" href="./index.html">Home</a>
-      <a class="main-nav__btn" href="./My-libruary.html">my library</a>
-    </nav>
-    <div class="toolbar">
+       <div class="header-main-container">
+        <div class="nav-container">
+          <svg class="header-svg" width="24" height="24">
+            <use href="/src/images/icons.svg#icon-film"></use>
+          </svg>
+          <a class="logo" href="./index.html">Filmoteka</a>
+          <nav class="main-nav">
+            <a class="main-nav__btn" href="./index.html"
+              ><span class="nav-link">Home</span></a
+            >
+            <a class="main-nav__btn" href="./My-libruary.html"
+              ><span class="nav-link">my library</span></a
+            >
+          </nav>
+        </div>
+        <form class="search-form" id="search-form">
+          <input
+            type="text"
+            class="search-input"
+            name="searchQuery"
+            autocomplete="off"
+            placeholder="Movie search"
+          />
+          <button class="search-btn" type="submit">
+            <svg class="search-svg" width="12" height="12">
+              <use href="/src/images/icons.svg#icon-search-white"></use>
+            </svg>
+          </button>
+          <div class="genre-filter">
+            <ul class="ganre-list">
+              <li class="ganre-item">
+                <input type="checkbox" id="35" /><span class="checkbox"
+                  >Comedy</span
+                >
+              </li>
+              <li class="ganre-item">
+                <input type="checkbox" id="28" /><span class="checkbox"
+                  >Action</span
+                >
+              </li>
+              <li class="ganre-item">
+                <input type="checkbox" id="18" /><span class="checkbox"
+                  >Drahma</span
+                >
+              </li>
+              <li class="ganre-item">
+                <input type="checkbox" id="16" /><span class="checkbox"
+                  >Animation</span
+                >
+              </li>
+              <li class="ganre-item">
+                <input type="checkbox" id="14" /><span class="checkbox"
+                  >Fantasy</span
+                >
+              </li>
+              <li class="ganre-item">
+                <input type="checkbox" id="27" /><span class="checkbox"
+                  >Horror</span
+                >
+              </li>
+              <li class="ganre-item">
+                <input type="checkbox" id="9648" /><span class="checkbox"
+                  >Mystery</span
+                >
+              </li>
+              <li class="ganre-item">
+                <input type="checkbox" id="53" /><span class="checkbox"
+                  >Thriller</span
+                >
+              </li>
+            </ul>
+          </div>
+          <button class="genres-btn" type="button">Select</button>
+        </form>
+              </div>
+    </header>
+      <div class="toolbar">
       <div class="theme-switch">
           <svg class="theme-switch__icon" width="20" height="20" role="img" aria-label="Солнце">
             <use href="/src/images/icons.svg#icon-sun"></use>
@@ -34,24 +105,7 @@
           </svg>
         </div> 
         </div>
-        <form class="search-form" id="search-form">
-      <input type="text" class="search-input" name="searchQuery" autocomplete="off" placeholder="Movie search" />
-      <button class="search-btn" type="submit">SRCh</button>
-  </header>
-  <main>
-    
-      <div class="genre-filter">
-        <input type="checkbox" id="28" />Action</>
-        <input type="checkbox" id="35" />Comedy</>
-        <input type="checkbox" id="18" />Drama</>
-        <input type="checkbox" id="16" />Animation</>
-        <button class="genres-btn" type="button">Show movies with selected genres </button>
-        <input type="checkbox" id="14" />Fantasy</>
-        <input type="checkbox" id="27" />Horror</>
-        <input type="checkbox" id="9648" />Mystery</>
-        <input type="checkbox" id="53" />Thriller</>
-      </div>
-    </form>
+
     <div class="gallery">
       <!-- --------------------------------------------------------------- -->
       <!--                     Example code for render                     -->
