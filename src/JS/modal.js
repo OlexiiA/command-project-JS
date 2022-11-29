@@ -22,7 +22,6 @@ async function loadMoreInfo(ID) {
   const KEY = 'api_key=2913964819360854cc0ff757d62600b5';
   const url = `https://api.themoviedb.org/3/movie/${ID}?${KEY}&language=en-US`;
   const answer = await axios.get(url).then(response => response.data);
-  console.log("answer ", answer);
   return answer;
 }
 
@@ -43,7 +42,7 @@ function renderModal(ans) {
     filmIMG = './src/images/not-found.png';
   }
   // ================================
-  // let genresWords = genres.map(genre => { genresWords.push(genre.name) }).join(', ');
+  let genresWords = genres.map(genre => genre.name).join(', ');
   const modalMarkup = `<div class="modal__img-thumb">
         <img
         class="modal__img"
@@ -53,7 +52,7 @@ function renderModal(ans) {
         </div>
         <div class="modal__info">
         <h2 class="modal__title">${title}</h2>
-        <div class="modal__table">${vote_average}/${vote_count}, ${popularity}, ${original_title}, ${genres}</div>
+        <div class="modal__table">${vote_average}/${vote_count}, ${popularity}, ${original_title}, ${genresWords}</div>
         <h3 class="modal__about">about</h3>
         <p class="modal__descr">${overview}</p>
         <ul class="modal__btns">
@@ -71,22 +70,21 @@ function renderModal(ans) {
 }
 
 async function getModalCard(evt) {
-  if (evt.target.nodeName !== 'IMG') {
-    return;
-  }
-  openModal();
-  const currentId = evt.target.id;
-  let doModal = await loadMoreInfo(currentId);
-  console.log('doModal', doModal);
-  try {
-    // if (doModal.length > 0) {
-    modalRef.innerHTML = '';
-    renderModal(doModal);
-    // } else {
-    //   modalRef.innerHTML = ''
-    //   alert('Sorry, nothing was found for your search.')
-    // }
-  } catch (error) {
-    console.log(error);
+  if (!evt.path.includes("li.card.gallery__item")) {
+    openModal();
+    const currentId = evt.path.find(a => a.nodeName === "LI").id;
+    let doModal = await loadMoreInfo(currentId);
+    console.log('doModal', doModal);
+    try {
+      if (doModal.original_title !== undefined) {
+      modalRef.innerHTML = '';
+      renderModal(doModal);
+      } else {
+        modalRef.innerHTML = ''
+        alert('Sorry, nothing was found for your search.')
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 }

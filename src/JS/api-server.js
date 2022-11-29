@@ -45,10 +45,10 @@ const tamplate = data.map(({ title, release_date, poster_path, genre_ids, id}) =
   });
   let genresTextWithCommas = genresText.map(genre => genre).join(', ')
 
-  return `<li class="card gallery__item">
+  return `<li class="card gallery__item" id="${id}">
     <a href="#" class="card__link">
         <div class="card__wrapper-img">
-        <img class="card__img" id="${id}" src="https://image.tmdb.org/t/p/w780/${poster_path}" alt="movie's poster">
+        <img class="card__img"  src="https://image.tmdb.org/t/p/w780/${poster_path}" alt="movie's poster">
         </div>
         <div class="card__wrapper">
         <h3 class="card__title">${title}</h3>
