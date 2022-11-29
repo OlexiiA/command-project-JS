@@ -5,6 +5,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Filmoteka</title>
+   <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
   <link rel="stylesheet" href="./sass/index.scss" />
 </head>
 
@@ -12,10 +16,12 @@
   <header class="header">
        <div class="header-main-container">
         <div class="nav-container">
+          <div class="nav-block">
           <svg class="header-svg" width="24" height="24">
             <use href="/src/images/icons.svg#icon-film"></use>
           </svg>
           <a class="logo" href="./index.html">Filmoteka</a>
+          </div>
           <nav class="main-nav">
             <a class="main-nav__btn" href="./index.html"
               ><span class="nav-link">Home</span></a
@@ -26,6 +32,7 @@
           </nav>
         </div>
         <form class="search-form" id="search-form">
+          <div class="input-field">
           <input
             type="text"
             class="search-input"
@@ -38,6 +45,7 @@
               <use href="/src/images/icons.svg#icon-search-white"></use>
             </svg>
           </button>
+          </div>
           <div class="genre-filter">
             <ul class="ganre-list">
               <li class="ganre-item">
@@ -107,18 +115,10 @@
         </div>
 
     <div class="gallery">
-      <!-- --------------------------------------------------------------- -->
-      <!--                     Example code for render                     -->
-      <!-- --------------------------------------------------------------- -->
       <ul class="film-card">
-        <!-- <img class="film-photo"
-          src="https://www.film.ru/sites/default/files/styles/thumb_260x400/public/movies/posters/10032141-925032.jpg"
-          alt="ЗАГЛУШКА т.к. src не может быть пустым" />
-        <h2 class="film-title"></h2>
-        <p class="film-genre"></p>
-        <p class="film-year"></p> -->
         </ul>
     </div>
+    <div id="pagination-container" class="tui-pagination"></div>
   </main>
   <footer class="footer">
     <p class="copyright">
@@ -131,6 +131,7 @@
   <script type="module" src="./index.js"></script>
   <script type="module" src="../src/JS/switcher.js"></script>
   <script type="module" src="./JS/search_my_genres.js"></script>
+  <script type="module" src="./JS/modal.js"></script>
 </body>
 
 </html>
