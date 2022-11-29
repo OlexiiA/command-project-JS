@@ -180,7 +180,7 @@ body.dark-theme {
   height: 230px;
   width: 100vw;
   position: relative;
-  background-image: url(/src/images/pictures/jpeg/header-comp.jpg);
+  background-image: url(/src/images/pictures/jpeg/hall-comp.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0.56);
@@ -188,26 +188,26 @@ body.dark-theme {
 }
 @media screen and (max-width: 767px) {
   .header {
-    background-image: url(/src/images/pictures/jpeg/header-mobile.jpg);
+    background-image: url(/src/images/pictures/jpeg/hall-mobile.jpg);
     height: 230px;
     width: 100vw;
   }
 }
 @media screen and (max-width: 767px) and (min-device-pixel-ratio: 2), screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), screen and (max-width: 767px) and (min-resolution: 192dpi), screen and (max-width: 767px) and (min-resolution: 2dppx) {
   .header {
-    background-image: url(/src/images/pictures/jpeg/header-mobile@2x.jpg);
+    background-image: url(/src/images/pictures/jpeg/hall-mobile@2x.jpg);
   }
 }
 @media screen and (min-width: 768px) {
   .header {
-    background-image: url(/src/images/pictures/jpeg/header-tablet.jpg);
+    background-image: url(/src/images/pictures/jpeg/hall-tablet.jpg);
     height: 216px;
     width: 100vw;
   }
 }
 @media screen and (min-width: 768px) and (min-device-pixel-ratio: 2), screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2), screen and (min-width: 768px) and (min-resolution: 192dpi), screen and (min-width: 768px) and (min-resolution: 2dppx) {
   .header {
-    background-image: url(/src/images/pictures/jpeg/header-tablet@2x.jpg);
+    background-image: url(/src/images/pictures/jpeg/hall-tablet@2x.jpg);
   }
 }
 .header__link-container {
@@ -217,27 +217,58 @@ body.dark-theme {
   margin-bottom: 40px;
 }
 
-.header-main-container {
+.header-main-container,
+.header-library-container {
   padding-top: 40px;
   padding-left: 20px;
   padding-right: 20px;
 }
 @media screen and (min-width: 768px) {
-  .header-main-container {
+  .header-main-container,
+.header-library-container {
     padding-left: 32px;
     padding-right: 32px;
   }
 }
 
 .library-header {
-  max-height: 230px;
-  padding: 40px 32px 60px 32px;
-  margin-bottom: 30px;
-  background-image: url(../images/pictures/jpeg/hall-comp.jpg);
+  height: 230px;
+  width: 100vw;
+  position: relative;
+  background-image: url(/src/images/pictures/jpeg/hall-comp.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0.56);
   background-size: cover;
+}
+@media screen and (max-width: 767px) {
+  .library-header {
+    background-image: url(/src/images/pictures/jpeg/hall-mobile.jpg);
+    height: 230px;
+    width: 100vw;
+  }
+}
+@media screen and (max-width: 767px) and (min-device-pixel-ratio: 2), screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), screen and (max-width: 767px) and (min-resolution: 192dpi), screen and (max-width: 767px) and (min-resolution: 2dppx) {
+  .library-header {
+    background-image: url(/src/images/pictures/jpeg/hall-mobile@2x.jpg);
+  }
+}
+@media screen and (min-width: 768px) {
+  .library-header {
+    background-image: url(/src/images/pictures/jpeg/hall-tablet.jpg);
+    height: 216px;
+    width: 100vw;
+  }
+}
+@media screen and (min-width: 768px) and (min-device-pixel-ratio: 2), screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2), screen and (min-width: 768px) and (min-resolution: 192dpi), screen and (min-width: 768px) and (min-resolution: 2dppx) {
+  .library-header {
+    background-image: url(/src/images/pictures/jpeg/hall-tablet@2x.jpg);
+  }
+}
+@media screen and (min-width: 1280px) {
+  .library-header {
+    background-image: url(/src/images/pictures/jpeg/hall-comp@2x.jpg);
+  }
 }
 .library-header__link-container {
   display: flex;
@@ -250,6 +281,7 @@ body.dark-theme {
   color: var(--text-main-color);
   display: flex;
 }
+
 .nav-block {
   display: flex;
   align-items: center;
@@ -413,11 +445,14 @@ body.dark-theme {
   justify-content: center;
   align-items: center;
   gap: 16px;
+  margin-top: 65px;
 }
 
 .button-list__switch {
   text-transform: uppercase;
   font-weight: 500;
+  width: 130px;
+  height: 45px;
   font-size: 12px;
   line-height: 16px;
   color: #ffffff;
@@ -451,18 +486,23 @@ body.dark-theme {
 }
 
 .genres-btn {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 10px;
+  color: #ffffff;
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  padding: 13px 41px 11px 41px;
   margin: 0 auto;
-  border: none;
   background: transparent;
-  border-bottom: 0.5px solid white;
-  caret-color: white;
-  color: white;
   display: block;
 }
-
-.genres-btn:hover,
-.genres-btn:focus {
-  color: var(--text-clr-second);
+.genres-btn:hover, .genres-btn:focus,
+.genres-btn :active {
+  background-color: #ff6b08;
+  border-color: #ff6b02;
 }
 
 .checkbox {
