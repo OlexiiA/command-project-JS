@@ -81,10 +81,9 @@ async function onSubmitForm(event) {
             renderCard(searchResponse.results)
         } else {
             const allertNotFound = document.querySelector('.gallery')
-            gallery.innerHTML = ''
-            allertNotFound.innerHTML = `<div class="allert-box">
+            gallery.innerHTML = `<li class="allert-box">
             <h2 class="not-found">Sorry, nothing was found for your search.</h2>
-            </div>`
+            </li>`
         }
     }
     catch (error) {
