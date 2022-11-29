@@ -180,7 +180,7 @@ body.dark-theme {
   height: 230px;
   width: 100vw;
   position: relative;
-  background-image: url(/src/images/pictures/jpeg/hall-comp.jpg);
+  background-image: url(/src/images/pictures/jpeg/header-comp.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0.56);
@@ -188,26 +188,26 @@ body.dark-theme {
 }
 @media screen and (max-width: 767px) {
   .header {
-    background-image: url(/src/images/pictures/jpeg/hall-mobile.jpg);
+    background-image: url(/src/images/pictures/jpeg/header-mobile.jpg);
     height: 230px;
     width: 100vw;
   }
 }
 @media screen and (max-width: 767px) and (min-device-pixel-ratio: 2), screen and (max-width: 767px) and (-webkit-min-device-pixel-ratio: 2), screen and (max-width: 767px) and (min-resolution: 192dpi), screen and (max-width: 767px) and (min-resolution: 2dppx) {
   .header {
-    background-image: url(/src/images/pictures/jpeg/hall-mobile@2x.jpg);
+    background-image: url(/src/images/pictures/jpeg/header-mobile@2x.jpg);
   }
 }
 @media screen and (min-width: 768px) {
   .header {
-    background-image: url(/src/images/pictures/jpeg/hall-tablet.jpg);
+    background-image: url(/src/images/pictures/jpeg/header-tablet.jpg);
     height: 216px;
     width: 100vw;
   }
 }
 @media screen and (min-width: 768px) and (min-device-pixel-ratio: 2), screen and (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2), screen and (min-width: 768px) and (min-resolution: 192dpi), screen and (min-width: 768px) and (min-resolution: 2dppx) {
   .header {
-    background-image: url(/src/images/pictures/jpeg/hall-tablet@2x.jpg);
+    background-image: url(/src/images/pictures/jpeg/header-tablet@2x.jpg);
   }
 }
 .header__link-container {
@@ -219,7 +219,7 @@ body.dark-theme {
 
 .header-main-container,
 .header-library-container {
-  padding-top: 40px;
+  padding-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -459,7 +459,6 @@ body.dark-theme {
   background-color: transparent;
   border: 1px solid #ffffff;
   border-radius: 5px;
-  padding: 13px 41px 11px 41px;
 }
 .button-list__switch:hover, .button-list__switch:focus,
 .button-list__switch :active {
