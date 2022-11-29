@@ -24,7 +24,7 @@ function getModalCard(evt) {
   }
   openModal();
   const currentId = evt.target.id;
-  const doModal = loadMoreInfo(currentId);
+  const doModal = await loadMoreInfo(currentId);
   try {
     if (doModal.length > 0) {
       modalRef.innerHTML = ''
