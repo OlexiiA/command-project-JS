@@ -44,7 +44,7 @@ async function genre(genresListWithCommas) {
 const divRef = document.querySelector(`.film-card`)
 
 function addMarkup(data) {
-const tamplate = data.map(({ title, release_date, poster_path, genre_ids}) => {
+const tamplate = data.map(({ title, release_date, poster_path, genre_ids, id}) => {
    let releaseYear = release_date.slice(0, 4);
    
    let genresText = [] //! Перевод ID жанра в текст
@@ -56,7 +56,7 @@ const tamplate = data.map(({ title, release_date, poster_path, genre_ids}) => {
    return `<li class="card gallery__item">
       <a href="#" class="card__link">
          <div class="card__wrapper-img">
-         <img class="card__img" src="https://image.tmdb.org/t/p/w780/${poster_path}" alt="movie's poster">
+         <img class="card__img" id="${id}" src="https://image.tmdb.org/t/p/w780/${poster_path}" alt="movie's poster">
          </div>
          <div class="card__wrapper">
          <h3 class="card__title">${title}</h3>

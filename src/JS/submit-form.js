@@ -36,7 +36,7 @@ let searchQuery = '';
 export const formListener = form.addEventListener('submit', onSubmitForm)
 
 function renderCard(arr) {
-    const markup = arr.map(({ poster_path, release_date, title, genre_ids }) => {
+    const markup = arr.map(({ poster_path, release_date, title, genre_ids, id }) => {
         // заглушка на отсутствующий постер
         let poster = `https://image.tmdb.org/t/p/w780${poster_path}`
         if (poster_path === null) {
@@ -53,7 +53,7 @@ function renderCard(arr) {
         return `<li class="card gallery__item">
     <a href="#" class="card__link">
         <div class="card__wrapper-img">
-        <img class="card__img" src="https://image.tmdb.org/t/p/w780/${poster}" alt="movie's poster">
+        <img class="card__img" src="https://image.tmdb.org/t/p/w780/${poster}" id="${id}" >
         </div>
         <div class="card__wrapper">
         <h3 class="card__title">${title}</h3>
