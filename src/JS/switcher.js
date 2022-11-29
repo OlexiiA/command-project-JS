@@ -4,6 +4,7 @@ const Theme = {
 };
 
 const bodyRef = document.querySelector('body');
+const tollbar = document.querySelector('.toolbar')
 const switcherRef = document.querySelector('.theme-switch__toggle');
 
 function defaultTheme() {
@@ -16,7 +17,7 @@ function defaultTheme() {
 
 defaultTheme();
 
-bodyRef.addEventListener('change', onThemeChange);
+tollbar.addEventListener('change', onThemeChange);
 
 function onThemeChange(e) {
     if (e.target.checked) {
@@ -25,7 +26,7 @@ function onThemeChange(e) {
         localStorage.setItem('Theme', Theme.DARK);
     }
     else {
-        bodyRef.classList.remove(Theme.DARK);
+       bodyRef.classList.remove(Theme.DARK);
         bodyRef.classList.add(Theme.LIGHT);
         localStorage.setItem('Theme', Theme.LIGHT);
     }
