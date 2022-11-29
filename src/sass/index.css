@@ -252,6 +252,7 @@ body.dark-theme {
 }
 .nav-block {
   display: flex;
+  align-items: center;
 }
 
 .nav-link {
@@ -271,6 +272,7 @@ body.dark-theme {
   justify-content: space-between;
   align-items: center;
 }
+
 .logo {
   display: flex;
   align-items: center;
@@ -284,6 +286,13 @@ body.dark-theme {
 @media screen and (min-width: 768px) {
   .logo {
     margin-left: 10px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    display: flex;
+    text-align: center;
   }
 }
 
@@ -293,14 +302,7 @@ body.dark-theme {
 
 .main-nav__btn:hover,
 .main-nav__btn:hover {
-  content: "";
-  display: inline-block;
-  position: absolute;
-  bottom: 0;
-  border-radius: 2px;
-  color: var(--text-clr-second);
-  width: 100%;
-  height: 2px;
+  border-bottom: 2px solid var(--text-clr-second);
 }
 
 .header__list {
@@ -352,6 +354,11 @@ body.dark-theme {
     width: 325px;
   }
 }
+@media screen and (min-width: 1280px) {
+  .search-input {
+    width: 385px;
+  }
+}
 .search-input:hover, .search-input:focus {
   border-color: var(--text-clr-second);
   transition: color 300ms var(--timing-function);
@@ -369,11 +376,22 @@ body.dark-theme {
   color: #ffffff;
 }
 
+.input-field {
+  display: inline-flex;
+  justify-content: flex-end;
+  margin-left: 7.5%;
+}
 @media screen and (min-width: 768px) {
   .input-field {
+    display: block;
     width: 335px;
     margin-left: auto;
     margin-right: auto;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .input-field {
+    width: 395px;
   }
 }
 
@@ -419,6 +437,11 @@ body.dark-theme {
   flex-wrap: wrap;
   margin-top: 25px;
 }
+@media screen and (min-width: 168px) {
+  .genre-filter {
+    justify-content: center;
+  }
+}
 
 .ganre-list {
   display: flex;
@@ -434,6 +457,7 @@ body.dark-theme {
   border-bottom: 0.5px solid white;
   caret-color: white;
   color: white;
+  display: block;
 }
 
 .genres-btn:hover,
