@@ -1,6 +1,6 @@
 .footer {
     background-color: var(--background-footer);
-    .copyright {
+    .footer_container {
       font-size: 14px;
       line-height: 1.17;
       color: var(--textcolor-footer);
@@ -25,16 +25,16 @@
   .footer__icon {
     margin-left: 10px;
     margin-right: 10px;
-    
+    animation: pulsation 4s linear 1s infinite;
   }
 
 .footer__button {
   border: none;
   background: transparent;
   color: var(--textcolor-footer);
-  animation: pulsation 4s linear 1s infinite;
+
   padding: 10px 0;
-margin-left: 10px;
+
   text-decoration: underline;
   cursor: pointer;
   transition: color 300ms var(--timing-function);
@@ -42,9 +42,5 @@ margin-left: 10px;
   :focus {
     color: var(--text-films-second);
   }
-}
-.footer__button.dark {
-  color: #fff;
-  background: #191919;
 }
 }
