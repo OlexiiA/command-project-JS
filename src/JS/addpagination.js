@@ -1,22 +1,12 @@
 import axios from 'axios';
 import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
 import {addMarkup, getData} from './api-server';
 
 const API_KEY = 'api_key=2913964819360854cc0ff757d62600b5';
 
-const showLoader = () => {
-  document.querySelector('body').classList.add('scroll-hidden');
-  document.querySelector('.loader').classList.remove('is-hidden');
-}
-
-const hideLoader = () => {
-  document.querySelector('body').classList.remove('scroll-hidden');
-  document.querySelector('.loader').classList.add('is-hidden');
-}
-
 const refs = {
   currentPage: 1,
-  keyWord: '',
   paginationBox: document.querySelector('.tui-pagination'),
 };
 
@@ -34,14 +24,13 @@ export async function getTrending(api_key, media_type, time_window, page) {
 }
 
 getTrending(API_KEY, 'movie', 'week', refs.currentPage)
-  .then(data => {
-    addMarkup(data.results);
-    pagination.reset(data.total_results);
-  })
-  .then(hideLoader);
+  .then(res => {
+    addMarkup(res.data.results);
+    pagination.reset(res.data.total_results);
+  });
 
   
-const container = document.getElementById('pagination-container');
+const container = document.getElementById('pagination');
 
 
 const options = {
@@ -73,50 +62,11 @@ const options = {
 
 const pagination = new Pagination(container, options);
 
-
-
 pagination.on('beforeMove', e => {
   refs.currentPage = e.page;
-  showLoader();
+  // showLoader();
   getTrending(API_KEY, 'movie', 'week', refs.currentPage)
-    .then(data => {
-      addMarkup(data.results);
-    })
-    // .then(topFunction)
-    .then(hideLoader);
-});
-
-
-function onSubmitBtnClick(e) {
-  e.preventDefault();
-  const keyWord = refs.keyWord;
-  console.log(keyWord);
-  showLoader();
-  getSearch(keyWord, API_KEY, refs.currentPage)
-    .then(data => {
-      console.log(data.results);
-      if (data.results.length === 0) {
-        refs.alertBox.classList.remove('visually-hidden');
-        refs.searchForm.reset();
-        refs.cardCollection.innerHTML = '';
-        pagination.reset(0);
-        refs.paginationBox.classList.add('visually-hidden');
-      } else {
-        refs.paginationBox.classList.remove('visually-hidden');
-        refs.alertBox.classList.add('visually-hidden');
-        listMovies(data.results);
-        paginationSearch.reset(data.total_results);
-          paginationSearch.on('beforeMove', e => {
-            refs.currentPage = e.page;
-            getSearch(keyWord, API_KEY, refs.currentPage)
-            .then(data => {
-            listMovies(data.results);
-        })
-        .then(topFunction)
-        .then(hideLoader);
-        refs.searchForm.reset();
+    .then(res => {
+      addMarkup(res.data.results);
     });
-      }
-    })
-    .then(hideLoader);
-}
+});
