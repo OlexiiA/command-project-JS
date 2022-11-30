@@ -1,5 +1,7 @@
 .footer {
     background-color: var(--background-footer);
+    width: 100vw;
+    min-width: 356px; //костыль но без него почему-то на 320px съезжает фон
     .copyright {
       font-size: 14px;
       line-height: 1.17;

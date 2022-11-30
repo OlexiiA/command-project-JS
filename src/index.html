@@ -5,127 +5,105 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Filmoteka</title>
-   <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./sass/index.scss" />
 </head>
 
 <body>
   <header class="header">
-       <div class="header-main-container">
+    <div class="container">
+      <div class="header-main-container">
         <div class="nav-container">
           <div class="nav-block">
-          <svg class="header-svg" width="24" height="24">
-            <use href="/src/images/icons.svg#icon-film"></use>
-          </svg>
-          <a class="logo" href="./index.html">Filmoteka</a>
+            <svg class="header-svg" width="24" height="24">
+              <use href="/src/images/icons.svg#icon-film"></use>
+            </svg>
+            <a class="logo" href="./index.html">Filmoteka</a>
           </div>
           <nav class="main-nav">
-            <a class="main-nav__btn" href="./index.html"
-              ><span class="nav-link">Home</span></a
-            >
-            <a class="main-nav__btn" href="./My-libruary.html"
-              ><span class="nav-link">my library</span></a
-            >
+            <a class="main-nav__btn" href="./index.html"><span class="nav-link">Home</span></a>
+            <a class="main-nav__btn" href="./My-libruary.html"><span class="nav-link">my library</span></a>
           </nav>
         </div>
         <form class="search-form" id="search-form">
           <div class="input-field">
-          <input
-            type="text"
-            class="search-input"
-            name="searchQuery"
-            autocomplete="off"
-            placeholder="Movie search"
-          />
-          <button class="search-btn" type="submit">
-            <svg class="search-svg" width="12" height="12">
-              <use href="/src/images/icons.svg#icon-search-white"></use>
-            </svg>
-          </button>
+            <input type="text" class="search-input" name="searchQuery" autocomplete="off" placeholder="Movie search" />
+            <button class="search-btn" type="submit">
+              <svg class="search-svg" width="12" height="12">
+                <use href="/src/images/icons.svg#icon-search-white"></use>
+              </svg>
+            </button>
           </div>
           <div class="genre-filter">
             <ul class="ganre-list">
               <li class="ganre-item">
-                <input type="checkbox" id="35" /><span class="checkbox"
-                  >Comedy</span
-                >
+                <input type="checkbox" id="35" /><span class="checkbox">Comedy</span>
               </li>
               <li class="ganre-item">
-                <input type="checkbox" id="28" /><span class="checkbox"
-                  >Action</span
-                >
+                <input type="checkbox" id="28" /><span class="checkbox">Action</span>
               </li>
               <li class="ganre-item">
-                <input type="checkbox" id="18" /><span class="checkbox"
-                  >Drahma</span
-                >
+                <input type="checkbox" id="18" /><span class="checkbox">Drama</span>
               </li>
               <li class="ganre-item">
-                <input type="checkbox" id="16" /><span class="checkbox"
-                  >Animation</span
-                >
+                <input type="checkbox" id="16" /><span class="checkbox">Animation</span>
               </li>
               <li class="ganre-item">
-                <input type="checkbox" id="14" /><span class="checkbox"
-                  >Fantasy</span
-                >
+                <input type="checkbox" id="14" /><span class="checkbox">Fantasy</span>
               </li>
               <li class="ganre-item">
-                <input type="checkbox" id="27" /><span class="checkbox"
-                  >Horror</span
-                >
+                <input type="checkbox" id="27" /><span class="checkbox">Horror</span>
               </li>
               <li class="ganre-item">
-                <input type="checkbox" id="9648" /><span class="checkbox"
-                  >Mystery</span
-                >
+                <input type="checkbox" id="9648" /><span class="checkbox">Mystery</span>
               </li>
               <li class="ganre-item">
-                <input type="checkbox" id="53" /><span class="checkbox"
-                  >Thriller</span
-                >
+                <input type="checkbox" id="53" /><span class="checkbox">Thriller</span>
               </li>
             </ul>
           </div>
           <button class="genres-btn" type="button">Select</button>
         </form>
-              </div>
-    </header>
-      <div class="toolbar">
-      <div class="theme-switch">
-          <svg class="theme-switch__icon" width="20" height="20" role="img" aria-label="Солнце">
-            <use href="/src/images/icons.svg#icon-sun"></use>
-          </svg>
-      
-          <div class="theme-switch__control">
-            <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle"
-              aria-label="Переключить между тёмной и светлой темой" />
-            <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle">
-            </label>
-            <div aria-hidden="true" class="theme-switch__marker"></div>
-          </div>
-      
-          <svg class="theme-switch__icon" width="20" height="20" aria-label="Луна">
-            <use href="/src/images/icons.svg#icon-moon-o"></use>
-          </svg>
-        </div> 
-        </div>
+      </div>
+    </div>
+  </header>
+  <div class="toolbar">
+    <div class="theme-switch">
+      <svg class="theme-switch__icon" width="20" height="20" role="img" aria-label="Солнце">
+        <use href="/src/images/icons.svg#icon-sun"></use>
+      </svg>
 
+      <div class="theme-switch__control">
+        <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle"
+          aria-label="Переключить между тёмной и светлой темой" />
+        <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle">
+        </label>
+        <div aria-hidden="true" class="theme-switch__marker"></div>
+      </div>
+
+      <svg class="theme-switch__icon" width="20" height="20" aria-label="Луна">
+        <use href="/src/images/icons.svg#icon-moon-o"></use>
+      </svg>
+    </div>
+  </div>
+  <div class="container">
     <div class="gallery">
       <ul class="film-card">
-        </ul>
+      </ul>
     </div>
     <div id="pagination-container" class="tui-pagination"></div>
-  </main>
+  </div>
   <footer class="footer">
-    <p class="copyright">
-      © 2022 | All Rights Reserved | Developed with
-      <svg class="footer__icon" width="16" height="14"><use href="./images/icons.svg#icon-favorite"></use></svg>by  <button type="button" class="footer__button">GoIT Students</button></p>
+    <div class="container">
+      <p class="copyright">
+        © 2022 | All Rights Reserved | Developed with
+        <svg class="footer__icon" width="16" height="14">
+          <use href="./images/icons.svg#icon-favorite"></use>
+        </svg>by <button type="button" class="footer__button">GoIT Students</button>
+      </p>
       <!-- <button>by GoIT Students</button> -->
-    
+    </div>
+
   </footer>
   <include src="./partials/main-modal.html"></include>
   <script type="module" src="./index.js"></script>
