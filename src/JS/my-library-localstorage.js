@@ -1,9 +1,10 @@
 import axios from 'axios';
 import Pagination from 'tui-pagination';
 
-
-let pageNumber = 1
-const list = [13,55,123,145,158,122,67,88,95,89,81,75,86,99,83,64,77,66,87,];
+const filmId = 123;
+let pageNumber = 0;
+const queueList = [13, 55, 123, 145, 158, 122, 67, 88, 95, 89, 81, 75, 86, 99, 83, 64, 77, 66, 87];
+const watchedList = [14,159,124,146,158,129,68,90,96,91,82,76,85,100,198,65,78,62,189];
 const KEY = 'api_key=2913964819360854cc0ff757d62600b5'
 
 const gallery = document.querySelector('.gallery')
@@ -50,9 +51,17 @@ function clearGallery() {
 }
 
 
+function listLengthCalculation() {
+    let length = 0;    
+if (queueButton.classList.contains('is-active')) {
+    return length = queueList.length
+} else {
+    return length = watchedList.length
+}
+}
 
 const options = {
-  totalItems: list.length,
+  totalItems: listLengthCalculation(),
   itemsPerPage: 9,
   visiblePages: 3,
   page: pageNumber,
@@ -86,10 +95,10 @@ pagination.on('beforeMove', e => {
     console.log(pageNumber);
   filmCard.innerHTML = '';
   if (queueButton.classList.contains('is-active')) {
-    showQueueFilms()
+    showFilms(queueList)
   }
   else {
-    showWatchedFilms()
+    showFilms(watchedList)
   }  
  
 });
@@ -103,45 +112,37 @@ function pageNumberCalculation() {
     }
 }
 
-async function showWatchedFilms() { 
+async function showFilms(filmsList) { 
     clearGallery();
     pagination.reset()
 
     for (let i = pageNumber; i < pageNumber + 9; i++) {
-        console.log(i);
-       await findMovieByID(list[i]).then(answer => addMarkup(answer));   
+       await findMovieByID(filmsList[i]).then(answer => addMarkup(answer));   
     } 
 }
-async function showQueueFilms() { 
-    clearGallery();
-    pagination.reset()
-    for (let i = pageNumber; i < pageNumber + 9; i++) {
-       await findMovieByID(list[i]).then(answer => addMarkup(answer)); 
-        
-    } 
-}
-showWatchedFilms(list)
 
-watchedButton.addEventListener('click', onQueueButtonClick)
-queueButton.addEventListener('click', onWatchedButtonClick)
+showFilms(watchedList)
+
+watchedButton.addEventListener('click', onWatchedButtonClick)
+queueButton.addEventListener('click', onQueueButtonClick)
 
 function onQueueButtonClick() {
     pageNumber = 0;
-    queueButton.classList.remove('is-active');
-    watchedButton.classList.add('is-active');
-    showQueueFilms()
+
+    queueButton.classList.add('is-active');
+    watchedButton.classList.remove('is-active');
+
+    showFilms(queueList);
 }
 
 function onWatchedButtonClick() {
     pageNumber = 0;
-    queueButton.classList.add('is-active');
-    watchedButton.classList.remove('is-active');
-   showWatchedFilms()
+    
+    queueButton.classList.remove('is-active');
+    watchedButton.classList.add('is-active');
+    
+    showFilms(watchedList);
 }
-
-
-
-
 
 
 
