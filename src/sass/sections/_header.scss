@@ -219,6 +219,10 @@ body.dark-theme {
   text-transform: uppercase;
 }
 
+.active{
+  border-bottom: 2px solid #ff6b02;
+}
+
 .nav-container {
   display: flex;
   justify-content: space-between;
