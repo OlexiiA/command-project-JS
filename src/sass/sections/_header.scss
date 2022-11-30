@@ -1,9 +1,13 @@
 .toolbar {
-  // position: absolute;
-  left: 0px;
-  bottom: 300px;
-  padding: 12px 12px;
+  position: absolute;
+  left: calc(50% - 61px);
+  top: 10px;
+  // padding: 12px 12px;
   z-index: 0;
+  @media screen and (max-width: 450px) {
+    left: calc(35% - 61px);
+    top: 15px;
+  }
 }
 
 .theme-switch {
@@ -85,7 +89,7 @@ body.light-theme {
 body.dark-theme {
   background-color: #333333;
   color: var(--text-main-color);
-  .card__title{
+  .card__title {
     color: var(--text-main-color);
   }
 }
@@ -93,15 +97,16 @@ body.dark-theme {
 .header {
   height: 230px;
   width: 100vw;
+  min-width: 356px; //костыль но без него почему-то на 320px съезжает фон
   position: relative;
-  background-image: url(/src/images/pictures/jpeg/hall-comp.jpg);
+  background-image: url(/src/images/pictures/jpeg/header-comp.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0.56);
   background-size: cover;
 
   @media screen and (max-width: 767px) {
-    background-image: url(/src/images/pictures/jpeg/hall-mobile.jpg);
+    background-image: url(/src/images/pictures/jpeg/header-mobile.jpg);
     height: 230px;
     width: 100vw;
 
@@ -109,12 +114,12 @@ body.dark-theme {
       (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: url(/src/images/pictures/jpeg/hall-mobile@2x.jpg);
+      background-image: url(/src/images/pictures/jpeg/header-mobile@2x.jpg);
     }
   }
 
   @media screen and (min-width: 768px) {
-    background-image: url(/src/images/pictures/jpeg/hall-tablet.jpg);
+    background-image: url(/src/images/pictures/jpeg/header-tablet.jpg);
     height: 216px;
     width: 100vw;
 
@@ -122,7 +127,7 @@ body.dark-theme {
       (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background-image: url(/src/images/pictures/jpeg/hall-tablet@2x.jpg);
+      background-image: url(/src/images/pictures/jpeg/header-tablet@2x.jpg);
     }
   }
 
@@ -136,7 +141,7 @@ body.dark-theme {
 
 .header-main-container,
 .header-library-container {
-  padding-top: 40px;
+  padding-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
 
@@ -149,6 +154,7 @@ body.dark-theme {
 .library-header {
   height: 230px;
   width: 100vw;
+  min-width: 356px;//костыль но без него почему-то на 320px съезжает фон
   position: relative;
   background-image: url(/src/images/pictures/jpeg/hall-comp.jpg);
   background-position: center;
@@ -215,6 +221,10 @@ body.dark-theme {
   text-transform: uppercase;
 }
 
+.active {
+  border-bottom: 2px solid #ff6b02;
+}
+
 .nav-container {
   display: flex;
   justify-content: space-between;
@@ -225,9 +235,6 @@ body.dark-theme {
   display: flex;
   align-items: center;
   color: var(--text-main-color);
-  @media screen and (max-width: 767px) {
-    display: none;
-  }
   @media screen and (min-width: 768px) {
     margin-left: 10px;
     font-family: 'Roboto';
@@ -360,7 +367,6 @@ body.dark-theme {
   background-color: transparent;
   border: 1px solid #ffffff;
   border-radius: 5px;
-  padding: 13px 41px 11px 41px;
   &:hover,
   &:focus,
   :active {
@@ -373,14 +379,15 @@ body.dark-theme {
   display: flex;
   flex-wrap: wrap;
   margin-top: 25px;
-  @media screen and (min-width: 168px) {
-    justify-content: center;
-  }
+  justify-content: center;
+  // @media screen and (min-width: 168px) {
+  //   justify-content: center;
+  // }
 }
 
 .ganre-list {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 10px;
 }
@@ -417,6 +424,20 @@ body.dark-theme {
 // }
 
 .checkbox {
-  border-bottom: 0.5px solid white;
+  // border-bottom: 0.5px solid white;
   color: white;
+}
+
+.filmoteka {
+  margin-left: 10px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 }

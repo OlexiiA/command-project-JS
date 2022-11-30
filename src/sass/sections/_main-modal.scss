@@ -1,0 +1,40 @@
+.modal__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  // transition: opacity var(--transition-var), visibility var(--transition-var);
+}
+
+.backdrop.visually-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.backdrop.visually-hidden .modal {
+  transform: translate(-50%, -50%) scaleY(0.2);
+}
+
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 13vh;
+  transform: translateX(-50%) scaleY(1);
+  transform-origin: top center;
+
+  // @include transition-main(transform);
+
+  max-width: 450px;
+  width: calc(100vw - 30px);
+  padding: 40px 12px;
+
+  // overflow-y: scroll;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}

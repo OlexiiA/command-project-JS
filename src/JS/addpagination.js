@@ -1,9 +1,9 @@
 import axios from 'axios';
 import Pagination from 'tui-pagination';
-import addMarkup from './api-server';
+import 'tui-pagination/dist/tui-pagination.css';
+import {addMarkup, getData} from './api-server';
 
 const API_KEY = 'api_key=2913964819360854cc0ff757d62600b5';
-
 
 const refs = {
   currentPage: 1,
@@ -12,26 +12,27 @@ const refs = {
 
 
 
-async function getTrending(api_key, media_type, time_window, page) {
+export async function getTrending(api_key, media_type, time_window, page) {
   try {
     const response = await axios.get(
-      `https://api.themoviedb.org/3/trending/${media_type}/${time_window}?api_key=${api_key}&page=${page}`
+      `https://api.themoviedb.org/3/trending/${media_type}/${time_window}?${api_key}&page=${page}`
       );
-    return response.data;
+    return response;
   } catch (error) {
     console.error(error);
   }
 }
 
-// getTrending(API_KEY, 'movie', 'week', refs.currentPage)
-//   .then(data => {
-//     addMarkup(data.results);
-//     pagination.reset(data.total_results);
-//   })
-//   .then(hideLoader);
+getTrending(API_KEY, 'movie', 'week', refs.currentPage)
+  .then(res => {
+    addMarkup(res.data.results);
+    pagination.reset(res.data.total_results);
+  });
 
-  
-const container = document.getElementById('pagination-container');
+const cardCollection = document.querySelector('.film-card');
+const container = document.getElementById('pagination');
+
+
 const options = {
   totalItems: 20,
   itemsPerPage: 20,
@@ -61,26 +62,19 @@ const options = {
 
 const pagination = new Pagination(container, options);
 
-// pagination.on('beforeMove', e => {
-//   refs.currentPage = e.page;
-// //   showLoader();
-//   getTrending(API_KEY, 'movie', 'week', refs.currentPage)
-//     .then(data => {
-//       addMarkup(data.results);
-//     })
-//     .then(topFunction)
-//     .then(hideLoader);
-// });
-paganation.on('afterMove', (event) => {
-     refs.currentPage = event.page;
-     console.log(currentPage);
-});
-
-paganation.on('beforeMove', (event) => {
-    refs.currentPage = event.page;
-
-    
+pagination.on('beforeMove', e => {
+  refs.currentPage = e.page;
+  cardCollection.innerHTML = '';
+  getTrending(API_KEY, 'movie', 'week', refs.currentPage)
+    .then(res => {
+      addMarkup(res.data.results);
+    });
 });
 
 
-export default addpagination; 
+// -------------------------------------------------------------------------
+
+const paginationSearch = new Pagination(container, options);
+
+
+
