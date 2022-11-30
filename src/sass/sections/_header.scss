@@ -154,7 +154,7 @@ body.dark-theme {
 .library-header {
   height: 230px;
   width: 100vw;
-  min-width: 356px;//костыль но без него почему-то на 320px съезжает фон
+  min-width: 356px; //костыль но без него почему-то на 320px съезжает фон
   position: relative;
   background-image: url(/src/images/pictures/jpeg/hall-comp.jpg);
   background-position: center;
@@ -251,10 +251,10 @@ body.dark-theme {
   margin-left: 40px;
 }
 
-.main-nav__btn:hover,
-.main-nav__btn:hover {
-  border-bottom: 2px solid var(--text-clr-second);
-}
+// .main-nav__btn:hover,
+// .main-nav__btn:focus {
+//   border-bottom: 2px solid var(--text-clr-second);
+// }
 
 .header__list {
   display: flex;
