@@ -29,7 +29,7 @@ getTrending(API_KEY, 'movie', 'week', refs.currentPage)
     pagination.reset(res.data.total_results);
   });
 
-  
+const cardCollection = document.querySelector('.film-card');
 const container = document.getElementById('pagination');
 
 
@@ -64,9 +64,17 @@ const pagination = new Pagination(container, options);
 
 pagination.on('beforeMove', e => {
   refs.currentPage = e.page;
-  // showLoader();
+  cardCollection.innerHTML = '';
   getTrending(API_KEY, 'movie', 'week', refs.currentPage)
     .then(res => {
       addMarkup(res.data.results);
     });
 });
+
+
+// -------------------------------------------------------------------------
+
+const paginationSearch = new Pagination(container, options);
+
+
+

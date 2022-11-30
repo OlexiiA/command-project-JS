@@ -38,7 +38,6 @@ const divRef = document.querySelector(`.film-card`)
 export function addMarkup(data) {
 const tamplate = data.map(({ title, release_date, poster_path, genre_ids, id}) => {
   let releaseYear = release_date.slice(0, 4);
-  
   let genresText = [] //! Перевод ID жанра в текст
   genre_ids.forEach(genre => {
     genresText.push(genresArray[genre])
@@ -57,8 +56,8 @@ const tamplate = data.map(({ title, release_date, poster_path, genre_ids, id}) =
     </a>
   </li>`;
   })
-  .join('');
+    .join('');
   divRef.insertAdjacentHTML('beforeend', tamplate); 
 };
 
-getData().then(res => addMarkup(res.data.results))
+// getData().then(res => addMarkup(res.data.results))
