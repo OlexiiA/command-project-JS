@@ -65,7 +65,7 @@ function renderCard(arr) {
     gallery.insertAdjacentHTML('beforeend', markup)
 }
 
-async function onSubmitForm(event) {
+export async function onSubmitForm(event) {
     event.preventDefault()
     searchQuery = event.currentTarget.searchQuery.value.trim()
      if (searchQuery === '') {
