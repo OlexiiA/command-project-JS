@@ -249,7 +249,12 @@ body.dark-theme {
 
 .main-nav__btn {
   margin-left: 40px;
+  text-transform: uppercase;
 }
+.main-nav__btn--currant{
+  text-decoration: underline 2px #FF6B01;
+}
+
 
 .main-nav__btn:hover,
 .main-nav__btn:hover {
