@@ -46,6 +46,10 @@ const divRef = document.querySelector(`.film-card`)
 function addMarkup(data) {
 const tamplate = data.map(({ title, release_date, poster_path, genre_ids, id}) => {
    let releaseYear = release_date.slice(0, 4);
+
+   if (poster_path === null) { //! Проверка на пустую картинку
+            poster = 'https://upload.wikimedia.org/wikipedia/commons/2/26/512pxIcon-sunset_photo_not_found.png'
+      }
    
    let genresText = [] //! Перевод ID жанра в текст
    genre_ids.forEach(genre => {

@@ -4,12 +4,12 @@
   margin-right: auto;
 
   @media screen and (min-width: $mobile) {
-    max-width: $mobile;
+    min-width: $mobile;
     
   }
 
   @media screen and (min-width: $tablet) {
-    min-width: $tablet;
+    max-width: $tablet;
     padding: 0 32px;
   }
 
