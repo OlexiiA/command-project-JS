@@ -1,37 +1,49 @@
 import axios from 'axios';
 import Pagination from 'tui-pagination';
-import addMarkup from './api-server';
+import {addMarkup, getData} from './api-server';
 
 const API_KEY = 'api_key=2913964819360854cc0ff757d62600b5';
 
+const showLoader = () => {
+  document.querySelector('body').classList.add('scroll-hidden');
+  document.querySelector('.loader').classList.remove('is-hidden');
+}
+
+const hideLoader = () => {
+  document.querySelector('body').classList.remove('scroll-hidden');
+  document.querySelector('.loader').classList.add('is-hidden');
+}
 
 const refs = {
   currentPage: 1,
+  keyWord: '',
   paginationBox: document.querySelector('.tui-pagination'),
 };
 
 
 
-async function getTrending(api_key, media_type, time_window, page) {
+export async function getTrending(api_key, media_type, time_window, page) {
   try {
     const response = await axios.get(
-      `https://api.themoviedb.org/3/trending/${media_type}/${time_window}?api_key=${api_key}&page=${page}`
+      `https://api.themoviedb.org/3/trending/${media_type}/${time_window}?${api_key}&page=${page}`
       );
-    return response.data;
+    return response;
   } catch (error) {
     console.error(error);
   }
 }
 
-// getTrending(API_KEY, 'movie', 'week', refs.currentPage)
-//   .then(data => {
-//     addMarkup(data.results);
-//     pagination.reset(data.total_results);
-//   })
-//   .then(hideLoader);
+getTrending(API_KEY, 'movie', 'week', refs.currentPage)
+  .then(data => {
+    addMarkup(data.results);
+    pagination.reset(data.total_results);
+  })
+  .then(hideLoader);
 
   
 const container = document.getElementById('pagination-container');
+
+
 const options = {
   totalItems: 20,
   itemsPerPage: 20,
@@ -61,26 +73,50 @@ const options = {
 
 const pagination = new Pagination(container, options);
 
-// pagination.on('beforeMove', e => {
-//   refs.currentPage = e.page;
-// //   showLoader();
-//   getTrending(API_KEY, 'movie', 'week', refs.currentPage)
-//     .then(data => {
-//       addMarkup(data.results);
-//     })
-//     .then(topFunction)
-//     .then(hideLoader);
-// });
-paganation.on('afterMove', (event) => {
-     refs.currentPage = event.page;
-     console.log(currentPage);
-});
 
-paganation.on('beforeMove', (event) => {
-    refs.currentPage = event.page;
 
-    
+pagination.on('beforeMove', e => {
+  refs.currentPage = e.page;
+  showLoader();
+  getTrending(API_KEY, 'movie', 'week', refs.currentPage)
+    .then(data => {
+      addMarkup(data.results);
+    })
+    // .then(topFunction)
+    .then(hideLoader);
 });
 
 
-export default addpagination; 
+function onSubmitBtnClick(e) {
+  e.preventDefault();
+  const keyWord = refs.keyWord;
+  console.log(keyWord);
+  showLoader();
+  getSearch(keyWord, API_KEY, refs.currentPage)
+    .then(data => {
+      console.log(data.results);
+      if (data.results.length === 0) {
+        refs.alertBox.classList.remove('visually-hidden');
+        refs.searchForm.reset();
+        refs.cardCollection.innerHTML = '';
+        pagination.reset(0);
+        refs.paginationBox.classList.add('visually-hidden');
+      } else {
+        refs.paginationBox.classList.remove('visually-hidden');
+        refs.alertBox.classList.add('visually-hidden');
+        listMovies(data.results);
+        paginationSearch.reset(data.total_results);
+          paginationSearch.on('beforeMove', e => {
+            refs.currentPage = e.page;
+            getSearch(keyWord, API_KEY, refs.currentPage)
+            .then(data => {
+            listMovies(data.results);
+        })
+        .then(topFunction)
+        .then(hideLoader);
+        refs.searchForm.reset();
+    });
+      }
+    })
+    .then(hideLoader);
+}
