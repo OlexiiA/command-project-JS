@@ -324,6 +324,10 @@ body.dark-theme .card__title {
   text-transform: uppercase;
 }
 
+.nav-link:hover {
+  color: #ff6b02;
+}
+
 .active {
   border-bottom: 2px solid #ff6b02;
 }
@@ -354,6 +358,12 @@ body.dark-theme .card__title {
 
 .main-nav__btn {
   margin-left: 40px;
+  text-transform: uppercase;
+}
+
+.main-nav__btn--currant {
+  -webkit-text-decoration: underline 2px #FF6B01;
+          text-decoration: underline 2px #FF6B01;
 }
 
 .header__list {
@@ -479,8 +489,12 @@ body.dark-theme .card__title {
   border: 1px solid #ffffff;
   border-radius: 5px;
 }
-.button-list__switch:hover, .button-list__switch:focus,
-.button-list__switch :active {
+.button-list__switch:hover, .button-list__switch:focus {
+  background-color: #ff6b08;
+  border-color: #ff6b02;
+}
+
+.button-list__switch.is-active {
   background-color: #ff6b08;
   border-color: #ff6b02;
 }
