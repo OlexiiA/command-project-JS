@@ -2,6 +2,8 @@ import axios from 'axios';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import {addMarkup, getData} from './api-server';
+import { onSubmitForm } from './submit-form';
+import { searchMove } from './search-move';
 
 const API_KEY = 'api_key=2913964819360854cc0ff757d62600b5';
 
@@ -74,7 +76,14 @@ pagination.on('beforeMove', e => {
 
 // -------------------------------------------------------------------------
 
-const paginationSearch = new Pagination(container, options);
+// const paginationSearch = new Pagination(container, options);
 
-
+//   // paginationSearch.reset(data.total_results);
+//   paginationSearch.on('beforeMove', e => {
+//     refs.currentPage = e.page;
+//     searchMove(searchQuery, refs.currentPage)
+//       .then(res => {
+//         onSubmitForm(res.searchResponse.results);
+//       })
+//   })
 
