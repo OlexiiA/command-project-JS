@@ -4,26 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./sass/index.scss" />
     <title>Document</title>
 </head>
 <body>
     <include src="./partials/mylibrary-header.html"></include>
-<main>
+
+    <div class="container">
         <div class="gallery">
-            <!-- --------------------------------------------------------------- -->
-            <!--                     Example code for render                     -->
-            <!-- --------------------------------------------------------------- -->
-            <div class="film-card">
-                <!-- <img class="film-photo"
-                  src="https://www.film.ru/sites/default/files/styles/thumb_260x400/public/movies/posters/10032141-925032.jpg"
-                  alt="ЗАГЛУШКА т.к. src не может быть пустым" />
-                <h2 class="film-title"></h2>
-                <p class="film-genre"></p>
-                <p class="film-year"></p> -->
-            </div>
+          <ul class="film-card">
+          </ul>
         </div>
-</main>
+        <div id="pagination-container" class="tui-pagination"></div>
+      </div>
+     
     <include src="./partials/footer.html"></include>
+    <script type="module" src="./index.js"></script>
+   
 </body>
 </html>
