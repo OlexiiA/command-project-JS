@@ -15,10 +15,12 @@
       <div class="header-main-container">
         <div class="nav-container">
           <div class="nav-block">
-            <svg class="header-svg" width="24" height="24">
-              <use href="/src/images/icons.svg#icon-film"></use>
-            </svg>
-            <a class="logo" href="./index.html">Filmoteka</a>
+            <a class="logo" href="./index.html"
+          ><svg class="header-svg" width="24" height="24">
+            <use href="/src/images/icons.svg#icon-film"></use>
+          </svg>
+          <span class="filmoteka">Filmoteka</span>
+        </a>
           </div>
           <nav class="main-nav">
             <a class="main-nav__btn" href="./index.html"><span class="nav-link active">Home</span></a>
@@ -46,19 +48,19 @@
                 <input type="checkbox" id="18"><span class="checkbox">Drama</span>
               </li>
               <li class="ganre-item">
-                <input type="checkbox" id="16"><span class="checkbox">Animation</span>
+                <input type="checkbox" id="16"><span class="new-check"></span><span class="checkbox">Animation</span>
               </li>
               <li class="ganre-item">
-                <input type="checkbox" id="14"><span class="checkbox">Fantasy</span>
+                <input type="checkbox" id="14"><span class="new-check"></span><span class="checkbox">Fantasy</span>
               </li>
               <li class="ganre-item">
-                <input type="checkbox" id="27"><span class="checkbox">Horror</span>
+                <input type="checkbox" id="27"><span class="new-check"></span><span class="checkbox">Horror</span>
               </li>
               <li class="ganre-item">
-                <input type="checkbox" id="9648"><span class="checkbox">Mystery</span>
+                <input type="checkbox" id="9648"><span class="new-check"></span><span class="checkbox">Mystery</span>
               </li>
               <li class="ganre-item">
-                <input type="checkbox" id="53"><span class="checkbox">Thriller</span>
+                <input type="checkbox" id="53"><span class="new-check"></span><span class="checkbox">Thriller</span>
               </li>
             </ul>
           </div>
@@ -94,18 +96,16 @@
     <div id="pagination" class="tui-pagination"></div>
   </div>
   <footer class="footer">
-    <div class="container">
-      <p class="copyright">
-        © 2022 | All Rights Reserved | Developed with
-        <svg class="footer__icon" width="16" height="14">
-          <use href="./images/icons.svg#icon-favorite"></use>
-        </svg>by <button type="button" class="footer__button">GoIT Students</button>
-      </p>
+    <p class="copyright">
+      © 2022 | All Rights Reserved | Developed with
+      <svg class="footer__icon" width="16" height="14"><use href="./images/icons.svg#icon-favorite"></use></svg>by  
+      <button type="button" class="footer__button" data-modal-open>GoIT Students</button></p>
       <!-- <button>by GoIT Students</button> -->
     </div>
 
   </footer>
   <include src="./partials/main-modal.html"></include>
+  <!-- <include src="./modal.html"></include> -->
   <script type="module" src="./index.js"></script>
   <script type="module" src="./JS/switcher.js"></script>
   <script type="module" src="./JS/search_my_genres.js"></script>
