@@ -1,10 +1,11 @@
-// import { save, load, remove } from "./storage";
+import { save, load, remove } from "./storage";
 import axios from 'axios';
 
 const closeBtn = document.querySelector('.modal__close');
 const backdrop = document.querySelector('.modal__backdrop');
 const galleryRef = document.querySelector('.gallery');
 const modalRef = document.querySelector('.new-info');
+
 
 closeBtn.addEventListener('click', closeModal);
 backdrop.addEventListener('click', closeModal);
@@ -57,7 +58,7 @@ function renderModal(ans) {
         <p class="modal__descr">${overview}</p>
         <ul class="modal__btns">
         <li>
-        <button type="button" class="button wtchd_btn">
+        <button type="button" class="button wtched_btn">
         add to Watched
         </button>
         </li>
@@ -66,6 +67,7 @@ function renderModal(ans) {
         </li>
         </ul>
         </div>`;
+        
   modalRef.insertAdjacentHTML('beforeend', modalMarkup);
 }
 
@@ -78,7 +80,8 @@ async function getModalCard(evt) {
     try {
       if (doModal.original_title !== undefined) {
       modalRef.innerHTML = '';
-      renderModal(doModal);
+        renderModal(doModal);
+        // addToList();
       } else {
         modalRef.innerHTML = ''
         alert('Sorry, nothing was found for your search.')
@@ -88,3 +91,30 @@ async function getModalCard(evt) {
     }
   }
 }
+
+// const myLibraryList = {
+//   watchedList: [],
+//   queueList: [],
+// }
+
+// function addToList() {
+//   const addWatched = document.querySelector('.wtched_btn')
+//   const addQueue = document.querySelector('.queue_btn')
+
+//   addWatched.addEventListener('click', addToWatched)
+//   addQueue.addEventListener('click', addToQueue)
+// }
+
+
+// function addToWatched(e) {
+//   console.log(e);
+// }
+
+// function addToQueue(e) {
+//   console.log(2);
+// }
+// function addToOtherList(id, removedList, pushedList) {
+//     const filmIndex = removedList.indexOf(id) 
+//     removedList.splice(filmIndex, 1)
+//     pushedList.push(id)
+// }
