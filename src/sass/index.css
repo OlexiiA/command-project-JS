@@ -66,6 +66,20 @@ a {
   }
 }
 
+.visually-hidden {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
+  margin: -1px;
+}
+
 .button {
   display: flex;
   justify-content: center;
@@ -229,6 +243,15 @@ body.dark-theme .card__title {
 .header-main-container,
 .header-library-container {
   padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+@media screen and (min-width: 768px) {
+  .header-main-container,
+.header-library-container {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 }
 
 .library-header {
@@ -313,11 +336,6 @@ body.dark-theme .card__title {
   display: flex;
   align-items: center;
   color: var(--text-main-color);
-}
-@media screen and (max-width: 767px) {
-  .logo {
-    display: none;
-  }
 }
 @media screen and (min-width: 768px) {
   .logo {
@@ -508,6 +526,22 @@ body.dark-theme .card__title {
   color: white;
 }
 
+.filmoteka {
+  margin-left: 10px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+@media screen and (max-width: 767px) {
+  .filmoteka {
+    display: none;
+  }
+}
+
 li {
   list-style-type: none;
 }
@@ -658,6 +692,40 @@ li {
 .footer .footer__button.dark {
   color: #fff;
   background: #191919;
+}
+
+.modal__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 1;
+}
+
+.backdrop.visually-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.backdrop.visually-hidden .modal {
+  transform: translate(-50%, -50%) scaleY(0.2);
+}
+
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 13vh;
+  transform: translateX(-50%) scaleY(1);
+  transform-origin: top center;
+  max-width: 450px;
+  width: calc(100vw - 30px);
+  padding: 40px 12px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
 }
 
 .backdrop {
