@@ -373,12 +373,20 @@ body.dark-theme {
   border: 1px solid #ffffff;
   border-radius: 5px;
   &:hover,
-  &:focus,
-  :active {
+  &:focus
+   {
     background-color: #ff6b08;
     border-color: #ff6b02;
   }
+  
 }
+
+.button-list__switch.is-active{
+  background-color: #ff6b08;
+  border-color: #ff6b02;
+}
+
+
 
 .genre-filter {
   display: flex;
