@@ -1,12 +1,7 @@
-
-
 li {
   list-style-type: none;
   
 }
-
-
-
 .gallery{
   padding-top: 20px;
   padding-bottom: 40px;
@@ -19,7 +14,6 @@ li {
         padding-top: 60px;
     }
 }
-  
 .film-card {
     display: flex;
     flex-direction: column;
@@ -32,7 +26,7 @@ li {
     @media screen and (min-width: $tablet) {
       min-width: 728px;
       // margin-left: 32px;
-        margin-bottom: 32px;
+        // margin-bottom: 32px;
       display: inline-flex;
       flex-wrap: wrap;
       flex-direction: row;
@@ -45,7 +39,7 @@ li {
         display: flex;
         flex-wrap: wrap;
         // margin-left: 16px;
-          margin-bottom: 32px;
+          // margin-bottom: 32px;
           gap: 16px;
           
     }
@@ -57,7 +51,7 @@ li {
   display: flex;
   width: 100%;
   justify-content: center;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
   @media screen and (min-width: $tablet){
     width: 336px;
     
@@ -70,6 +64,7 @@ li {
           margin: 0;
           padding: 0;
           flex-direction: row;
+          margin-bottom: 16px;
         }
 }
 

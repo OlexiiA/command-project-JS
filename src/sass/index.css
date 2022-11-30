@@ -230,13 +230,6 @@ body.dark-theme .card__title {
 .header-library-container {
   padding-top: 20px;
 }
-@media screen and (min-width: 768px) {
-  .header-main-container,
-.header-library-container {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
-}
 
 .library-header {
   height: 230px;
@@ -544,7 +537,6 @@ li {
 @media screen and (min-width: 768px) {
   .film-card {
     min-width: 728px;
-    margin-bottom: 32px;
     display: inline-flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -555,7 +547,6 @@ li {
   .film-card {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 32px;
     gap: 16px;
   }
 }
@@ -565,7 +556,6 @@ li {
   display: flex;
   width: 100%;
   justify-content: center;
-  margin-bottom: 20px;
 }
 @media screen and (min-width: 768px) {
   .card {
@@ -581,6 +571,7 @@ li {
     margin: 0;
     padding: 0;
     flex-direction: row;
+    margin-bottom: 16px;
   }
 }
 
