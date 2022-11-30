@@ -15,19 +15,30 @@
       align-items: center;
      
     }
-  
-   
-  
+    
   
   @media screen and (min-width: $tablet){
     font-size: 16px;
   line-height: 1.17;
   padding-top: 30px;
   }
+
+  // Animation on svg
   .footer__icon {
     margin-left: 10px;
     margin-right: 10px;
-    
+    animation: heartbeat 1s infinite;
+  }
+  @keyframes heartbeat {
+    0% {
+      transform: scale(1);
+    }
+    20% {
+      transform: scale(1.25) translateX(5%) translateY(5%);
+    }
+    40% {
+      transform: scale(1.5) translateX(9%) translateY(10%);
+    }
   }
 
 .footer__button {
