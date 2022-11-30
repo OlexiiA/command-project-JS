@@ -154,6 +154,7 @@ body.dark-theme {
 .library-header {
   height: 230px;
   width: 100vw;
+  min-width: 356px;//костыль но без него почему-то на 320px съезжает фон
   position: relative;
   background-image: url(/src/images/pictures/jpeg/hall-comp.jpg);
   background-position: center;
