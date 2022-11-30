@@ -45,6 +45,16 @@ li {
     }
   }
   
+@keyframes rotateY {
+  0% {
+    transform: perspective(400px) rotateY(0deg);
+  }
+
+  100% {
+    transform: perspective(400px) rotateY(15deg);
+  }
+}
+
 
 .card{
   box-sizing: content-box;
@@ -72,11 +82,19 @@ li {
               box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.77);
               -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.77);
               -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.77);
-              transition: all 1s ease;
-              transform: scale(1.05) skew(-5deg) rotate(3deg);
+              
             }
         }
 }
+
+.rotateY{
+  &:hover {
+  
+      animation: rotateY 1500ms infinite alternate ease-in-out 500ms;
+      
+    }
+}
+
 
 .card__img{
   height: 402px;
