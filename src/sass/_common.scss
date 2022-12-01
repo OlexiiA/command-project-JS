@@ -32,3 +32,8 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+.overflow-wrapper {
+  position: relative;
+  overflow-x: hidden;
+}
