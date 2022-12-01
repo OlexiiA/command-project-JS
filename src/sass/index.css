@@ -767,7 +767,7 @@ body.dark-theme .copyright, body.dark-theme .footer__button, .modal.dark-theme .
   border-color: #ff6b02;
 }
 
-.chbx_inpt {
+.chbx {
   display: none;
 }
 
@@ -782,7 +782,7 @@ body.dark-theme .copyright, body.dark-theme .footer__button, .modal.dark-theme .
   border-color: var(--text-films-second);
 }
 
-.chbx_inpt:checked + .checkbox {
+.chbx:checked + .checkbox {
   background-color: var(--text-films-second);
 }
 
@@ -1606,7 +1606,7 @@ li {
   }
 }
 
-.backdrop {
+.backdrop-team {
   z-index: 1000;
   position: fixed;
   top: 40px;
@@ -1620,7 +1620,7 @@ li {
   overflow-y: scroll;
 }
 
-.backdrop.is-hidden {
+.backdrop-team.is-hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
