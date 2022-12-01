@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Pagination from 'tui-pagination';
 
-const filmId = 123;
+
 let pageNumber = 0;
 // const queueList = [13, 55, 123, 145, 158, 122, 67, 88, 95, 89, 81, 75, 86, 99, 83, 64, 77, 66, 87];
 // const watchedList = [14,159,124,146,158,129,68,90,96,91,82,76,85,100,198,65,78,62,189];
@@ -12,13 +12,20 @@ const filmCard = document.querySelector('.film-card')
 const queueButton = document.querySelector('.button-list__switch--queue')
 const watchedButton = document.querySelector('.button-list__switch--watched')
 const container = document.getElementById('pagination');
-
+const clearBtn = document.querySelector('.button-clearer')
 
 const savedItems = localStorage.getItem("myLibraryList");
 const myLibraryList = JSON.parse(savedItems);
 
 console.log(myLibraryList);
 
+clearBtn.addEventListener('click', clearAll)
+
+function clearAll() {
+  alert('Do you want to clear my-library?')
+  clearGallery()
+  localStorage.removeItem("myLibraryList");
+}
 
 const findMovieByID = async (id) => {
     const answer = await axios.get(`https://api.themoviedb.org/3/movie/${id}?${KEY}&language=en-US`).then(response => response.data);
@@ -123,14 +130,15 @@ async function showFilms(filmsList) {
     } 
 }
 
-showFilms(myLibraryList.watchedList)
+
 
 watchedButton.addEventListener('click', onWatchedButtonClick)
 queueButton.addEventListener('click', onQueueButtonClick)
 
 function onQueueButtonClick() {
     pageNumber = 0;
-
+    const savedItems = localStorage.getItem("myLibraryList");
+    const myLibraryList = JSON.parse(savedItems);
     queueButton.classList.add('is-active');
     watchedButton.classList.remove('is-active');
 
@@ -139,7 +147,8 @@ function onQueueButtonClick() {
 
 function onWatchedButtonClick() {
     pageNumber = 0;
-    
+    const savedItems = localStorage.getItem("myLibraryList");
+    const myLibraryList = JSON.parse(savedItems);
     queueButton.classList.remove('is-active');
     watchedButton.classList.add('is-active');
     
@@ -148,4 +157,4 @@ function onWatchedButtonClick() {
 
 
 
-
+showFilms(myLibraryList.watchedList)

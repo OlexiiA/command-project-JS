@@ -13,6 +13,17 @@ closeBtn.addEventListener('click', closeModal);
 backdrop.addEventListener('click', closeModalBackdrop);
 galleryRef.addEventListener('click', getModalCard);
 
+myLibraryList = {
+  watchedList: [],
+  queueList: [],
+  }
+
+
+
+
+
+
+
 function closeModal() {
   backdrop.classList.add('visually-hidden');
 }
@@ -104,10 +115,7 @@ async function getModalCard(evt) {
   }
 }
 
-const myLibraryList = {
-  watchedList: [],
-  queueList: [],
-}
+
 
 function addToList() {
   const addWatched = document.querySelector('.wtchd_btn')
@@ -148,3 +156,20 @@ function addToOtherList(id, removedList, pushedList) {
     removedList.splice(filmIndex, 1)
     pushedList.push(id)
 }
+
+function localStorageCheck(){
+if (localStorage.getItem("myLibraryList") === null){
+  myLibraryList = {
+    watchedList: [],
+    queueList: [],
+    
+  }
+    } else {
+    const savedItems = localStorage.getItem("myLibraryList");
+    myLibraryList = JSON.parse(savedItems);
+  }
+  console.log(localStorage.getItem("myLibraryList"));
+  console.log(myLibraryList);
+  }
+
+localStorageCheck()
