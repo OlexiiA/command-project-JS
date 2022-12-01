@@ -7,34 +7,161 @@
   overflow-y: scroll;
   background-color: rgba(0, 0, 0, 0.3);
   opacity: 1;
-  // transition: opacity var(--transition-var), visibility var(--transition-var);
+  transition: opacity 250ms var(--timing-function), visibility 250ms var(--timing-function);
 }
 
-.backdrop.visually-hidden {
+.modal__backdrop.visually-hidden {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
 }
 
-.backdrop.visually-hidden .modal {
+.modal__backdrop.visually-hidden .modal {
   transform: translate(-50%, -50%) scaleY(0.2);
 }
 
 .modal {
   position: absolute;
   left: 50%;
-  top: 13vh;
+  top: 5vh;
   transform: translateX(-50%) scaleY(1);
   transform-origin: top center;
+  transition: transform 250ms var(--timing-function);
 
-  // @include transition-main(transform);
+  min-width: 280px;
+  padding: 40px 20px;
 
-  max-width: 450px;
-  width: calc(100vw - 30px);
-  padding: 40px 12px;
-
-  // overflow-y: scroll;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
-  background-color: #fff;
+  // background-color: #fff;
+
+  @media screen and (min-width: $mobile) {
+    width: 60vw;
+  }
+
+  @media screen and (min-width: $tablet) {
+    width: 650px;
+    padding: 40px 36px;
+  }
+
+  @media screen and (min-width: $comp) {
+    width: 800px;
+    padding: 40px 12px;
+  }
+}
+
+.close__btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  width: 30px;
+  height: 30px;
+
+  border: none;
+  padding: 0;
+  cursor: pointer;
+
+  background-color: transparent;
+
+  &:hover {
+    background-color: rgba(255, 107, 8, 0.2);
+    ;
+  }
+}
+
+.new-info {
+  @media screen and (min-width: $tablet) {
+    display: flex;
+    gap: 68px;
+  }
+
+  @media screen and (min-width: $comp) {
+    gap: 16px;
+  }
+}
+
+.modal__img-thumb {
+  border-radius: 5px;
+  overflow: hidden;
+  min-width: 100%;
+  margin-bottom: 20px;
+
+  @media screen and (min-width: $tablet) {
+    min-width: 270px;
+  }
+
+  @media screen and (min-width: $comp) {
+    min-width: 375px;
+  }
+}
+
+.modal__title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.16;
+  margin-bottom: 20px;
+
+  @media screen and (min-width: $comp) {
+    font-size: 30px;
+  }
+}
+
+.modal__table {
+  margin-bottom: 20px;
+  font-size: 12px;
+  line-height: 1.33;
+
+  &>li {
+    position: relative;
+    margin-bottom: 20px;
+  }
+}
+
+.table__name {
+  color: #8C8C8C;
+}
+
+.table__value {
+  position: absolute;
+  top: 0;
+  left: 40%;
+
+  &>.orange {
+    display: inline-flex;
+    justify-content: center;
+    min-width: 36px;
+    background: #FF6B01;
+    border-radius: 5px;
+    color: #fff;
+  }
+
+  &>.grey {
+    display: inline-flex;
+    justify-content: center;
+    min-width: 36px;
+    background: #F7F7F7;
+    border-radius: 5px;
+  }
+}
+
+.modal__btns {
+  display: flex;
+  gap: 20px;
+
+  @media screen and (min-width: $tablet) {
+    gap: 15px;
+  }
+}
+
+.modal__descr {
+  font-size: 12px;
+  line-height: 1.67;
+  margin-bottom: 20px;
+}
+
+.modal__about {
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 1.33;
 }

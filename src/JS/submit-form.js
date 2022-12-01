@@ -49,10 +49,10 @@
 //     genresText.push(genresArray[genre])
 //   });
 //   let genresTextWithCommas = genresText.map(genre => genre).join(', ')
-//         return `<li class="card gallery__item">
+//         return `<li class="card gallery__item" id="${id}" >
 //     <a href="#" class="card__link">
 //         <div class="card__wrapper-img">
-//         <img class="card__img" src="${poster}" id="${id}" >
+//         <img class="card__img" src="${poster}">
 //         </div>
 //         <div class="card__wrapper">
 //         <h3 class="card__title">${title}</h3>

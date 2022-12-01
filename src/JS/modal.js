@@ -1,7 +1,8 @@
 import { save, load, remove } from "./storage";
 import axios from 'axios';
+import {roundToUp} from 'round-to';
 
-const closeBtn = document.querySelector('.modal__close');
+const closeBtn = document.querySelector('.close__btn');
 const backdrop = document.querySelector('.modal__backdrop');
 const galleryRef = document.querySelector('.gallery');
 const modalRef = document.querySelector('.new-info');
@@ -53,12 +54,17 @@ function renderModal(ans) {
         </div>
         <div class="modal__info">
         <h2 class="modal__title">${title}</h2>
-        <div class="modal__table">${vote_average}/${vote_count}, ${popularity}, ${original_title}, ${genresWords}</div>
+        <ul class="modal__table">
+        <li><span class="table__name">Vote / Votes</span><span class="table__value"><span class="orange">${roundToUp(vote_average, 1)}</span> / <span class="grey">${vote_count}</span></span></li>
+        <li><span class="table__name">Popularity</span><span class="table__value">${popularity}</span></li>
+        <li><span class="table__name">Original Title</span><span class="table__value">${original_title}</span></li>
+        <li><span class="table__name">Genre</span><span class="table__value">${genresWords}</span></li>
+        </ul>
         <h3 class="modal__about">about</h3>
         <p class="modal__descr">${overview}</p>
         <ul class="modal__btns">
         <li>
-        <button type="button" class="button wtched_btn">
+        <button type="button" class="button wtchd_btn">
         add to Watched
         </button>
         </li>
@@ -67,7 +73,6 @@ function renderModal(ans) {
         </li>
         </ul>
         </div>`;
-        
   modalRef.insertAdjacentHTML('beforeend', modalMarkup);
 }
 
