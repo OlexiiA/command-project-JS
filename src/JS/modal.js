@@ -7,6 +7,7 @@ const backdrop = document.querySelector('.modal__backdrop');
 const galleryRef = document.querySelector('.gallery');
 const modalRef = document.querySelector('.new-info');
 
+let currentId = 0
 
 closeBtn.addEventListener('click', closeModal);
 backdrop.addEventListener('click', closeModalBackdrop);
@@ -86,13 +87,13 @@ function renderModal(ans) {
 async function getModalCard(evt) {
   if (!evt.path.includes("li.card.gallery__item")) {
     openModal();
-    const currentId = evt.path.find(a => a.nodeName === "LI").id;
+    currentId = evt.path.find(a => a.nodeName === "LI").id;
     let doModal = await loadMoreInfo(currentId);
     try {
       if (doModal.original_title !== undefined) {
       modalRef.innerHTML = '';
         renderModal(doModal);
-        // addToList();
+        addToList();
       } else {
         modalRef.innerHTML = ''
         alert('Sorry, nothing was found for your search.')
@@ -103,29 +104,47 @@ async function getModalCard(evt) {
   }
 }
 
-// const myLibraryList = {
-//   watchedList: [],
-//   queueList: [],
-// }
+const myLibraryList = {
+  watchedList: [],
+  queueList: [],
+}
 
-// function addToList() {
-//   const addWatched = document.querySelector('.wtched_btn')
-//   const addQueue = document.querySelector('.queue_btn')
+function addToList() {
+  const addWatched = document.querySelector('.wtchd_btn')
+  const addQueue = document.querySelector('.queue_btn')
+  const modalContainer = document.querySelector('.modal__img-thumb')
+  console.dir(modalContainer);
 
-//   addWatched.addEventListener('click', addToWatched)
-//   addQueue.addEventListener('click', addToQueue)
-// }
+  addWatched.addEventListener('click', addToWatched)
+  addQueue.addEventListener('click', addToQueue)
+}
 
 
-// function addToWatched(e) {
-//   console.log(e);
-// }
+function addToWatched(e) {
+ if (!myLibraryList.queueList.includes(currentId) && !myLibraryList.watchedList.includes(currentId)) {
+        myLibraryList.watchedList.push(currentId);
+  }
+   else if(myLibraryList.queueList.includes(currentId)) {
+   addToOtherList(currentId, myLibraryList.queueList, myLibraryList.watchedList)
+  }
+  console.log(myLibraryList);
+  return localStorage.setItem('myLibraryList', JSON.stringify(myLibraryList))
+}
 
-// function addToQueue(e) {
-//   console.log(2);
-// }
-// function addToOtherList(id, removedList, pushedList) {
-//     const filmIndex = removedList.indexOf(id) 
-//     removedList.splice(filmIndex, 1)
-//     pushedList.push(id)
-// }
+function addToQueue(e) {
+ if (!myLibraryList.queueList.includes(currentId) && !myLibraryList.watchedList.includes(currentId)) {
+        myLibraryList.queueList.push(currentId);
+  }
+ else if(myLibraryList.watchedList.includes(currentId)) {
+   addToOtherList(currentId, myLibraryList.watchedList, myLibraryList.queueList)
+ }
+  console.log(myLibraryList);
+  return localStorage.setItem('myLibraryList', JSON.stringify(myLibraryList))
+}
+
+
+function addToOtherList(id, removedList, pushedList) {
+    const filmIndex = removedList.indexOf(id) 
+    removedList.splice(filmIndex, 1)
+    pushedList.push(id)
+}

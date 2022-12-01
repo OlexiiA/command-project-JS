@@ -3,8 +3,8 @@ import Pagination from 'tui-pagination';
 
 const filmId = 123;
 let pageNumber = 0;
-const queueList = [13, 55, 123, 145, 158, 122, 67, 88, 95, 89, 81, 75, 86, 99, 83, 64, 77, 66, 87];
-const watchedList = [14,159,124,146,158,129,68,90,96,91,82,76,85,100,198,65,78,62,189];
+// const queueList = [13, 55, 123, 145, 158, 122, 67, 88, 95, 89, 81, 75, 86, 99, 83, 64, 77, 66, 87];
+// const watchedList = [14,159,124,146,158,129,68,90,96,91,82,76,85,100,198,65,78,62,189];
 const KEY = 'api_key=2913964819360854cc0ff757d62600b5'
 
 const gallery = document.querySelector('.gallery')
@@ -14,8 +14,10 @@ const watchedButton = document.querySelector('.button-list__switch--watched')
 const container = document.getElementById('pagination');
 
 
-console.log(watchedButton);
+const savedItems = localStorage.getItem("myLibraryList");
+const myLibraryList = JSON.parse(savedItems);
 
+console.log(myLibraryList);
 
 
 const findMovieByID = async (id) => {
@@ -54,9 +56,9 @@ function clearGallery() {
 function listLengthCalculation() {
     let length = 0;    
 if (queueButton.classList.contains('is-active')) {
-    return length = queueList.length
+    return length = myLibraryList.queueList.length
 } else {
-    return length = watchedList.length
+    return length = myLibraryList.watchedList.length
 }
 }
 
@@ -95,10 +97,10 @@ pagination.on('beforeMove', e => {
     console.log(pageNumber);
   filmCard.innerHTML = '';
   if (queueButton.classList.contains('is-active')) {
-    showFilms(queueList)
+    showFilms(myLibraryList.queueList)
   }
   else {
-    showFilms(watchedList)
+    showFilms(myLibraryList.watchedList)
   }  
  
 });
@@ -121,7 +123,7 @@ async function showFilms(filmsList) {
     } 
 }
 
-showFilms(watchedList)
+showFilms(myLibraryList.watchedList)
 
 watchedButton.addEventListener('click', onWatchedButtonClick)
 queueButton.addEventListener('click', onQueueButtonClick)
@@ -132,7 +134,7 @@ function onQueueButtonClick() {
     queueButton.classList.add('is-active');
     watchedButton.classList.remove('is-active');
 
-    showFilms(queueList);
+    showFilms(myLibraryList.queueList);
 }
 
 function onWatchedButtonClick() {
@@ -141,7 +143,7 @@ function onWatchedButtonClick() {
     queueButton.classList.remove('is-active');
     watchedButton.classList.add('is-active');
     
-    showFilms(watchedList);
+    showFilms(myLibraryList.watchedList);
 }
 
 
