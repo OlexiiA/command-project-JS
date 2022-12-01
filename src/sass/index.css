@@ -304,7 +304,11 @@ a {
 }
 @media screen and (max-width: 450px) {
   .toolbar {
+
+    left: calc(35% - 61px);
+
     left: calc(38% - 61px);
+
     top: 15px;
   }
 }
@@ -1078,6 +1082,7 @@ li {
   }
 }
 
+
 .close__btn {
   position: absolute;
   top: 8px;
@@ -1193,6 +1198,8 @@ li {
   font-size: 12px;
   line-height: 1.33;
 }
+
+
 
 :root {
   --dark-accent: #3ff408;
@@ -1561,6 +1568,7 @@ li {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15), 2px 6px 6px rgba(0, 0, 0, 0.15);
 }
 
+
 .allert-box {
   display: flex;
   justify-content: center;
@@ -1617,11 +1625,18 @@ li {
   opacity: 1;
   visibility: visible;
   pointer-events: initial;
+
+  overflow-y: scroll;
+}
+
+.backdrop.is-hidden {
+
 }
 
 .backdrop.is-hidden {
   opacity: 0;
   visibility: hidden;
+
   pointer-events: none;
 }
 
@@ -1633,6 +1648,53 @@ li {
   position: absolute;
   top: 50%;
   left: 50%;
+
+  border-radius: 1%;
+  transform: translate(-50%, -50%);
+  background-image: linear-gradient(to top, rgb(73, 20, 17), rgb(0, 0, 0));
+}
+@media screen and (min-width: 768px) {
+  .modal-team {
+    min-width: 1026px;
+    min-height: 655px;
+  }
+}
+@media screen and (max-width: 1199px) {
+  .modal-team {
+    min-width: 690px;
+    height: 609px;
+    transform: translate(-50%, -40%);
+  }
+}
+@media screen and (max-width: 767px) {
+  .modal-team {
+    width: 310px;
+  }
+}
+
+.modal__close-svg {
+  fill: rgb(255, 255, 255);
+  width: 24px;
+  height: 24px;
+  background-color: #000;
+}
+
+.btn-close {
+  padding: 0px;
+  cursor: pointer;
+  display: flex;
+  position: absolute;
+  border: none;
+  top: 0;
+  right: 0;
+  transform: translate(-214%, 156%);
+}
+@media screen and (max-width: 1199px) {
+  .btn-close {
+    transform: translate(-70%, 68%);
+  }
+}
+
   transform: translate(-50%, -50%);
   background-image: linear-gradient(to top, rgb(48, 5, 2), rgb(11, 0, 2));
   width: 1056px;
@@ -1660,21 +1722,41 @@ li {
 }
 
 .team-info {
+
+  flex-basis: calc((100% - 10px) / 6);
+}
+@media screen and (max-width: 1199px) {
+  .team-info {
+    flex-basis: calc((100% - 10px) / 4);
+  }
+}
+.team-lead {
+  margin-bottom: 10px;
+
   flex-basis: calc((100% - 30px) / 6);
 }
 
 .team-lead {
   margin-bottom: 20px;
+
 }
 
 .team-name {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
+
+  font-size: 14px;
+  line-height: 20px;
+  padding-bottom: 10px;
+  text-align: center;
+  color: white;
+
   font-size: 20px;
   line-height: 20px;
   padding-bottom: 5px;
   text-align: center;
+
 }
 
 .job-title {
@@ -1688,6 +1770,19 @@ li {
   text-align: center;
 }
 
+@media screen and (max-width: 1199px) {
+  .job-title {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .job-title {
+    display: none;
+  }
+}
+
+
+
 .title-name {
   font-family: "Roboto";
   font-style: normal;
@@ -1696,8 +1791,19 @@ li {
   line-height: 48px;
   color: #E2E2E2;
   text-align: center;
+
+  margin-bottom: 10px;
+}
+@media screen and (max-width: 1199px) {
+  .title-name {
+    font-size: 25px;
+    margin-bottom: 5px;
+  }
+}
+
   margin-bottom: 30px;
 }
+
 
 .title-name:after {
   background-image: url(../images/pictures/modal/before.png);
@@ -1705,8 +1811,12 @@ li {
   position: absolute;
   width: 55px;
   height: 85px;
+
+  transform: translate(6px, 35px);
+
   background-color: black;
   transform: translate(6px, 12px);
+
 }
 
 .team-img {
@@ -1714,6 +1824,13 @@ li {
   border: none;
   margin: auto;
 }
+
+@media screen and (max-width: 1199px) {
+  .team-img {
+    max-width: 70px;
+  }
+}
+
 
 .team-container {
   padding-top: 5px;
@@ -1724,4 +1841,8 @@ li {
   align-items: center;
   text-align: center;
   display: block;
+
+  cursor: pointer;
+
+
 }/*# sourceMappingURL=index.css.map */
