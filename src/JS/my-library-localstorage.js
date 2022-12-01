@@ -16,15 +16,35 @@ const clearBtn = document.querySelector('.button-clearer')
 
 const savedItems = localStorage.getItem("myLibraryList");
 const myLibraryList = JSON.parse(savedItems);
-
-console.log(myLibraryList);
+let watchedList = [];
+let queueList = [];
 
 clearBtn.addEventListener('click', clearAll)
 
 function clearAll() {
   alert('Do you want to clear my-library?')
   clearGallery()
-  localStorage.removeItem("myLibraryList");
+  
+  
+  if (queueButton.classList.contains('is-active')) {
+    watchedList = myLibraryList.watchedList.map(movie => movie)
+    const ClearedObject = {
+      watchedList: watchedList,
+      queueList: [] 
+    } 
+    console.log(1);
+    localStorage.setItem('myLibraryList', JSON.stringify(ClearedObject))
+    
+  } else {
+    queueList = myLibraryList.queueList.map(movie => movie)
+    const ClearedObject = {
+      watchedList: [],
+      queueList: queueList
+    } 
+    console.log(2);
+    localStorage.setItem('myLibraryList', JSON.stringify(ClearedObject))
+    
+  }
 }
 
 const findMovieByID = async (id) => {
