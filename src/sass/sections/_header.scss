@@ -81,17 +81,27 @@
   padding: 3px 0;
 }
 
-body.light-theme, .modal.light-theme {
+body.light-theme,
+.modal.light-theme {
   background-color: #ffffff;
   color: #333333;
 }
 
-body.dark-theme, .modal.dark-theme{
+body.dark-theme,
+.modal.dark-theme {
   background-color: #333333;
   color: var(--text-main-color);
   .card__title {
     color: var(--text-main-color);
   }
+}
+
+body.dark-theme .tui-page-btn {
+  color: var(--text-main-color);
+}
+
+body.dark-theme .tui-ico-ellip {
+  fill: var(--text-main-color);
 }
 
 .header {
@@ -107,7 +117,7 @@ body.dark-theme, .modal.dark-theme{
 
   @media screen and (max-width: 767px) {
     background-image: url(/src/images/pictures/jpeg/header-mobile.jpg);
-    height: 230px;
+    height: 280px;
     width: 100vw;
 
     @media (min-device-pixel-ratio: 2),
@@ -120,7 +130,7 @@ body.dark-theme, .modal.dark-theme{
 
   @media screen and (min-width: 768px) {
     background-image: url(/src/images/pictures/jpeg/header-tablet.jpg);
-    height: 216px;
+    height: 230px;
     width: 100vw;
 
     @media (min-device-pixel-ratio: 2),
@@ -251,10 +261,9 @@ body.dark-theme, .modal.dark-theme{
   margin-left: 40px;
   text-transform: uppercase;
 }
-.main-nav__btn--currant{
-  text-decoration: underline 2px #FF6B01;
+.main-nav__btn--currant {
+  text-decoration: underline 2px #ff6b01;
 }
-
 
 // .main-nav__btn:hover,
 // .main-nav__btn:focus {
@@ -373,15 +382,13 @@ body.dark-theme, .modal.dark-theme{
   border: 1px solid #ffffff;
   border-radius: 5px;
   &:hover,
-  &:focus
-   {
+  &:focus {
     background-color: #ff6b08;
     border-color: #ff6b02;
   }
-
 }
 
-.button-list__switch.is-active{
+.button-list__switch.is-active {
   background-color: #ff6b08;
   border-color: #ff6b02;
 }
@@ -409,6 +416,10 @@ body.dark-theme, .modal.dark-theme{
     animation: shakeX 1s;
     animation-iteration-count: infinite;
   }
+}
+
+.ganre-item {
+  margin-top: 5px;
 }
 
 .genre-filter {
@@ -471,14 +482,15 @@ body.dark-theme, .modal.dark-theme{
   background-color: rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   border: 1px solid transparent;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     border-color: var(--text-films-second);
   }
 }
 
 .chbx_inpt:checked + .checkbox {
-    background-color: var(--text-films-second);
-  }
+  background-color: var(--text-films-second);
+}
 
 .filmoteka {
   margin-left: 10px;
