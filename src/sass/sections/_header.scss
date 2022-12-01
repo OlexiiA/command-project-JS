@@ -481,7 +481,7 @@ body.dark-theme, .modal.dark-theme{
 //   color: var(--text-clr-second);
 // }
 
-.chbx_inpt {
+.chbx {
   display: none;
 }
 
@@ -497,7 +497,7 @@ body.dark-theme, .modal.dark-theme{
   }
 }
 
-.chbx_inpt:checked + .checkbox {
+.chbx:checked + .checkbox {
     background-color: var(--text-films-second);
   }
 
