@@ -304,11 +304,7 @@ a {
 }
 @media screen and (max-width: 450px) {
   .toolbar {
-
-    left: calc(35% - 61px);
-
     left: calc(38% - 61px);
-
     top: 15px;
   }
 }
@@ -1082,7 +1078,6 @@ li {
   }
 }
 
-
 .close__btn {
   position: absolute;
   top: 8px;
@@ -1198,8 +1193,6 @@ li {
   font-size: 12px;
   line-height: 1.33;
 }
-
-
 
 :root {
   --dark-accent: #3ff408;
@@ -1568,7 +1561,6 @@ li {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15), 2px 6px 6px rgba(0, 0, 0, 0.15);
 }
 
-
 .allert-box {
   display: flex;
   justify-content: center;
@@ -1625,22 +1617,18 @@ li {
   opacity: 1;
   visibility: visible;
   pointer-events: initial;
-
   overflow-y: scroll;
-}
-
-.backdrop.is-hidden {
-
 }
 
 .backdrop.is-hidden {
   opacity: 0;
   visibility: hidden;
-
   pointer-events: none;
 }
 
 .modal-team {
+  min-width: 1026px;
+  min-height: 580px;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 10px;
@@ -1648,27 +1636,22 @@ li {
   position: absolute;
   top: 50%;
   left: 50%;
-
   border-radius: 1%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -55%);
   background-image: linear-gradient(to top, rgb(73, 20, 17), rgb(0, 0, 0));
-}
-@media screen and (min-width: 768px) {
-  .modal-team {
-    min-width: 1026px;
-    min-height: 655px;
-  }
 }
 @media screen and (max-width: 1199px) {
   .modal-team {
     min-width: 690px;
-    height: 609px;
-    transform: translate(-50%, -40%);
+    height: 720px;
+    transform: translate(-50%, -50%);
   }
 }
 @media screen and (max-width: 767px) {
   .modal-team {
-    width: 310px;
+    min-width: 310px;
+    max-height: 580px;
+    transform: translate(-50%, -50%);
   }
 }
 
@@ -1677,6 +1660,18 @@ li {
   width: 24px;
   height: 24px;
   background-color: #000;
+}
+@media screen and (max-width: 1199px) {
+  .modal__close-svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .modal__close-svg {
+    width: 15px;
+    height: 15px;
+  }
 }
 
 .btn-close {
@@ -1692,37 +1687,29 @@ li {
 @media screen and (max-width: 1199px) {
   .btn-close {
     transform: translate(-70%, 68%);
+    width: 20px;
+    height: 20px;
   }
 }
-
-  transform: translate(-50%, -50%);
-  background-image: linear-gradient(to top, rgb(48, 5, 2), rgb(11, 0, 2));
-  width: 1056px;
-  height: 696px;
-}
-
-.modal__close-svg {
-  background-color: black;
-}
-
-.btn-close {
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translate(-20%, 10%);
-  display: flex;
-  width: 14px;
-  height: 14px;
-  cursor: pointer;
+@media screen and (max-width: 767px) {
+  .btn-close {
+    width: 15px;
+    height: 15px;
+  }
 }
 
 .team {
   display: flex;
   flex-wrap: wrap;
 }
+@media screen and (max-width: 767px) {
+  .team {
+    gap: 28px;
+  }
+}
 
 .team-info {
-
+  padding: 0;
   flex-basis: calc((100% - 10px) / 6);
 }
 @media screen and (max-width: 1199px) {
@@ -1730,33 +1717,36 @@ li {
     flex-basis: calc((100% - 10px) / 4);
   }
 }
-.team-lead {
-  margin-bottom: 10px;
-
-  flex-basis: calc((100% - 30px) / 6);
+@media screen and (max-width: 767px) {
+  .team-info {
+    max-width: 84px;
+    flex-basis: calc((100% - 10px) / 2);
+  }
 }
 
 .team-lead {
-  margin-bottom: 20px;
-
+  margin-bottom: 10px;
 }
 
 .team-name {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
-
   font-size: 14px;
   line-height: 20px;
   padding-bottom: 10px;
   text-align: center;
   color: white;
-
-  font-size: 20px;
-  line-height: 20px;
-  padding-bottom: 5px;
-  text-align: center;
-
+}
+@media screen and (max-width: 1199px) {
+  .team-name {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .team-name {
+    display: none;
+  }
 }
 
 .job-title {
@@ -1769,7 +1759,6 @@ li {
   padding-bottom: 5px;
   text-align: center;
 }
-
 @media screen and (max-width: 1199px) {
   .job-title {
     font-size: 12px;
@@ -1781,8 +1770,6 @@ li {
   }
 }
 
-
-
 .title-name {
   font-family: "Roboto";
   font-style: normal;
@@ -1791,7 +1778,6 @@ li {
   line-height: 48px;
   color: #E2E2E2;
   text-align: center;
-
   margin-bottom: 10px;
 }
 @media screen and (max-width: 1199px) {
@@ -1800,10 +1786,12 @@ li {
     margin-bottom: 5px;
   }
 }
-
-  margin-bottom: 30px;
+@media screen and (max-width: 767px) {
+  .title-name {
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
 }
-
 
 .title-name:after {
   background-image: url(../images/pictures/modal/before.png);
@@ -1811,12 +1799,12 @@ li {
   position: absolute;
   width: 55px;
   height: 85px;
-
   transform: translate(6px, 35px);
-
-  background-color: black;
-  transform: translate(6px, 12px);
-
+}
+@media screen and (max-width: 767px) {
+  .title-name:after {
+    display: none;
+  }
 }
 
 .team-img {
@@ -1824,14 +1812,11 @@ li {
   border: none;
   margin: auto;
 }
-
 @media screen and (max-width: 1199px) {
   .team-img {
     max-width: 70px;
   }
 }
-
-
 .team-container {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -1841,8 +1826,10 @@ li {
   align-items: center;
   text-align: center;
   display: block;
-
   cursor: pointer;
-
-
+}
+@media screen and (max-width: 767px) {
+  .team__social-link {
+    display: none;
+  }
 }/*# sourceMappingURL=index.css.map */
