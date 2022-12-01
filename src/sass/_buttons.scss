@@ -22,22 +22,12 @@
   background-color: var(--text-films-second);
 }
 
-<<<<<<< HEAD
 .tui-page-btn {
   color: #ff6b01;
 }
-=======
 
 
-
-// Pagination buttons
-
-/*!
- * TOAST UI Pagination
- * @version 3.4.1
- * @author NHN FE Development Team <dl_javascript@nhn.com>
- * @license MIT
- */
+// Pagination btn style
 
  .tui-pagination * {
      -moz-user-select: none;
@@ -126,9 +116,9 @@
      border-right: 2px;
  }
  
- .tui-pagination .tui-next-is-ellip {
-     border-left: 2px;
- }
+//  .tui-pagination .tui-next-is-ellip {
+//     //  border-left: 2px;
+//  }
  
  .tui-pagination .tui-first+.tui-prev, .tui-pagination .tui-next+.tui-last {
      border-left: 2px;
@@ -237,4 +227,3 @@
  }
  
  
->>>>>>> dcf21783d5b13ae9a13cc25bc68e5e7c3661416a

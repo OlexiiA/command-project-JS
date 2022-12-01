@@ -25,6 +25,7 @@
           <nav class="main-nav">
             <a class="main-nav__btn" href="./index.html"><span class="nav-link active">Home</span></a>
             <a class="main-nav__btn" href="./My-libruary.html"><span class="nav-link">my library</span></a>
+            <button class="main-nav__btn login-buttons" data-modal-opens type="button">Login</button>
           </nav>
         </div>
         <form class="search-form" id="search-form">
@@ -104,12 +105,81 @@
     </div>
 
   </footer>
+
+  <!-- Modal auth -->
+  <div class="backdrops is-hiddens" data-modals>
+    <div class="modals">
+      <strong class="modal-titles">Login now!</strong>
+      <button class="modal-close-btns" data-modal-closes type="button" width="15px" height="15px">
+        <svg class="close-icons" width="11px" height="11px">
+          <use href="./images/icons-auth.svg#icon-close"></use>
+        </svg>
+      </button>
+      <form class="singup-forms" name="singup-forms" autocomplete="on">
+        <div class="form-field-containers">
+          <span class="form-field-labels">Name</span>
+          <label class="form-fields">
+            <input class="modal-inputs" type="text" name="user-name" placeholder=" " autofocus minlength="2" required>
+            <svg class="modal-field-icon" width="12px" height="12px">
+              <use href="./images/icons-auth.svg#icon-name"></use>
+            </svg>
+          </label>
+        </div>
+        <div class="form-field-containers">
+          <span class="form-field-labels">Telephone</span>
+          <label class="form-fields">
+            <input type="tel" name="user-phone" placeholder=" " minlength="10" pattern="[0-9]{10}" required>
+            <svg class="modal-field-icon" width="14px" height="14px">
+              <use href="./images/icons-auth.svg#icon-tel"></use>
+            </svg>
+          </label>
+        </div>
+        <div class="form-field-containers">
+          <span class="form-field-labels">Email</span>
+          <label class="form-fields">
+            <input class="" type="email" name="user-email" placeholder=" " minlength="2" required>
+            <svg class="modal-field-icon" width="19px" height="16px">
+              <use href="./images/icons-auth.svg#icon-mail"></use>
+            </svg>
+          </label>
+        </div>
+        <div class="form-field-containers">
+          <span class="form-field-labels">Password</span>
+          <label class="form-fields">
+            <input type="password" name="password" placeholder=" " minlength="2" required />
+            <svg class="modal-field-icon" width="19px" height="16px">
+              <use href="./images/icons-auth.svg#password"></use>
+            </svg>
+          </label>
+        </div>
+  
+        <div class="form-field-containers">
+          <label class="form-checkbox">
+            <input type="checkbox" name="user-agreement" required>
+            <span class="form-custom-checkbox">
+              <svg class="" width="15px" height="12px">
+                <use href="./images/icons-auth.svg#choose.svg"></use>
+              </svg>
+            </span>
+          </label>
+          <span class="form-checkbox-lable">I agree with the newsletter and accept
+            <a class="submit-check-agree" href="#" target="_blank" rel="noopener no-referrer">Terms
+              agreements
+            </a>
+          </span>
+        </div>
+        <button class="submit-button-modals buttons" type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+
   <include src="./partials/main-modal.html"></include>
   <include src="./modal.html"></include>
   <script type="module" src="./index.js"></script>
   <script type="module" src="./JS/switcher.js"></script>
   <script type="module" src="./JS/search_my_genres.js"></script>
   <script type="module" src="./JS/modal.js"></script>
+    <script type="module" src="./JS/firebase-init.js"></script>
 </body>
 
 </html>
