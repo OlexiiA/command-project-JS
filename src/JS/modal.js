@@ -1,13 +1,15 @@
-// import { save, load, remove } from "./storage";
+import { save, load, remove } from "./storage";
 import axios from 'axios';
+import {roundToUp} from 'round-to';
 
-const closeBtn = document.querySelector('.modal__close');
+const closeBtn = document.querySelector('.close__btn');
 const backdrop = document.querySelector('.modal__backdrop');
 const galleryRef = document.querySelector('.gallery');
 const modalRef = document.querySelector('.new-info');
 
+
 closeBtn.addEventListener('click', closeModal);
-backdrop.addEventListener('click', closeModal);
+backdrop.addEventListener('click', closeModalBackdrop);
 galleryRef.addEventListener('click', getModalCard);
 
 function closeModal() {
@@ -16,6 +18,13 @@ function closeModal() {
 
 function openModal() {
   backdrop.classList.remove('visually-hidden');
+}
+
+function closeModalBackdrop(evt) {
+  if (evt.target !== backdrop) {
+    return
+  } 
+  closeModal();
 }
 
 async function loadMoreInfo(ID) {
@@ -52,7 +61,12 @@ function renderModal(ans) {
         </div>
         <div class="modal__info">
         <h2 class="modal__title">${title}</h2>
-        <div class="modal__table">${vote_average}/${vote_count}, ${popularity}, ${original_title}, ${genresWords}</div>
+        <ul class="modal__table">
+        <li><span class="table__name">Vote / Votes</span><span class="table__value"><span class="orange">${roundToUp(vote_average, 1)}</span> / <span class="grey">${vote_count}</span></span></li>
+        <li><span class="table__name">Popularity</span><span class="table__value">${popularity}</span></li>
+        <li><span class="table__name">Original Title</span><span class="table__value">${original_title}</span></li>
+        <li><span class="table__name">Genre</span><span class="table__value">${genresWords}</span></li>
+        </ul>
         <h3 class="modal__about">about</h3>
         <p class="modal__descr">${overview}</p>
         <ul class="modal__btns">
@@ -74,11 +88,11 @@ async function getModalCard(evt) {
     openModal();
     const currentId = evt.path.find(a => a.nodeName === "LI").id;
     let doModal = await loadMoreInfo(currentId);
-    console.log('doModal', doModal);
     try {
       if (doModal.original_title !== undefined) {
       modalRef.innerHTML = '';
-      renderModal(doModal);
+        renderModal(doModal);
+        // addToList();
       } else {
         modalRef.innerHTML = ''
         alert('Sorry, nothing was found for your search.')
@@ -88,3 +102,30 @@ async function getModalCard(evt) {
     }
   }
 }
+
+// const myLibraryList = {
+//   watchedList: [],
+//   queueList: [],
+// }
+
+// function addToList() {
+//   const addWatched = document.querySelector('.wtched_btn')
+//   const addQueue = document.querySelector('.queue_btn')
+
+//   addWatched.addEventListener('click', addToWatched)
+//   addQueue.addEventListener('click', addToQueue)
+// }
+
+
+// function addToWatched(e) {
+//   console.log(e);
+// }
+
+// function addToQueue(e) {
+//   console.log(2);
+// }
+// function addToOtherList(id, removedList, pushedList) {
+//     const filmIndex = removedList.indexOf(id) 
+//     removedList.splice(filmIndex, 1)
+//     pushedList.push(id)
+// }
