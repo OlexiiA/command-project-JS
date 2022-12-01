@@ -25,14 +25,14 @@ const findMovieByID = async (id) => {
 }
 
 
-export function addMarkup({ title, release_date, poster_path, genres}) {
+export function addMarkup({ title, release_date, poster_path, genres, id}) {
     
     let releaseYear = release_date.slice(0, 4);
    let genresTextWithCommas = genres.map(genre => genre.name).join(', ')
     
     const tamplate = 
   
-    `<li class="card gallery__item">
+    `<li class="card gallery__item" id="${id}">
     <a href="#" class="card__link">
         <div class="card__wrapper-img">
         <img class="card__img" src="https://image.tmdb.org/t/p/w780/${poster_path}" alt="movie's poster">

@@ -1,34 +1,40 @@
-
 <header class="library-header">
   <div class="container">
-  <div class="header-library-container">
-    <div class="nav-container">
-      <div class="nav-block">
-        <a class="logo" href="./index.html"
-          ><svg class="header-svg" width="24" height="24">
-            <use href="/src/images/icons.svg#icon-film"></use>
-          </svg>
-          <span class="filmoteka">Filmoteka</span>
-        </a>
+    <div class="header-library-container">
+      <div class="nav-container">
+        <div class="nav-block">
+          <a class="logo" href="./index.html"
+            ><svg class="header-svg" width="24" height="24">
+              <use href="/src/images/icons.svg#icon-film"></use>
+            </svg>
+            <span class="filmoteka">Filmoteka</span>
+          </a>
+        </div>
+        <nav class="main-nav">
+          <a class="main-nav__btn" href="./index.html"
+            ><span class="nav-link">Home</span></a
+          >
+          <a class="main-nav__btn" href="./My-libruary.html"
+            ><span class="nav-link active">my library</span></a
+          >
+        </nav>
       </div>
-      <nav class="main-nav">
-        <a class="main-nav__btn" href="./index.html"
-          ><span class="nav-link">Home</span></a
-        >
-        <a class="main-nav__btn" href="./My-libruary.html"
-          ><span class="nav-link active">my library</span></a
-        >
-      </nav>
+      <ul class="button-list">
+        <li class="button-list__item">
+          <button
+            class="button-list__switch button-list__switch--watched is-active"
+          >
+            Watched
+          </button>
+        </li>
+        <li class="button-list__item">
+          <button class="button-list__switch button-list__switch--queue">
+            Queue
+          </button>
+        </li>
+      </ul>
+      <button class="button-clearer">clear all</button>
     </div>
-    <ul class="button-list">
-      <li class="button-list__item">
-        <button class="button-list__switch button-list__switch--watched is-active">Watched</button>
-      </li>
-      <li class="button-list__item">
-        <button class="button-list__switch button-list__switch--queue">Queue</button>
-      </li>
-    </ul>
-  </div>
   </div>
 </header>
 <div class="toolbar">
