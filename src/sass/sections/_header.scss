@@ -83,15 +83,36 @@
 
 body.light-theme, .modal.light-theme {
   background-color: #ffffff;
-  color: #333333;
+  color: #111;
+  .card{
+    &:hover {
+        box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.77);
+    
+      }
+  }
 }
 
 body.dark-theme, .modal.dark-theme{
-  background-color: #333333;
+  background-color: #111;
   color: var(--text-main-color);
+  .modal.dark-theme{
+    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+  }
+  .card {
+      &:hover {
+        box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+  
+      }
+    }
   .card__title {
     color: var(--text-main-color);
   }
+    .footer{
+      background-color: #333;
+    }
+        .copyright, .footer__button{
+          color: aliceblue;
+        }
 }
 
 .header {
