@@ -8,7 +8,7 @@ close.addEventListener('click', closeModal)
 function openModal() {
    team.classList.remove('is-hidden');
 }
-
+// my
 function closeModal() {
    team.classList.add('is-hidden');
 }
