@@ -9,7 +9,7 @@ const modalRef = document.querySelector('.new-info');
 
 
 closeBtn.addEventListener('click', closeModal);
-backdrop.addEventListener('click', closeModal);
+backdrop.addEventListener('click', closeModalBackdrop);
 galleryRef.addEventListener('click', getModalCard);
 
 function closeModal() {
@@ -18,6 +18,13 @@ function closeModal() {
 
 function openModal() {
   backdrop.classList.remove('visually-hidden');
+}
+
+function closeModalBackdrop(evt) {
+  if (evt.target !== backdrop) {
+    return
+  } 
+  closeModal();
 }
 
 async function loadMoreInfo(ID) {
@@ -81,7 +88,6 @@ async function getModalCard(evt) {
     openModal();
     const currentId = evt.path.find(a => a.nodeName === "LI").id;
     let doModal = await loadMoreInfo(currentId);
-    console.log('doModal', doModal);
     try {
       if (doModal.original_title !== undefined) {
       modalRef.innerHTML = '';

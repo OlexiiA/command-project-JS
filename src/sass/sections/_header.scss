@@ -81,12 +81,12 @@
   padding: 3px 0;
 }
 
-body.light-theme {
+body.light-theme, .modal.light-theme {
   background-color: #ffffff;
   color: #333333;
 }
 
-body.dark-theme {
+body.dark-theme, .modal.dark-theme{
   background-color: #333333;
   color: var(--text-main-color);
   .card__title {
