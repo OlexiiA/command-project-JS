@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
+// import 'tui-pagination/dist/tui-pagination.css';
 import {addMarkup, getData} from './api-server';
 
 const API_KEY = 'api_key=2913964819360854cc0ff757d62600b5';
