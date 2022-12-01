@@ -1,27 +1,32 @@
 .button {
-   display: flex;
-   justify-content: center;
-   align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-   font-family: inherit;
-   padding: 13px 20px;
-   height: 44px;
+  font-family: inherit;
+  padding: 13px 20px;
+  height: 44px;
 
-   font-weight: 500;
-   font-size: 12px;
-   line-height: 16px;
-   text-align: center;
-   text-transform: uppercase;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  text-transform: uppercase;
 
-   border-radius: 5px;
-   border: none;
+  border-radius: 5px;
+  border: none;
 
-   cursor: pointer;
+  cursor: pointer;
 
-   color: var(--text-main-color);
-   background-color: var(--text-films-second);
+  color: var(--text-main-color);
+  background-color: var(--text-films-second);
 }
 
+<<<<<<< HEAD
+.tui-page-btn {
+  color: #ff6b01;
+}
+=======
 
 
 
@@ -232,3 +237,4 @@
  }
  
  
+>>>>>>> dcf21783d5b13ae9a13cc25bc68e5e7c3661416a
