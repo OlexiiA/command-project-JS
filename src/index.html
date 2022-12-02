@@ -11,16 +11,15 @@
 
 <body>
   <div class="overflow-wrapper">
-  <header class="header">
-    <div class="container">
+    <header class="header">
+      <div class="container">
         <div class="nav-container">
           <div class="nav-block">
-            <a class="logo" href="./index.html"
-          ><svg class="header-svg" width="24" height="24">
-            <use href="/src/images/icons.svg#icon-film"></use>
-          </svg>
-          <span class="filmoteka">Filmoteka</span>
-        </a>
+            <a class="logo" href="./index.html"><svg class="header-svg" width="24" height="24">
+                <use href="/src/images/icons.svg#icon-film"></use>
+              </svg>
+              <span class="filmoteka">Filmoteka</span>
+            </a>
           </div>
           <nav class="main-nav">
             <a class="main-nav__btn" href="./index.html"><span class="nav-link active">Home</span></a>
@@ -67,41 +66,44 @@
           </div>
           <button class="genres-btn" type="button">Select</button>
         </form>
-    </div>
-  </header>
-  <div class="toolbar">
-    <div class="theme-switch">
-      <svg class="theme-switch__icon" width="20" height="20" role="img" aria-label="Солнце">
-        <use href="/src/images/icons.svg#icon-sun"></use>
-      </svg>
-
-      <div class="theme-switch__control">
-        <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle"
-          aria-label="Переключить между тёмной и светлой темой" >
-        <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle">
-        </label>
-        <div aria-hidden="true" class="theme-switch__marker"></div>
       </div>
+    </header>
+    <div class="toolbar">
+      <div class="theme-switch">
+        <svg class="theme-switch__icon" width="20" height="20" role="img" aria-label="Солнце">
+          <use href="/src/images/icons.svg#icon-sun"></use>
+        </svg>
 
-      <svg class="theme-switch__icon" width="20" height="20" aria-label="Луна">
-        <use href="/src/images/icons.svg#icon-moon-o"></use>
-      </svg>
+        <div class="theme-switch__control">
+          <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle"
+            aria-label="Переключить между тёмной и светлой темой">
+          <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle">
+          </label>
+          <div aria-hidden="true" class="theme-switch__marker"></div>
+        </div>
+
+        <svg class="theme-switch__icon" width="20" height="20" aria-label="Луна">
+          <use href="/src/images/icons.svg#icon-moon-o"></use>
+        </svg>
+      </div>
     </div>
-  </div>
-  <div class="container">
-    <div class="gallery">
-      <ul class="film-card">
-      </ul>
+    <div class="container">
+      <div class="gallery">
+        <ul class="film-card">
+        </ul>
+      </div>
+      <div id="pagination" class="tui-pagination"></div>
     </div>
-    <div id="pagination" class="tui-pagination"></div>
-  </div>
-  <footer class="footer">
-    <p class="copyright">
-      © 2022 | All Rights Reserved | Developed with
-      <svg class="footer__icon" width="16" height="14"><use href="./images/icons.svg#icon-favorite"></use></svg>by  
-      <button type="button" class="footer__button" data-modal-open>GoIT Students</button></p>
+    <footer class="footer">
+      <p class="copyright">
+        © 2022 | All Rights Reserved | Developed with
+        <svg class="footer__icon" width="16" height="14">
+          <use href="./images/icons.svg#icon-favorite"></use>
+        </svg>by
+        <button type="button" class="footer__button" data-modal-open>GoIT Students</button>
+      </p>
       <!-- <button>by GoIT Students</button> -->
-    </div>
+  </div>
 
   </footer>
 
