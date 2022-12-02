@@ -71,6 +71,8 @@ pagination.on('beforeMove', e => {
     });
 });
 
+
+const paginationSearch = new Pagination(container, options);
 // ======================================================================
 import searchMove from "./search-move";
 
@@ -144,14 +146,24 @@ export async function onSubmitForm(event) {
      if (searchQuery === '') {
         return
     }
-    const searchResponse = await searchMove(searchQuery)
-    try {
+    const searchResponse = await searchMove(searchQuery, refs.currentPage)
+  try {
+    pagination.reset(0);
         console.log(searchResponse.results)
         console.log(searchResponse.total_pages)
         console.log(searchResponse.total_results)
         if (searchResponse.total_results > 0) {
-            gallery.innerHTML = ''
+          gallery.innerHTML = '';
             renderCard(searchResponse.results)
+            paginationSearch.reset(searchResponse.total_results);
+            paginationSearch.on('beforeMove', e => {
+              refs.currentPage = e.page;
+              gallery.innerHTML = '';
+            searchMove(searchResponse, refs.currentPage)
+              .then(res => {
+              renderCard(res.searchResponse.results)
+             })
+           })
         } else {
             gallery.innerHTML = `<li class="allert-box">
             <h2 class="not-found">Sorry, nothing was found for your search.</h2>
@@ -169,15 +181,6 @@ export async function onSubmitForm(event) {
 //  ========================================================================
 // -------------------------------------------------------------------------
 
-// const paginationSearch = new Pagination(container, options);
 
-//   // paginationSearch.reset(data.total_results);
-//   paginationSearch.on('beforeMove', e => {
-//     refs.currentPage = e.page;
-//     searchMove(searchQuery, refs.currentPage)
-//       .then(res => {
-//         onSubmitForm(res.searchResponse.results);
-//       })
-//   })
 
 
