@@ -61,7 +61,7 @@ export function addMarkup({ title, release_date, poster_path, genres, id}) {
     
     const tamplate = 
   
-    `<li class="card gallery__item" id="${id}">
+    `<li class="card gallery__item rotateY" id="${id}">
     <a href="#" class="card__link">
         <div class="card__wrapper-img">
         <img class="card__img" src="https://image.tmdb.org/t/p/w780/${poster_path}" alt="movie's poster">
