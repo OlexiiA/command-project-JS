@@ -1,6 +1,6 @@
 import { save, load, remove } from "./storage";
 import axios from 'axios';
-import {roundToUp} from 'round-to';
+// import {roundToUp} from 'round-to';
 
 const closeBtn = document.querySelector('.close__btn');
 const backdrop = document.querySelector('.modal__backdrop');
