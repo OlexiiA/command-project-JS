@@ -1,6 +1,4 @@
-import { save, load, remove } from "./storage";
 import axios from 'axios';
-// import {roundToUp} from 'round-to';
 
 const closeBtn = document.querySelector('.close__btn');
 const backdrop = document.querySelector('.modal__backdrop');
@@ -13,16 +11,12 @@ closeBtn.addEventListener('click', closeModal);
 backdrop.addEventListener('click', closeModalBackdrop);
 galleryRef.addEventListener('click', getModalCard);
 
-myLibraryList = {
+// -----------------modal render code--------------------
+
+const myLibraryList = {
   watchedList: [],
   queueList: [],
   }
-
-
-
-
-
-
 
 function closeModal() {
   backdrop.classList.add('visually-hidden');
@@ -90,6 +84,9 @@ function renderModal(ans) {
         <li>
         <button type="button" class="button queue_btn">add to queue</button>
         </li>
+        <li>
+        <button type="button" class="button trailer__btn">watch trailer</button>
+        </li>
         </ul>
         </div>`;
   modalRef.insertAdjacentHTML('beforeend', modalMarkup);
@@ -105,6 +102,8 @@ async function getModalCard(evt) {
       modalRef.innerHTML = '';
         renderModal(doModal);
         addToList();
+        // doTrailerListeners();
+        loadTrailerInfo(currentId);
       } else {
         modalRef.innerHTML = ''
         alert('Sorry, nothing was found for your search.')
@@ -114,42 +113,55 @@ async function getModalCard(evt) {
     }
   }
 }
+//---------------------modal trailer code------------------------------
+
+function doTrailerListeners() {
+  const trailerRef = document.querySelector('.trailer-thumb');
+  const trailerBtnRef = document.querySelector('.trailer__btn');
+  trailerBtnRef.addEventListener('click', showTrailer);
+}
+
+async function loadTrailerInfo(ID) {
+  const KEY = 'api_key=2913964819360854cc0ff757d62600b5';
+  const url = `https://api.themoviedb.org/3/movie/${ID}/videos?${KEY}&language=en-US`;
+  const answer = await axios.get(url).then(response => response.data);
+  console.log(answer);
+  return answer;
+}
 
 
+
+// --------------------Local Storage code------------------------------
 
 function addToList() {
   const addWatched = document.querySelector('.wtchd_btn')
   const addQueue = document.querySelector('.queue_btn')
-  const modalContainer = document.querySelector('.modal__img-thumb')
-  console.dir(modalContainer);
 
   addWatched.addEventListener('click', addToWatched)
   addQueue.addEventListener('click', addToQueue)
 }
 
-
 function addToWatched(e) {
- if (!myLibraryList.queueList.includes(currentId) && !myLibraryList.watchedList.includes(currentId)) {
+  if (!myLibraryList.queueList.includes(currentId) && !myLibraryList.watchedList.includes(currentId)) {
         myLibraryList.watchedList.push(currentId);
   }
-   else if(myLibraryList.queueList.includes(currentId)) {
-   addToOtherList(currentId, myLibraryList.queueList, myLibraryList.watchedList)
+    else if(myLibraryList.queueList.includes(currentId)) {
+    addToOtherList(currentId, myLibraryList.queueList, myLibraryList.watchedList)
   }
   console.log(myLibraryList);
   return localStorage.setItem('myLibraryList', JSON.stringify(myLibraryList))
 }
 
 function addToQueue(e) {
- if (!myLibraryList.queueList.includes(currentId) && !myLibraryList.watchedList.includes(currentId)) {
+  if (!myLibraryList.queueList.includes(currentId) && !myLibraryList.watchedList.includes(currentId)) {
         myLibraryList.queueList.push(currentId);
   }
- else if(myLibraryList.watchedList.includes(currentId)) {
-   addToOtherList(currentId, myLibraryList.watchedList, myLibraryList.queueList)
- }
+  else if(myLibraryList.watchedList.includes(currentId)) {
+    addToOtherList(currentId, myLibraryList.watchedList, myLibraryList.queueList)
+  }
   console.log(myLibraryList);
   return localStorage.setItem('myLibraryList', JSON.stringify(myLibraryList))
 }
-
 
 function addToOtherList(id, removedList, pushedList) {
     const filmIndex = removedList.indexOf(id) 
@@ -162,7 +174,6 @@ if (localStorage.getItem("myLibraryList") === null){
   myLibraryList = {
     watchedList: [],
     queueList: [],
-    
   }
     } else {
     const savedItems = localStorage.getItem("myLibraryList");
@@ -172,4 +183,4 @@ if (localStorage.getItem("myLibraryList") === null){
   console.log(myLibraryList);
   }
 
-localStorageCheck()
+// localStorageCheck()
