@@ -64,10 +64,11 @@
   cursor: pointer;
 
   background-color: transparent;
+  transform-origin: center center;
+  transition: transform 300ms var(--timing-function);
 
   &:hover {
-    background-color: var(--text-films-second);
-    ;
+    transform: scale(1.2);
   }
 }
 
