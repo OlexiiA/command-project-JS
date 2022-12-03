@@ -81,43 +81,45 @@
   padding: 3px 0;
 }
 
-body.light-theme, .modal.light-theme {
+body.light-theme,
+.modal.light-theme {
   background-color: #ffffff;
   color: #111;
-  .card{
+  .card {
     &:hover {
-        box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.77);
-    
-      }
+      box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.77);
+    }
   }
 }
 
-body.dark-theme, .modal.dark-theme{
+body.dark-theme,
+.modal.dark-theme {
   background-color: #111;
   color: var(--text-main-color);
-  .modal.dark-theme{
+  .modal.dark-theme {
     box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
   }
   .card {
-      &:hover {
-        box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
-  
-      }
+    &:hover {
+      box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
     }
+  }
   .card__title {
     color: var(--text-main-color);
   }
-    .footer{
-      background-color: #333;
-    }
-        .copyright, .footer__button{
-          color: aliceblue;
-        }
+  .footer {
+    background-color: #333;
+  }
+  .copyright,
+  .footer__button {
+    color: aliceblue;
+  }
 }
 
 .header {
   position: relative;
   height: 300px;
+  min-width: 100vw;
   // min-width: 356px; //костыль но без него почему-то на 320px съезжает фон
   background-image: url(/src/images/pictures/jpeg/header-comp.jpg);
   background-position: center;
@@ -215,7 +217,7 @@ body.dark-theme, .modal.dark-theme{
   display: flex;
   flex-direction: column;
   @media screen and (min-width: $tablet) {
-    flex-direction: row;;
+    flex-direction: row;
   }
 }
 
@@ -267,10 +269,16 @@ body.dark-theme, .modal.dark-theme{
   margin-left: 40px;
   text-transform: uppercase;
 }
-.main-nav__btn--currant{
-  text-decoration: underline 2px #FF6B01;
+
+.home {
+  @media screen and (max-width: 767px) {
+    margin-bottom: 5px;
+  }
 }
 
+.main-nav__btn--currant {
+  text-decoration: underline 2px #ff6b01;
+}
 
 // .main-nav__btn:hover,
 // .main-nav__btn:focus {
@@ -389,15 +397,13 @@ body.dark-theme, .modal.dark-theme{
   border: 1px solid #ffffff;
   border-radius: 5px;
   &:hover,
-  &:focus
-   {
+  &:focus {
     background-color: #ff6b08;
     border-color: #ff6b02;
   }
-
 }
 
-.button-list__switch.is-active{
+.button-list__switch.is-active {
   background-color: #ff6b08;
   border-color: #ff6b02;
 }
@@ -443,7 +449,9 @@ body.dark-theme, .modal.dark-theme{
   flex-wrap: wrap;
   margin-bottom: 10px;
   gap: 10px;
-  &>li {margin-bottom: 10px;}
+  & > li {
+    margin-bottom: 10px;
+  }
 }
 
 .genres-btn {
@@ -472,8 +480,6 @@ body.dark-theme, .modal.dark-theme{
   }
 }
 
-
-
 .chbx {
   display: none;
 }
@@ -485,14 +491,15 @@ body.dark-theme, .modal.dark-theme{
   background-color: rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   border: 1px solid transparent;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     border-color: var(--text-films-second);
   }
 }
 
 .chbx:checked + .checkbox {
-    background-color: var(--text-films-second);
-  }
+  background-color: var(--text-films-second);
+}
 
 .filmoteka {
   margin-left: 10px;
