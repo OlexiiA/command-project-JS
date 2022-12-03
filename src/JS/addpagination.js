@@ -2,7 +2,7 @@ import axios from 'axios';
 import Pagination from 'tui-pagination';
 // import 'tui-pagination/dist/tui-pagination.css';
 import { addMarkup, getData } from './api-server';
-import { showFilms, genre } from './search_my_genres';
+// import { showFilms, genre } from './search_my_genres';
 const API_KEY = 'api_key=2913964819360854cc0ff757d62600b5';
 const KEY = 'api_key=2913964819360854cc0ff757d62600b5';
 const refs = {
