@@ -79,8 +79,8 @@
 //             gallery.innerHTML = ''
 //             renderCard(searchResponse.results)
 //         } else {
-//             gallery.innerHTML = `<li class="allert-box">
-//             <h2 class="not-found">Sorry, nothing was found for your search.</h2>
+//             gallery.innerHTML = `<li>
+//             <img class="allert-box" src="https://i.postimg.cc/BnKVk1zL/sorry.jpg" alt="Sorry, nothing was found for your search." >
 //             </li>`
 //         }
 //     }
