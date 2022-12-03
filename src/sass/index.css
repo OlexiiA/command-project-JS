@@ -448,6 +448,11 @@ body.dark-theme .copyright, body.dark-theme .footer__button, .modal.dark-theme .
     background-image: url(/src/images/pictures/jpeg/header-tablet@2x.jpg);
   }
 }
+@media screen and (min-width: 1280px) {
+  .header {
+    background-image: url(/src/images/pictures/jpeg/header-comp@2x.jpg);
+  }
+}
 .header__link-container {
   display: flex;
   align-items: center;

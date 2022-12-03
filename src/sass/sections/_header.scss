@@ -118,7 +118,6 @@ body.dark-theme, .modal.dark-theme{
 .header {
   position: relative;
   height: 300px;
-  // width: 100vw;
   // min-width: 356px; //костыль но без него почему-то на 320px съезжает фон
   background-image: url(/src/images/pictures/jpeg/header-comp.jpg);
   background-position: center;
@@ -150,6 +149,9 @@ body.dark-theme, .modal.dark-theme{
       (min-resolution: 2dppx) {
       background-image: url(/src/images/pictures/jpeg/header-tablet@2x.jpg);
     }
+  }
+  @media screen and (min-width: $comp) {
+    background-image: url(/src/images/pictures/jpeg/header-comp@2x.jpg);
   }
 
   &__link-container {
