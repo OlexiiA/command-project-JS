@@ -20,7 +20,12 @@
   cursor: pointer;
 
   color: var(--text-main-color);
-  background-color: var(--text-films-second);
+  background-color: transparent;
+  border: 1px solid var(--text-films-second);
+  
+  &:hover {
+    background-color: var(--text-films-second);
+  }
 }
 
 .tui-page-btn {
