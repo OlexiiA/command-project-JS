@@ -1,12 +1,13 @@
 import axios from 'axios';
 import Pagination from 'tui-pagination';
 // import 'tui-pagination/dist/tui-pagination.css';
-import {addMarkup, getData} from './api-server';
-
+import { addMarkup, getData } from './api-server';
+import { showFilms, genre } from './search_my_genres';
 const API_KEY = 'api_key=2913964819360854cc0ff757d62600b5';
-
+const KEY = 'api_key=2913964819360854cc0ff757d62600b5';
 const refs = {
   currentPage: 1,
+  keyWord: '',
   paginationBox: document.querySelector('.tui-pagination'),
 };
 
@@ -125,7 +126,7 @@ function renderCard(arr) {
     genresText.push(genresArray[genre])
   });
   let genresTextWithCommas = genresText.map(genre => genre).join(', ')
-        return `<li class="card gallery__item rotateY">
+        return `<li class="card gallery__item">
     <a href="#" class="card__link">
         <div class="card__wrapper-img">
         <img class="card__img" src="${poster}" id="${id}" >
@@ -136,50 +137,63 @@ function renderCard(arr) {
         </div>
     </a>
   </li>`;
-}).join('');
+    }).join('');
+    gallery.innerHTML = '';
     gallery.insertAdjacentHTML('beforeend', markup)
 }
 
 export async function onSubmitForm(event) {
-    event.preventDefault()
-    searchQuery = event.currentTarget.searchQuery.value.trim()
-     if (searchQuery === '') {
-        return
-    }
-    const searchResponse = await searchMove(searchQuery, refs.currentPage)
+  event.preventDefault()
+  searchQuery = event.currentTarget.searchQuery.value.trim()
+  if (searchQuery === '') {
+    return
+  }
+  const searchResponse = await searchMove(searchQuery, refs.currentPage)
   try {
     pagination.reset(0);
-        console.log(searchResponse.results)
-        console.log(searchResponse.total_pages)
-        console.log(searchResponse.total_results)
-        if (searchResponse.total_results > 0) {
-          gallery.innerHTML = '';
-            renderCard(searchResponse.results)
-            paginationSearch.reset(searchResponse.total_results);
-            paginationSearch.on('beforeMove', e => {
-              refs.currentPage = e.page;
-              gallery.innerHTML = '';
-            searchMove(searchResponse, refs.currentPage)
-              .then(res => {
-              renderCard(res.searchResponse.results)
-             })
-           })
-        } else {
-            gallery.innerHTML = `<li class="allert-box">
-            <h2 class="not-found">Sorry, nothing was found for your search.</h2>
-            </li>`
-        }
-    }
-    catch (error) {
-        console.log(error)
+    console.log(searchResponse.results)
+    console.log(searchResponse.total_pages)
+    console.log(searchResponse.total_results)
+    if (searchResponse.total_results > 0) {
+      // gallery.innerHTML = '';
+      renderCard(searchResponse.results)
+      paginationSearch.reset(searchResponse.total_results);
+      paginationSearch.on('beforeMove', e => {
+        refs.currentPage = e.page;
+        const keyWord = searchQuery;
         
+        searchMove(keyWord, refs.currentPage)
+          .then(res => {
+            renderCard(res.results)
+          })
+      })
+    } else {
+      gallery.innerHTML = `<li>
+            <img class="allert-box" src="https://i.postimg.cc/BnKVk1zL/sorry.jpg"></img>
+            </li>`
     }
+  }
+  catch (error) {
+    console.log(error)
+        
+  }
     
 
-    form.reset()
+  form.reset()
 }
 //  ========================================================================
-// -------------------------------------------------------------------------
+
+const paginationGenres = new Pagination(container, options);
+
+
+// pagination.on('beforeMove', e => {
+//   refs.currentPage = e.page;
+//   cardCollection.innerHTML = '';
+//   genre(genresListWithCommas, refs.currentPage)
+//     .then(res => {
+//       addMarkup(res.data.results);
+//     });
+// });
 
 
 
