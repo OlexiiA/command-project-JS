@@ -125,7 +125,7 @@ function renderCard(arr) {
     genresText.push(genresArray[genre])
   });
   let genresTextWithCommas = genresText.map(genre => genre).join(', ')
-        return `<li class="card gallery__item">
+        return `<li class="card gallery__item rotateY">
     <a href="#" class="card__link">
         <div class="card__wrapper-img">
         <img class="card__img" src="${poster}" id="${id}" >
