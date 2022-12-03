@@ -74,8 +74,8 @@ function renderModal(ans) {
         <div class="modal__info">
         <h2 class="modal__title">${title}</h2>
         <ul class="modal__table">
-        <li><span class="table__name">Vote / Votes</span><span class="table__value"><span class="orange">${roundToUp(vote_average, 1)}</span> / <span class="grey">${vote_count}</span></span></li>
-        <li><span class="table__name">Popularity</span><span class="table__value">${popularity}</span></li>
+        <li><span class="table__name">Vote / Votes</span><span class="table__value"><span class="orange">${Math.round(vote_average * 10) / 10}</span> / <span class="grey">${vote_count}</span></span></li>
+        <li><span class="table__name">Popularity</span><span class="table__value">${Math.round(popularity * 10) / 10}</span></li>
         <li><span class="table__name">Original Title</span><span class="table__value">${original_title}</span></li>
         <li><span class="table__name">Genre</span><span class="table__value">${genresWords}</span></li>
         </ul>
