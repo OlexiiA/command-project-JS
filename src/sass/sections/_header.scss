@@ -428,9 +428,7 @@ body.dark-theme,
   &:focus {
     background-color: #ff5608;
     border: 3px solid #ff022c;
-    animation: shakeX 1s;
-    animation-iteration-count: infinite;
-  }
+    }
 }
 
 .genre-filter {

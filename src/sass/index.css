@@ -746,10 +746,6 @@ body.dark-theme .footer__button,
 .button-clearer:hover, .button-clearer:focus {
   background-color: #ff5608;
   border: 3px solid #ff022c;
-  -webkit-animation: shakeX 1s;
-          animation: shakeX 1s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
 }
 
 .genre-filter {
@@ -1704,7 +1700,6 @@ li {
 }
 
 .close-svg {
-  fill: rgb(255, 255, 255);
   width: 30px;
   height: 30px;
   background-color: #000;
