@@ -849,7 +849,7 @@ li {
   list-style-type: none;
 }
 
-.gallery {
+.gallery--my-library, .gallery {
   margin-top: 20px;
   margin-bottom: 40px;
   width: 100%;
@@ -857,14 +857,14 @@ li {
   flex-wrap: wrap;
 }
 @media screen and (min-width: 1280px) {
-  .gallery {
+  .gallery--my-library, .gallery {
     margin-left: auto;
     margin-right: auto;
     margin-top: 60px;
   }
 }
 
-.film-card {
+.film-card--my-library, .film-card {
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -872,7 +872,7 @@ li {
   justify-content: center;
 }
 @media screen and (min-width: 768px) {
-  .film-card {
+  .film-card--my-library, .film-card {
     min-width: 728px;
     display: inline-flex;
     flex-wrap: wrap;
@@ -881,7 +881,7 @@ li {
   }
 }
 @media screen and (min-width: 1280px) {
-  .film-card {
+  .film-card--my-library, .film-card {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
