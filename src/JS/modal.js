@@ -4,6 +4,7 @@ const closeBtn = document.querySelector('.close__btn');
 const backdrop = document.querySelector('.modal__backdrop');
 const galleryRef = document.querySelector('.gallery');
 const modalRef = document.querySelector('.new-info');
+const trailerRef = document.querySelector('.trailer-thumb')
 
 let currentId = 0
 
@@ -86,7 +87,7 @@ function renderModal(ans) {
         <button type="button" class="button queue_btn">add to queue</button>
         </li>
         <li>
-        <button type="button" class="button trailer__btn">watch trailer</button>
+        <button type="button" class="button trailer__btn">Show trailers</button>
         </li>
         </ul>
         </div>`;
@@ -98,13 +99,14 @@ async function getModalCard(evt) {
     openModal();
     currentId = evt.path.find(a => a.nodeName === "LI").id;
     let doModal = await loadMoreInfo(currentId);
+    let trailerLinks = await loadTrailerInfo(currentId);
     try {
       if (doModal.original_title !== undefined) {
       modalRef.innerHTML = '';
         renderModal(doModal);
+        renderTrailerList(trailerLinks);
         addToList();
-        // doTrailerListeners();
-        loadTrailerInfo(currentId);
+        doTrailerListener();
       } else {
         modalRef.innerHTML = ''
         alert('Sorry, nothing was found for your search.')
@@ -116,21 +118,45 @@ async function getModalCard(evt) {
 }
 //---------------------modal trailer code------------------------------
 
-function doTrailerListeners() {
-  const trailerRef = document.querySelector('.trailer-thumb');
+function doTrailerListener() {
   const trailerBtnRef = document.querySelector('.trailer__btn');
-  trailerBtnRef.addEventListener('click', showTrailer);
+  trailerBtnRef.addEventListener('click', toggleVision);
+}
+
+function toggleVision(evt) {
+  trailerRef.classList.toggle('visually-hidden');
+  if (evt.target.innerHTML === 'Show trailers') {
+    evt.target.innerHTML = 'Hide trailers'; 
+  } else {evt.target.innerHTML = 'Show trailers'; }
 }
 
 async function loadTrailerInfo(ID) {
   const KEY = 'api_key=2913964819360854cc0ff757d62600b5';
   const url = `https://api.themoviedb.org/3/movie/${ID}/videos?${KEY}&language=en-US`;
   const answer = await axios.get(url).then(response => response.data);
-
   return answer;
 }
 
+function renderTrailer(answ) {
+  const {
+    key,
+    name,
+  } = answ;
+  let resString = `<li class="trailer-item">
+        <a
+          class="trailer-link"
+          href="https://www.youtube.com/watch?v=${key}"
+          target="_blank"
+          rel="noreferrer noopener"
+          >${name}</a>
+      </li>`;
+  return resString;
+}
 
+function renderTrailerList(res) {
+  const trailerList = res.results.reduce((markup, line) => { return markup + renderTrailer(line); }, ``);
+  trailerRef.innerHTML = trailerList;
+}
 
 // --------------------Local Storage code------------------------------
 
