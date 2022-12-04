@@ -151,7 +151,6 @@ export async function onSubmitForm(event) {
   }
   const searchResponse = await searchMove(searchQuery, refs.currentPage)
   try {
-    pagination.reset(0);
     if (searchResponse.total_results > 0) {
       renderCard(searchResponse.results)
       paginationSearch.reset(searchResponse.total_results);
@@ -178,18 +177,83 @@ export async function onSubmitForm(event) {
   form.reset()
 }
 //  ========================================================================
-
 const paginationGenres = new Pagination(container, options);
 
+const searchBtn = document.querySelector('.genres-btn')
+const select = document.querySelector('.genre-filter')
+let genresList = []
 
-// pagination.on('beforeMove', e => {
-//   refs.currentPage = e.page;
-//   cardCollection.innerHTML = '';
-//   genre(genresListWithCommas, refs.currentPage)
-//     .then(res => {
-//       addMarkup(res.data.results);
-//     });
-// });
+searchBtn.addEventListener('click', showFilms)
+select.addEventListener('change', onSelectChange)
+
+
+async function genre(genresListWithCommas, page) {
+   const apiData = await axios.get(
+   `https://api.themoviedb.org/3/discover/movie?${KEY}&with_genres=${genresListWithCommas}&page=${page}`
+   );
+   // console.log(apiData.data.results);
+   return apiData;
+}
+
+const divRef = document.querySelector(`.film-card`)
+
+function addMarkupGenre(data) {
+const tamplate = data.map(({ title, release_date, poster_path, genre_ids, id}) => {
+   let releaseYear = release_date.slice(0, 4);
+
+   if (poster_path === null) { //! Проверка на пустую картинку
+            poster = 'https://upload.wikimedia.org/wikipedia/commons/2/26/512pxIcon-sunset_photo_not_found.png'
+      }
+   
+   let genresText = [] //! Перевод ID жанра в текст
+   genre_ids.forEach(genre => {
+      genresText.push(genresArray[genre])
+   });
+   let genresTextWithCommas = genresText.map(genre => genre).join(', ')
+
+   return `<li class="card gallery__item rotateY" id="${id}">
+      <a href="#" class="card__link">
+         <div class="card__wrapper-img">
+         <img class="card__img" src="https://image.tmdb.org/t/p/w780/${poster_path}" alt="movie's poster">
+         </div>
+         <div class="card__wrapper">
+         <h3 class="card__title">${title}</h3>
+         <p class="card__info">${genresTextWithCommas} | <span class="card__info-genre">${releaseYear}</span></p>
+         </div>
+      </a>
+   </li>`;
+   })
+   .join('');
+divRef.innerHTML = tamplate; 
+};
+
+function showFilms() { //! Рендер разметки по нажатию на кнопку
+  refs.currentPage = 1;
+  let genresListWithCommas = genresList.map(genre => genre).join(',')
+  genre(genresListWithCommas, refs.currentPage).then(res => addMarkupGenre(res.data.results))
+  console.log(genresListWithCommas);
+  
+  paginationGenres.on('beforeMove', e => {
+    refs.currentPage = e.page;
+    divRef.innerHTML = '';
+    genre(genresListWithCommas, refs.currentPage)
+      .then(res => {
+        addMarkupGenre(res.data.results)
+      })
+  })
+};
+
+      
+function onSelectChange(event) { //! Добавляет в список жанры, если уже есть то удаляет
+   if (genresList.includes(event.target.id)){
+      genresList.splice(genresList.indexOf('event.target.id',1))
+   } else {
+      genresList.push(event.target.id)
+   }
+   // console.log(genresList);
+}
+
+
 
 
 
