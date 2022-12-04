@@ -144,6 +144,7 @@ function renderCard(arr) {
 
 export async function onSubmitForm(event) {
   event.preventDefault()
+  refs.currentPage = 1;
   searchQuery = event.currentTarget.searchQuery.value.trim()
   if (searchQuery === '') {
     return
@@ -151,17 +152,12 @@ export async function onSubmitForm(event) {
   const searchResponse = await searchMove(searchQuery, refs.currentPage)
   try {
     pagination.reset(0);
-    console.log(searchResponse.results)
-    console.log(searchResponse.total_pages)
-    console.log(searchResponse.total_results)
     if (searchResponse.total_results > 0) {
-      // gallery.innerHTML = '';
       renderCard(searchResponse.results)
       paginationSearch.reset(searchResponse.total_results);
       paginationSearch.on('beforeMove', e => {
         refs.currentPage = e.page;
         const keyWord = searchQuery;
-        
         searchMove(keyWord, refs.currentPage)
           .then(res => {
             renderCard(res.results)
