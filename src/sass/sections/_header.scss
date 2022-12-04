@@ -90,6 +90,12 @@ body.light-theme,
       box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.77);
     }
   }
+  .button {
+    color: #111;
+    &:hover{
+      color:#ffffff;
+    }
+  }
 }
 
 body.dark-theme,

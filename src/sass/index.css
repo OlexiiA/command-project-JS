@@ -400,6 +400,14 @@ body.light-theme .card:hover,
 .modal.light-theme .card:hover {
   box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.77);
 }
+body.light-theme .button,
+.modal.light-theme .button {
+  color: #111;
+}
+body.light-theme .button:hover,
+.modal.light-theme .button:hover {
+  color: #ffffff;
+}
 
 body.dark-theme,
 .modal.dark-theme {
