@@ -11,6 +11,7 @@ closeBtn.addEventListener('click', closeModal);
 backdrop.addEventListener('click', closeModalBackdrop);
 galleryRef.addEventListener('click', getModalCard);
 
+
 // -----------------modal render code--------------------
 
 let myLibraryList = {
