@@ -1,18 +1,19 @@
 .footer {
     background-color: var(--background-footer);
     width: 100vw;
-    min-width: 356px; //костыль но без него почему-то на 320px съезжает фон
+  
     .copyright {
       font-size: 14px;
       line-height: 1.17;
       color: var(--textcolor-footer);
-      text-align: center;
+      align-items: center;
       padding-top: 29px;
       padding-bottom: 30px;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      align-items: center;
+      
+      
      
     }
     
@@ -22,7 +23,14 @@
   line-height: 1.17;
   padding-top: 30px;
   }
+.footer__text {
+  font-size: 14px;
+      line-height: 1.17;
 
+}
+@media screen and (min-width: $tablet){
+  font-size: 16px;
+line-height: 1.17;}
   // Animation on svg
   .footer__icon {
     margin-left: 10px;
