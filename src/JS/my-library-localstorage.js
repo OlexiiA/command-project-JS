@@ -112,7 +112,7 @@ function listLengthCalculation() {
 watchedButton.addEventListener('click', onWatchedButtonClick)
 queueButton.addEventListener('click', onQueueButtonClick)
 const options = {
-  totalItems: myLibraryList.watchedList.length,
+  totalItems: length,
   itemsPerPage: 9,
   visiblePages: 3,
   page: pageNumber,
@@ -173,7 +173,7 @@ function totalFilmsPerPage(filmsList) {
 async function showFilms(filmsList) { 
     
     clearGallery();
-    pagination.reset()
+    
 
     for (let i = pageNumber; i < totalFilmsPerPage(filmsList); i++) {
        await findMovieByID(filmsList[i]).then(answer => addMarkup(answer));   
@@ -185,7 +185,8 @@ async function showFilms(filmsList) {
 
 
 function onQueueButtonClick() {
-    pageNumber = 0;
+  pageNumber = 0;
+    pagination.reset()
     listLengthCalculation()
     const savedItems = localStorage.getItem("myLibraryList");
     const myLibraryList = JSON.parse(savedItems);
@@ -195,6 +196,7 @@ function onQueueButtonClick() {
 }
 
 function onWatchedButtonClick() {
+    pagination.reset()
     pageNumber = 0;
     const savedItems = localStorage.getItem("myLibraryList");
     const myLibraryList = JSON.parse(savedItems);
