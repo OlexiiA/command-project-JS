@@ -1875,16 +1875,5 @@ li {
   display: block;
   cursor: pointer;
   transition-duration: 500ms;
+ 
 }
-
-
-.team__social-link:hover {
-  transform: scale(1.5);
-  transition-duration: 500ms;
-
-@media screen and (max-width: 767px) {
-  .team__social-link {
-    display: none;
-  }
-
-}/*# sourceMappingURL=index.css.map */
