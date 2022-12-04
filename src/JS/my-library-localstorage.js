@@ -14,10 +14,20 @@ const watchedButton = document.querySelector('.button-list__switch--watched')
 const container = document.getElementById('pagination');
 const clearBtn = document.querySelector('.button-clearer')
 
+
 const savedItems = localStorage.getItem("myLibraryList");
-const myLibraryList = JSON.parse(savedItems);
+let myLibraryList = JSON.parse(savedItems);
 let watchedList = [];
 let queueList = [];
+
+if (!localStorage.getItem("myLibraryList")) {
+  myLibraryList ={
+    watchedList: [],
+    queueList: [],
+  
+  }
+  localStorage.setItem('myLibraryList', JSON.stringify(myLibraryList)); 
+}
 
 clearBtn.addEventListener('click', clearAll)
 
@@ -82,9 +92,11 @@ function clearGallery() {
 
 function listLengthCalculation() {
     let length = 0;    
-if (queueButton.classList.contains('is-active')) {
+  if (myLibraryList.queueList === undefined || myLibraryList.watchedList === undefined) {
+    return length = 0;
+  } else if (queueButton.classList.contains('is-active')) {
     return length = myLibraryList.queueList.length
-} else {
+} else if (watchedButton.classList.contains('is-active')){
     return length = myLibraryList.watchedList.length
 }
 }
