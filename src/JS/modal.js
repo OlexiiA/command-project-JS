@@ -13,7 +13,7 @@ galleryRef.addEventListener('click', getModalCard);
 
 // -----------------modal render code--------------------
 
-const myLibraryList = {
+let myLibraryList = {
   watchedList: [],
   queueList: [],
   }
@@ -125,7 +125,7 @@ async function loadTrailerInfo(ID) {
   const KEY = 'api_key=2913964819360854cc0ff757d62600b5';
   const url = `https://api.themoviedb.org/3/movie/${ID}/videos?${KEY}&language=en-US`;
   const answer = await axios.get(url).then(response => response.data);
-  console.log(answer);
+
   return answer;
 }
 
@@ -142,24 +142,23 @@ function addToList() {
 }
 
 function addToWatched(e) {
-  if (!myLibraryList.queueList.includes(currentId) && !myLibraryList.watchedList.includes(currentId)) {
-        myLibraryList.watchedList.push(currentId);
+  if (!myLibraryList.queueList.includes(currentId) && !myLibraryList.watchedList.includes(currentId)) {  
+    myLibraryList.watchedList.push(currentId);
   }
     else if(myLibraryList.queueList.includes(currentId)) {
     addToOtherList(currentId, myLibraryList.queueList, myLibraryList.watchedList)
   }
-  console.log(myLibraryList);
+
   return localStorage.setItem('myLibraryList', JSON.stringify(myLibraryList))
 }
 
 function addToQueue(e) {
-  if (!myLibraryList.queueList.includes(currentId) && !myLibraryList.watchedList.includes(currentId)) {
-        myLibraryList.queueList.push(currentId);
+  if (!myLibraryList.queueList.includes(currentId) && !myLibraryList.watchedList.includes(currentId)) {   
+    myLibraryList.queueList.push(currentId);
   }
   else if(myLibraryList.watchedList.includes(currentId)) {
     addToOtherList(currentId, myLibraryList.watchedList, myLibraryList.queueList)
   }
-  console.log(myLibraryList);
   return localStorage.setItem('myLibraryList', JSON.stringify(myLibraryList))
 }
 
@@ -170,7 +169,7 @@ function addToOtherList(id, removedList, pushedList) {
 }
 
 function localStorageCheck(){
-if (localStorage.getItem("myLibraryList") === null){
+if (!localStorage.getItem("myLibraryList")){
   myLibraryList = {
     watchedList: [],
     queueList: [],
@@ -179,8 +178,7 @@ if (localStorage.getItem("myLibraryList") === null){
     const savedItems = localStorage.getItem("myLibraryList");
     myLibraryList = JSON.parse(savedItems);
   }
-  console.log(localStorage.getItem("myLibraryList"));
-  console.log(myLibraryList);
+
   }
 
-// localStorageCheck()
+localStorageCheck()

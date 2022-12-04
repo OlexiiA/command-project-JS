@@ -17,8 +17,7 @@ const clearBtn = document.querySelector('.button-clearer')
 
 const savedItems = localStorage.getItem("myLibraryList");
 let myLibraryList = JSON.parse(savedItems);
-let watchedList = [];
-let queueList = [];
+
 
 if (!localStorage.getItem("myLibraryList")) {
   myLibraryList ={
@@ -34,32 +33,42 @@ clearBtn.addEventListener('click', clearAll)
 function clearAll() {
   alert('Do you want to clear my-library?')
   clearGallery()
+  myLibraryList ={
+    watchedList: [],
+    queueList: [],
   
-  
-  if (queueButton.classList.contains('is-active')) {
-    watchedList = myLibraryList.watchedList.map(movie => movie)
-    const ClearedObject = {
-      watchedList: watchedList,
-      queueList: [] 
-    } 
-    console.log(1);
-    localStorage.setItem('myLibraryList', JSON.stringify(ClearedObject))
-    
-  } else {
-    queueList = myLibraryList.queueList.map(movie => movie)
-    const ClearedObject = {
-      watchedList: [],
-      queueList: queueList
-    } 
-    console.log(2);
-    localStorage.setItem('myLibraryList', JSON.stringify(ClearedObject))
-    
   }
+  localStorage.setItem('myLibraryList', JSON.stringify(myLibraryList));
+  
+
+
+
+  // if (queueButton.classList.contains('is-active')) {
+  //   let watchedList = myLibraryList.watchedList.map(movie => movie)
+  //   const clearedObject = {
+  //     watchedList: [],
+  //     queueList: [] 
+  //   }
+  //   localStorage.setItem('myLibraryList', JSON.stringify(clearedObject))
+    
+  //   watchedList = []
+
+  //   return localStorage.setItem('myLibraryList', JSON.stringify(clearedObject))
+    
+  // } else if(watchedButton.classList.contains('is-active')){
+  //   let queueList = myLibraryList.queueList.map(movie => movie)
+  //   const clearedObject = {
+  //     watchedList: [],
+  //     queueList: queueList
+  //   } 
+  //   queueList = []
+  //   return localStorage.setItem('myLibraryList', JSON.stringify(clearedObject))
+    
+  // }
 }
 
 const findMovieByID = async (id) => {
     const answer = await axios.get(`https://api.themoviedb.org/3/movie/${id}?${KEY}&language=en-US`).then(response => response.data);
-    console.log(answer);
     return answer
 }
 
@@ -133,7 +142,6 @@ const pagination = new Pagination(container, options);
 pagination.on('beforeMove', e => {
     pageNumber = e.page;
     pageNumberCalculation()
-    console.log(pageNumber);
   filmCard.innerHTML = '';
   if (queueButton.classList.contains('is-active')) {
     showFilms(myLibraryList.queueList)
@@ -146,7 +154,6 @@ pagination.on('beforeMove', e => {
 function pageNumberCalculation() {
     if (pageNumber > 1) {
         pageNumber = (pageNumber - 1) * 9
-        console.log(pageNumber);
     }
     else if (pageNumber === 1) {
         pageNumber = pageNumber - 1
