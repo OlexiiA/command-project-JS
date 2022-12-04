@@ -19,12 +19,13 @@
 
   cursor: pointer;
 
-  color: var(--text-main-color);
+  color: gray;
   background-color: transparent;
   border: 1px solid var(--text-films-second);
   
  &:hover {
     background-color: var(--text-films-second);
+    color: #fff;
  }
 }
 

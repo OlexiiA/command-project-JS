@@ -99,12 +99,13 @@ a {
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  color: var(--text-main-color);
+  color: gray;
   background-color: transparent;
   border: 1px solid var(--text-films-second);
 }
 .button:hover {
   background-color: var(--text-films-second);
+  color: #fff;
 }
 
 .tui-page-btn {
@@ -435,6 +436,10 @@ body.dark-theme .footer__button,
 .modal.dark-theme .copyright,
 .modal.dark-theme .footer__button {
   color: aliceblue;
+}
+body.dark-theme .button:hover,
+.modal.dark-theme .button:hover {
+  color: #fff;
 }
 
 .header {
