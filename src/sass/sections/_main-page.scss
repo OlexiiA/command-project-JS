@@ -2,7 +2,7 @@ li {
   list-style-type: none;
   
 }
-.gallery{
+.gallery--my-library, .gallery{
   margin-top: 20px;
   margin-bottom: 40px;
   width: 100%;
@@ -14,7 +14,7 @@ li {
         margin-top: 60px;
     }
 }
-.film-card {
+.film-card--my-library, .film-card {
     display: flex;
     flex-direction: column;
     cursor: pointer;
