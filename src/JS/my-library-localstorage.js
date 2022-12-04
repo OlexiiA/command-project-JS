@@ -13,7 +13,7 @@ const queueButton = document.querySelector('.button-list__switch--queue')
 const watchedButton = document.querySelector('.button-list__switch--watched')
 const container = document.getElementById('pagination');
 const clearBtn = document.querySelector('.button-clearer')
-
+let length = 0;  
 
 const savedItems = localStorage.getItem("myLibraryList");
 let myLibraryList = JSON.parse(savedItems);
@@ -99,17 +99,18 @@ function clearGallery() {
 }
 
 
-function listLengthCalculation() {
-    let length = 0;    
-  if (myLibraryList.queueList === undefined || myLibraryList.watchedList === undefined) {
-    return length = 0;
-  } else if (queueButton.classList.contains('is-active')) {
+function listLengthCalculation() {  
+ if (myLibraryList.queueList.length > myLibraryList.watchedList.length) {
     return length = myLibraryList.queueList.length
-} else if (watchedButton.classList.contains('is-active')){
+    
+} else {
     return length = myLibraryList.watchedList.length
+
 }
 }
 
+watchedButton.addEventListener('click', onWatchedButtonClick)
+queueButton.addEventListener('click', onQueueButtonClick)
 const options = {
   totalItems: listLengthCalculation(),
   itemsPerPage: 9,
@@ -159,20 +160,29 @@ function pageNumberCalculation() {
         pageNumber = pageNumber - 1
     }
 }
+function totalFilmsPerPage(filmsList) {
+  let totalFilms = pageNumber + 9;  
+  if (filmsList.length < 9) {
+    totalFilms = filmsList.length
+  } else if (filmsList.length - pageNumber < 9) {
+    totalFilms = filmsList.length
+  }
+  return totalFilms
+}
 
 async function showFilms(filmsList) { 
+    
     clearGallery();
     pagination.reset()
 
-    for (let i = pageNumber; i < pageNumber + 9; i++) {
+    for (let i = pageNumber; i < totalFilmsPerPage(filmsList); i++) {
        await findMovieByID(filmsList[i]).then(answer => addMarkup(answer));   
     } 
 }
 
 
 
-watchedButton.addEventListener('click', onWatchedButtonClick)
-queueButton.addEventListener('click', onQueueButtonClick)
+
 
 function onQueueButtonClick() {
     pageNumber = 0;
