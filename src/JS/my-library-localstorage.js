@@ -159,12 +159,21 @@ function pageNumberCalculation() {
         pageNumber = pageNumber - 1
     }
 }
+function totalFilmsPerPage(filmsList) {
+  let totalFilms = pageNumber + 9;  
+  if (filmsList.length < 9) {
+    totalFilms = filmsList.length
+  } else if (filmsList.length - pageNumber < 9) {
+    totalFilms = filmsList.length
+  }
+  return totalFilms
+}
 
 async function showFilms(filmsList) { 
     clearGallery();
     pagination.reset()
 
-    for (let i = pageNumber; i < pageNumber + 9; i++) {
+    for (let i = pageNumber; i < totalFilmsPerPage(filmsList); i++) {
        await findMovieByID(filmsList[i]).then(answer => addMarkup(answer));   
     } 
 }
