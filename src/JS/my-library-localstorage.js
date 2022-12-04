@@ -100,10 +100,10 @@ function clearGallery() {
 
 
 function listLengthCalculation() {  
- if (queueButton.classList.contains('is-active')) {
+ if (myLibraryList.queueList.length > myLibraryList.watchedList.length) {
     return length = myLibraryList.queueList.length
     
-} else if (watchedButton.classList.contains('is-active')){
+} else {
     return length = myLibraryList.watchedList.length
 
 }
@@ -112,7 +112,7 @@ function listLengthCalculation() {
 watchedButton.addEventListener('click', onWatchedButtonClick)
 queueButton.addEventListener('click', onQueueButtonClick)
 const options = {
-  totalItems: length,
+  totalItems: listLengthCalculation(),
   itemsPerPage: 9,
   visiblePages: 3,
   page: pageNumber,
@@ -173,7 +173,7 @@ function totalFilmsPerPage(filmsList) {
 async function showFilms(filmsList) { 
     
     clearGallery();
-    
+    pagination.reset()
 
     for (let i = pageNumber; i < totalFilmsPerPage(filmsList); i++) {
        await findMovieByID(filmsList[i]).then(answer => addMarkup(answer));   
@@ -185,23 +185,22 @@ async function showFilms(filmsList) {
 
 
 function onQueueButtonClick() {
-  pageNumber = 0;
-    pagination.reset()
-    listLengthCalculation()
+    pageNumber = 0;
     const savedItems = localStorage.getItem("myLibraryList");
     const myLibraryList = JSON.parse(savedItems);
     queueButton.classList.add('is-active');
     watchedButton.classList.remove('is-active');
+
     showFilms(myLibraryList.queueList);
 }
 
 function onWatchedButtonClick() {
-    pagination.reset()
     pageNumber = 0;
     const savedItems = localStorage.getItem("myLibraryList");
     const myLibraryList = JSON.parse(savedItems);
     queueButton.classList.remove('is-active');
     watchedButton.classList.add('is-active');
+    
     showFilms(myLibraryList.watchedList);
 }
 
