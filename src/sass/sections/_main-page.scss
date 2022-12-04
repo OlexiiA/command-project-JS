@@ -59,7 +59,10 @@ li {
 .card{
   box-sizing: content-box;
   display: flex;
-  width: 100%;
+  width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+  // width: 100%;
   justify-content: center;
    margin-bottom: 20px;
   border-radius: 5px;
@@ -85,22 +88,23 @@ li {
 }
 
 .rotateY{
+  @media screen and (min-width: $comp){
   &:hover {
   
       animation: rotateY 1500ms infinite alternate ease-in-out 500ms;
-      
+  }
     }
 }
 
 
 .card__img{
-  height: 402px;
+  height: 465px;
   min-width: 280px;
   width: 100%;
     margin-bottom: 10px;
   border-radius: 5px;
     @media screen and (min-width: $tablet) {
-        height: 455px;
+        height: 558px;
         width: 336px;
     
       }
