@@ -7,8 +7,8 @@ let pageNumber = 0;
 // const watchedList = [14,159,124,146,158,129,68,90,96,91,82,76,85,100,198,65,78,62,189];
 const KEY = 'api_key=2913964819360854cc0ff757d62600b5'
 
-const gallery = document.querySelector('.gallery')
-const filmCard = document.querySelector('.film-card')
+const gallery = document.querySelector('.gallery--my-library')
+const filmCard = document.querySelector('.film-card--my-library')
 const queueButton = document.querySelector('.button-list__switch--queue')
 const watchedButton = document.querySelector('.button-list__switch--watched')
 const container = document.getElementById('pagination');
