@@ -24,6 +24,14 @@ export async function getTrending(api_key, media_type, time_window, page) {
   }
 }
 
+function goToStart() {
+  window.scrollTo({ //! плавный скрол вверх
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  })
+};
+
 getTrending(API_KEY, 'movie', 'week', refs.currentPage)
   .then(res => {
     addMarkup(res.data.results);
@@ -63,14 +71,15 @@ const options = {
 
 const pagination = new Pagination(container, options);
 
+
 pagination.on('beforeMove', e => {
-  refs.currentPage = e.page;
-  cardCollection.innerHTML = '';
-  getTrending(API_KEY, 'movie', 'week', refs.currentPage)
-    .then(res => {
-      addMarkup(res.data.results);
-    });
-});
+    refs.currentPage = e.page;
+    cardCollection.innerHTML = '';
+    getTrending(API_KEY, 'movie', 'week', refs.currentPage)
+      .then(res => {
+        addMarkup(res.data.results)
+      }).then(goToStart())
+  })
 
 
 const paginationSearch = new Pagination(container, options);
@@ -160,7 +169,7 @@ export async function onSubmitForm(event) {
         searchMove(keyWord, refs.currentPage)
           .then(res => {
             renderCard(res.results)
-          })
+          }).then(goToStart())
       })
     } else {
       gallery.innerHTML = `<li>
@@ -227,19 +236,20 @@ const tamplate = data.map(({ title, release_date, poster_path, genre_ids, id}) =
 divRef.innerHTML = tamplate; 
 };
 
-function showFilms() { //! Рендер разметки по нажатию на кнопку
+async function showFilms(e) { //! Рендер разметки по нажатию на кнопку
+  e.preventDefault()
   refs.currentPage = 1;
   let genresListWithCommas = genresList.map(genre => genre).join(',')
   genre(genresListWithCommas, refs.currentPage).then(res => addMarkupGenre(res.data.results))
   console.log(genresListWithCommas);
-  
+  // paginationGenres.reset(genresListWithCommas.total_results)
   paginationGenres.on('beforeMove', e => {
     refs.currentPage = e.page;
     divRef.innerHTML = '';
     genre(genresListWithCommas, refs.currentPage)
       .then(res => {
         addMarkupGenre(res.data.results)
-      })
+      }).then(goToStart())
   })
 };
 
