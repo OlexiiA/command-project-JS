@@ -13,7 +13,7 @@ const queueButton = document.querySelector('.button-list__switch--queue')
 const watchedButton = document.querySelector('.button-list__switch--watched')
 const container = document.getElementById('pagination');
 const clearBtn = document.querySelector('.button-clearer')
-
+let length = 0;  
 
 const savedItems = localStorage.getItem("myLibraryList");
 let myLibraryList = JSON.parse(savedItems);
@@ -99,19 +99,20 @@ function clearGallery() {
 }
 
 
-function listLengthCalculation() {
-    let length = 0;    
-  if (myLibraryList.queueList === undefined || myLibraryList.watchedList === undefined) {
-    return length = 0;
-  } else if (queueButton.classList.contains('is-active')) {
+function listLengthCalculation() {  
+ if (queueButton.classList.contains('is-active')) {
     return length = myLibraryList.queueList.length
+    
 } else if (watchedButton.classList.contains('is-active')){
     return length = myLibraryList.watchedList.length
+
 }
 }
 
+watchedButton.addEventListener('click', onWatchedButtonClick)
+queueButton.addEventListener('click', onQueueButtonClick)
 const options = {
-  totalItems: listLengthCalculation(),
+  totalItems: myLibraryList.watchedList.length,
   itemsPerPage: 9,
   visiblePages: 3,
   page: pageNumber,
@@ -170,6 +171,7 @@ function totalFilmsPerPage(filmsList) {
 }
 
 async function showFilms(filmsList) { 
+    
     clearGallery();
     pagination.reset()
 
@@ -180,16 +182,15 @@ async function showFilms(filmsList) {
 
 
 
-watchedButton.addEventListener('click', onWatchedButtonClick)
-queueButton.addEventListener('click', onQueueButtonClick)
+
 
 function onQueueButtonClick() {
     pageNumber = 0;
+    listLengthCalculation()
     const savedItems = localStorage.getItem("myLibraryList");
     const myLibraryList = JSON.parse(savedItems);
     queueButton.classList.add('is-active');
     watchedButton.classList.remove('is-active');
-
     showFilms(myLibraryList.queueList);
 }
 
@@ -199,7 +200,6 @@ function onWatchedButtonClick() {
     const myLibraryList = JSON.parse(savedItems);
     queueButton.classList.remove('is-active');
     watchedButton.classList.add('is-active');
-    
     showFilms(myLibraryList.watchedList);
 }
 
