@@ -103,6 +103,9 @@ a {
   background-color: transparent;
   border: 1px solid var(--text-films-second);
 }
+.button:hover {
+  background-color: var(--text-films-second);
+}
 
 .tui-page-btn {
   color: #ff6b01;
