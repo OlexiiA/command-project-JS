@@ -1241,6 +1241,23 @@ li {
   line-height: 1.33;
 }
 
+.trailer-thumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.trailer-item {
+  padding: 5px 10px;
+  background-color: rgba(150, 150, 150, 0.15);
+  border-radius: 5px;
+  border: 1px solid transparent;
+}
+.trailer-item:hover, .trailer-item:focus {
+  border-color: var(--text-films-second);
+}
+
 :root {
   --dark-accent: #3ff408;
   --accent: #e8a318;

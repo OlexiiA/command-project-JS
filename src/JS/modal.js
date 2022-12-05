@@ -95,6 +95,7 @@ function renderModal(ans) {
 }
 
 async function getModalCard(evt) {
+  if (evt.target.nodeName === "UL") {return}
   if (!evt.path.includes("li.card.gallery__item")) {
     openModal();
     currentId = evt.path.find(a => a.nodeName === "LI").id;

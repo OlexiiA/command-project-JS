@@ -127,7 +127,7 @@ function renderCard(arr) {
         if (poster_path === null) {
             poster = 'https://upload.wikimedia.org/wikipedia/commons/2/26/512pxIcon-sunset_photo_not_found.png'
         }
-        console.log(poster)
+        // console.log(poster)
         // ================================
         let releaseYear = release_date.slice(0, 4);
          let genresText = [] //! Перевод ID жанра в текст
@@ -135,10 +135,10 @@ function renderCard(arr) {
     genresText.push(genresArray[genre])
   });
   let genresTextWithCommas = genresText.map(genre => genre).join(', ')
-        return `<li class="card gallery__item">
+        return `<li class="card gallery__item" id="${id}" >
     <a href="#" class="card__link">
         <div class="card__wrapper-img">
-        <img class="card__img" src="${poster}" id="${id}" >
+        <img class="card__img" src="${poster}">
         </div>
         <div class="card__wrapper">
         <h3 class="card__title">${title}</h3>
@@ -241,7 +241,7 @@ async function showFilms(e) { //! Рендер разметки по нажат�
   refs.currentPage = 1;
   let genresListWithCommas = genresList.map(genre => genre).join(',')
   genre(genresListWithCommas, refs.currentPage).then(res => addMarkupGenre(res.data.results))
-  console.log(genresListWithCommas);
+  // console.log(genresListWithCommas);
   // paginationGenres.reset(genresListWithCommas.total_results)
   paginationGenres.on('beforeMove', e => {
     refs.currentPage = e.page;
