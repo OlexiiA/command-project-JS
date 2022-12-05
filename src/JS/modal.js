@@ -160,6 +160,7 @@ function renderTrailerList(res) {
     const trailerList = res.results.reduce((markup, line) => { return markup + renderTrailer(line); }, ``);
     trailerRef.innerHTML = trailerList;
   } else {
+    Notiflix.Notify.failure('Trailers not found!');
     trailerRef.innerHTML = `<li class="trailer-item">
         <a
           class="trailer-link"
