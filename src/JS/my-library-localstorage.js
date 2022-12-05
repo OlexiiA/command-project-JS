@@ -43,28 +43,6 @@ function clearAll() {
 
 
 
-  // if (queueButton.classList.contains('is-active')) {
-  //   let watchedList = myLibraryList.watchedList.map(movie => movie)
-  //   const clearedObject = {
-  //     watchedList: [],
-  //     queueList: [] 
-  //   }
-  //   localStorage.setItem('myLibraryList', JSON.stringify(clearedObject))
-    
-  //   watchedList = []
-
-  //   return localStorage.setItem('myLibraryList', JSON.stringify(clearedObject))
-    
-  // } else if(watchedButton.classList.contains('is-active')){
-  //   let queueList = myLibraryList.queueList.map(movie => movie)
-  //   const clearedObject = {
-  //     watchedList: [],
-  //     queueList: queueList
-  //   } 
-  //   queueList = []
-  //   return localStorage.setItem('myLibraryList', JSON.stringify(clearedObject))
-    
-  // }
 }
 
 const findMovieByID = async (id) => {
