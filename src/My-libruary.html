@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./sass/index.scss" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <include src="./partials/mylibrary-header.html"></include>
 
     <div class="container">
-        <div class="gallery">
-            <ul class="film-card--my-library"></ul>
-        </div>
+      <div class="gallery">
+        <ul class="film-card--my-library"></ul>
+      </div>
     </div>
     <div>
-        <div id="pagination" class="tui-pagination"></div>
+      <div id="pagination" class="tui-pagination"></div>
     </div>
-
+    <include src="./partials/modal.html"></include>
     <include src="./partials/footer.html"></include>
     <include src="./partials/main-modal.html"></include>
     <script type="module" src="./index.js"></script>
     <script type="module" src="./JS/modal.js"></script>
     <script type="module" src="../src/JS/switcher.js"></script>
     <script type="module" src="../src/JS/my-library-localstorage.js"></script>
-</body>
-
+    <script type="module" src="./JS/modal-team.js"></script>
+  </body>
 </html>

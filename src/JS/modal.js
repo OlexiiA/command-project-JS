@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Notiflix from 'notiflix';
 
 const closeBtn = document.querySelector('.close__btn');
 const backdrop = document.querySelector('.modal__backdrop');
@@ -172,9 +173,11 @@ function addToList() {
 function addToWatched(e) {
   if (!myLibraryList.queueList.includes(currentId) && !myLibraryList.watchedList.includes(currentId)) {  
     myLibraryList.watchedList.push(currentId);
+    Notiflix.Notify.info('Film added to "Watched"');
   }
     else if(myLibraryList.queueList.includes(currentId)) {
-    addToOtherList(currentId, myLibraryList.queueList, myLibraryList.watchedList)
+    addToOtherList(currentId, myLibraryList.queueList, myLibraryList.watchedList);
+    Notiflix.Notify.info('Film turned into "Watched"');
   }
 
   return localStorage.setItem('myLibraryList', JSON.stringify(myLibraryList))
@@ -183,9 +186,11 @@ function addToWatched(e) {
 function addToQueue(e) {
   if (!myLibraryList.queueList.includes(currentId) && !myLibraryList.watchedList.includes(currentId)) {   
     myLibraryList.queueList.push(currentId);
+    Notiflix.Notify.info('Film added to "Queue"');
   }
   else if(myLibraryList.watchedList.includes(currentId)) {
-    addToOtherList(currentId, myLibraryList.watchedList, myLibraryList.queueList)
+    addToOtherList(currentId, myLibraryList.watchedList, myLibraryList.queueList);
+    Notiflix.Notify.info('Film turned into "Queue"');
   }
   return localStorage.setItem('myLibraryList', JSON.stringify(myLibraryList))
 }
