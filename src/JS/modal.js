@@ -156,8 +156,18 @@ function renderTrailer(answ) {
 }
 
 function renderTrailerList(res) {
-  const trailerList = res.results.reduce((markup, line) => { return markup + renderTrailer(line); }, ``);
-  trailerRef.innerHTML = trailerList;
+  if (res.results.length !== 0) {
+    const trailerList = res.results.reduce((markup, line) => { return markup + renderTrailer(line); }, ``);
+    trailerRef.innerHTML = trailerList;
+  } else {
+    trailerRef.innerHTML = `<li class="trailer-item">
+        <a
+          class="trailer-link"
+          href="https://www.youtube.com/watch?v=iUVNspaiBAo"
+          target="_blank"
+          rel="noreferrer noopener"
+          >Oops! Nothing found. Chillout and try again later!</a>
+      </li>`;}
 }
 
 // --------------------Local Storage code------------------------------
