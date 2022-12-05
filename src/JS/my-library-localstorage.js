@@ -1,9 +1,6 @@
 import axios from 'axios';
 import Pagination from 'tui-pagination';
 import Notiflix from 'notiflix';
-Notiflix.Notify.init({
-  position: 'center-top',
-})
 
 let pageNumber = 0;
 // const queueList = [13, 55, 123, 145, 158, 122, 67, 88, 95, 89, 81, 75, 86, 99, 83, 64, 77, 66, 87];
@@ -16,34 +13,35 @@ const queueButton = document.querySelector('.button-list__switch--queue')
 const watchedButton = document.querySelector('.button-list__switch--watched')
 const container = document.getElementById('pagination');
 const clearBtn = document.querySelector('.button-clearer')
-let length = 0;  
+let length = 0;
 
 const savedItems = localStorage.getItem("myLibraryList");
 let myLibraryList = JSON.parse(savedItems);
 
 
 if (!localStorage.getItem("myLibraryList")) {
-  myLibraryList ={
+  myLibraryList = {
     watchedList: [],
     queueList: [],
-  
+
   }
-  localStorage.setItem('myLibraryList', JSON.stringify(myLibraryList)); 
+  localStorage.setItem('myLibraryList', JSON.stringify(myLibraryList));
 }
 
 clearBtn.addEventListener('click', clearAll)
 
 function clearAll() {
-  alert('Do you want to clear my-library?')
+  // alert('Do you want to clear my-library?')
+  Notiflix.Report.warning('Do you want to clear my-library?', 'It will clean "Watched" AND "Queue" lists', 'OK');
 
   clearGallery()
-  myLibraryList ={
+  myLibraryList = {
     watchedList: [],
     queueList: [],
-  
+
   }
   localStorage.setItem('myLibraryList', JSON.stringify(myLibraryList));
-  
+
 
 
 
@@ -54,11 +52,11 @@ function clearAll() {
   //     queueList: [] 
   //   }
   //   localStorage.setItem('myLibraryList', JSON.stringify(clearedObject))
-    
+
   //   watchedList = []
 
   //   return localStorage.setItem('myLibraryList', JSON.stringify(clearedObject))
-    
+
   // } else if(watchedButton.classList.contains('is-active')){
   //   let queueList = myLibraryList.queueList.map(movie => movie)
   //   const clearedObject = {
@@ -67,26 +65,26 @@ function clearAll() {
   //   } 
   //   queueList = []
   //   return localStorage.setItem('myLibraryList', JSON.stringify(clearedObject))
-    
+
   // }
 }
 
 const findMovieByID = async (id) => {
-    const answer = await axios.get(`https://api.themoviedb.org/3/movie/${id}?${KEY}&language=en-US`).then(response => response.data);
-    return answer
+  const answer = await axios.get(`https://api.themoviedb.org/3/movie/${id}?${KEY}&language=en-US`).then(response => response.data);
+  return answer
 }
 
 
-export function addMarkup({ title, release_date, poster_path, genres, id}) {
-    
-    let releaseYear = release_date.slice(0, 4);
-    let genresTextWithCommas = genres.map(genre => genre.name).join(', ')
-    let filmIMG = `https://image.tmdb.org/t/p/w780${poster_path}`;
+export function addMarkup({ title, release_date, poster_path, genres, id }) {
+
+  let releaseYear = release_date.slice(0, 4);
+  let genresTextWithCommas = genres.map(genre => genre.name).join(', ')
+  let filmIMG = `https://image.tmdb.org/t/p/w780${poster_path}`;
   if (poster_path === null || poster_path === undefined) {
     filmIMG = "https://upload.wikimedia.org/wikipedia/commons/2/26/512pxIcon-sunset_photo_not_found.png";
   }
-    const tamplate = 
-  
+  const tamplate =
+
     `<li class="card gallery__item rotateY" id="${id}">
     <a href="#" class="card__link">
         <div class="card__wrapper-img">
@@ -98,22 +96,22 @@ export function addMarkup({ title, release_date, poster_path, genres, id}) {
         </div>
     </a>
   </li>`
-  filmCard.insertAdjacentHTML('beforeend', tamplate); 
+  filmCard.insertAdjacentHTML('beforeend', tamplate);
 };
 
 function clearGallery() {
-    filmCard.innerHTML = '';
+  filmCard.innerHTML = '';
 }
 
 
-function listLengthCalculation() {  
- if (myLibraryList.queueList.length > myLibraryList.watchedList.length) {
+function listLengthCalculation() {
+  if (myLibraryList.queueList.length > myLibraryList.watchedList.length) {
     return length = myLibraryList.queueList.length
-    
-} else {
+
+  } else {
     return length = myLibraryList.watchedList.length
 
-}
+  }
 }
 
 watchedButton.addEventListener('click', onWatchedButtonClick)
@@ -148,27 +146,27 @@ const options = {
 const pagination = new Pagination(container, options);
 
 pagination.on('beforeMove', e => {
-    pageNumber = e.page;
-    pageNumberCalculation()
+  pageNumber = e.page;
+  pageNumberCalculation()
   filmCard.innerHTML = '';
   if (queueButton.classList.contains('is-active')) {
     showFilms(myLibraryList.queueList)
   }
   else {
     showFilms(myLibraryList.watchedList)
-  }  
- 
+  }
+
 });
 function pageNumberCalculation() {
-    if (pageNumber > 1) {
-        pageNumber = (pageNumber - 1) * 9
-    }
-    else if (pageNumber === 1) {
-        pageNumber = pageNumber - 1
-    }
+  if (pageNumber > 1) {
+    pageNumber = (pageNumber - 1) * 9
+  }
+  else if (pageNumber === 1) {
+    pageNumber = pageNumber - 1
+  }
 }
 function totalFilmsPerPage(filmsList) {
-  let totalFilms = pageNumber + 9;  
+  let totalFilms = pageNumber + 9;
   if (filmsList.length < 9) {
     totalFilms = filmsList.length
   } else if (filmsList.length - pageNumber < 9) {
@@ -177,14 +175,14 @@ function totalFilmsPerPage(filmsList) {
   return totalFilms
 }
 
-async function showFilms(filmsList) { 
-    
-    clearGallery();
-    pagination.reset()
+async function showFilms(filmsList) {
 
-    for (let i = pageNumber; i < totalFilmsPerPage(filmsList); i++) {
-       await findMovieByID(filmsList[i]).then(answer => addMarkup(answer));   
-    } 
+  clearGallery();
+  pagination.reset()
+
+  for (let i = pageNumber; i < totalFilmsPerPage(filmsList); i++) {
+    await findMovieByID(filmsList[i]).then(answer => addMarkup(answer));
+  }
 }
 
 
@@ -192,23 +190,23 @@ async function showFilms(filmsList) {
 
 
 function onQueueButtonClick() {
-    pageNumber = 0;
-    const savedItems = localStorage.getItem("myLibraryList");
-    const myLibraryList = JSON.parse(savedItems);
-    queueButton.classList.add('is-active');
-    watchedButton.classList.remove('is-active');
+  pageNumber = 0;
+  const savedItems = localStorage.getItem("myLibraryList");
+  const myLibraryList = JSON.parse(savedItems);
+  queueButton.classList.add('is-active');
+  watchedButton.classList.remove('is-active');
 
-    showFilms(myLibraryList.queueList);
+  showFilms(myLibraryList.queueList);
 }
 
 function onWatchedButtonClick() {
-    pageNumber = 0;
-    const savedItems = localStorage.getItem("myLibraryList");
-    const myLibraryList = JSON.parse(savedItems);
-    queueButton.classList.remove('is-active');
-    watchedButton.classList.add('is-active');
-    
-    showFilms(myLibraryList.watchedList);
+  pageNumber = 0;
+  const savedItems = localStorage.getItem("myLibraryList");
+  const myLibraryList = JSON.parse(savedItems);
+  queueButton.classList.remove('is-active');
+  watchedButton.classList.add('is-active');
+
+  showFilms(myLibraryList.watchedList);
 }
 
 
