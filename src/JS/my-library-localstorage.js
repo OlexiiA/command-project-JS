@@ -80,14 +80,17 @@ const findMovieByID = async (id) => {
 export function addMarkup({ title, release_date, poster_path, genres, id}) {
     
     let releaseYear = release_date.slice(0, 4);
-   let genresTextWithCommas = genres.map(genre => genre.name).join(', ')
-    
+    let genresTextWithCommas = genres.map(genre => genre.name).join(', ')
+    let filmIMG = `https://image.tmdb.org/t/p/w780${poster_path}`;
+  if (poster_path === null || poster_path === undefined) {
+    filmIMG = "https://upload.wikimedia.org/wikipedia/commons/2/26/512pxIcon-sunset_photo_not_found.png";
+  }
     const tamplate = 
   
     `<li class="card gallery__item rotateY" id="${id}">
     <a href="#" class="card__link">
         <div class="card__wrapper-img">
-        <img class="card__img" src="https://image.tmdb.org/t/p/w780/${poster_path}" alt="movie's poster">
+        <img class="card__img" src=${filmIMG} alt="movie's poster">
         </div>
         <div class="card__wrapper">
         <h3 class="card__title">${title}</h3>
