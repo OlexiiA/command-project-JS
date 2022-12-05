@@ -41,25 +41,51 @@ function clearAll() {
 
   }
   localStorage.setItem('myLibraryList', JSON.stringify(myLibraryList));
-  
 
-  const findMovieByID = async (id) => {
-    const answer = await axios.get(`https://api.themoviedb.org/3/movie/${id}?${KEY}&language=en-US`).then(response => response.data);
-    return answer
+
+
+
+  // if (queueButton.classList.contains('is-active')) {
+  //   let watchedList = myLibraryList.watchedList.map(movie => movie)
+  //   const clearedObject = {
+  //     watchedList: [],
+  //     queueList: [] 
+  //   }
+  //   localStorage.setItem('myLibraryList', JSON.stringify(clearedObject))
+
+  //   watchedList = []
+
+  //   return localStorage.setItem('myLibraryList', JSON.stringify(clearedObject))
+
+  // } else if(watchedButton.classList.contains('is-active')){
+  //   let queueList = myLibraryList.queueList.map(movie => movie)
+  //   const clearedObject = {
+  //     watchedList: [],
+  //     queueList: queueList
+  //   } 
+  //   queueList = []
+  //   return localStorage.setItem('myLibraryList', JSON.stringify(clearedObject))
+
+  // }
+}
+
+const findMovieByID = async (id) => {
+  const answer = await axios.get(`https://api.themoviedb.org/3/movie/${id}?${KEY}&language=en-US`).then(response => response.data);
+  return answer
+}
+
+
+export function addMarkup({ title, release_date, poster_path, genres, id }) {
+
+  let releaseYear = release_date.slice(0, 4);
+  let genresTextWithCommas = genres.map(genre => genre.name).join(', ')
+  let filmIMG = `https://image.tmdb.org/t/p/w780${poster_path}`;
+  if (poster_path === null || poster_path === undefined) {
+    filmIMG = "https://upload.wikimedia.org/wikipedia/commons/2/26/512pxIcon-sunset_photo_not_found.png";
   }
+  const tamplate =
 
-
-  export function addMarkup({ title, release_date, poster_path, genres, id }) {
-
-    let releaseYear = release_date.slice(0, 4);
-    let genresTextWithCommas = genres.map(genre => genre.name).join(', ')
-    let filmIMG = `https://image.tmdb.org/t/p/w780${poster_path}`;
-    if (poster_path === null || poster_path === undefined) {
-      filmIMG = "https://upload.wikimedia.org/wikipedia/commons/2/26/512pxIcon-sunset_photo_not_found.png";
-    }
-    const tamplate =
-
-      `<li class="card gallery__item rotateY" id="${id}">
+    `<li class="card gallery__item rotateY" id="${id}">
     <a href="#" class="card__link">
         <div class="card__wrapper-img">
         <img class="card__img" src=${filmIMG} alt="movie's poster">
@@ -70,119 +96,119 @@ function clearAll() {
         </div>
     </a>
   </li>`
-    filmCard.insertAdjacentHTML('beforeend', tamplate);
-  };
+  filmCard.insertAdjacentHTML('beforeend', tamplate);
+};
 
-  function clearGallery() {
-    filmCard.innerHTML = '';
+function clearGallery() {
+  filmCard.innerHTML = '';
+}
+
+
+function listLengthCalculation() {
+  if (myLibraryList.queueList.length > myLibraryList.watchedList.length) {
+    return length = myLibraryList.queueList.length
+
+  } else {
+    return length = myLibraryList.watchedList.length
+
+  }
+}
+
+watchedButton.addEventListener('click', onWatchedButtonClick)
+queueButton.addEventListener('click', onQueueButtonClick)
+const options = {
+  totalItems: listLengthCalculation(),
+  itemsPerPage: 9,
+  visiblePages: 3,
+  page: pageNumber,
+  centerAlign: false,
+  firstItemClassName: 'tui-first-child',
+  lastItemClassName: 'tui-last-child',
+  template: {
+    page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+    currentPage:
+      '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+    moveButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}">' +
+      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</a>',
+    disabledMoveButton:
+      '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</span>',
+    moreButton:
+      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+      '<span class="tui-ico-ellip">...</span>' +
+      '</a>',
+  },
+};
+
+const pagination = new Pagination(container, options);
+
+pagination.on('beforeMove', e => {
+  pageNumber = e.page;
+  pageNumberCalculation()
+  filmCard.innerHTML = '';
+  if (queueButton.classList.contains('is-active')) {
+    showFilms(myLibraryList.queueList)
+  }
+  else {
+    showFilms(myLibraryList.watchedList)
   }
 
-
-  function listLengthCalculation() {
-    if (myLibraryList.queueList.length > myLibraryList.watchedList.length) {
-      return length = myLibraryList.queueList.length
-
-    } else {
-      return length = myLibraryList.watchedList.length
-
-    }
+});
+function pageNumberCalculation() {
+  if (pageNumber > 1) {
+    pageNumber = (pageNumber - 1) * 9
   }
-
-  watchedButton.addEventListener('click', onWatchedButtonClick)
-  queueButton.addEventListener('click', onQueueButtonClick)
-  const options = {
-    totalItems: listLengthCalculation(),
-    itemsPerPage: 9,
-    visiblePages: 3,
-    page: pageNumber,
-    centerAlign: false,
-    firstItemClassName: 'tui-first-child',
-    lastItemClassName: 'tui-last-child',
-    template: {
-      page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-      currentPage:
-        '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-      moveButton:
-        '<a href="#" class="tui-page-btn tui-{{type}}">' +
-        '<span class="tui-ico-{{type}}">{{type}}</span>' +
-        '</a>',
-      disabledMoveButton:
-        '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-        '<span class="tui-ico-{{type}}">{{type}}</span>' +
-        '</span>',
-      moreButton:
-        '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-        '<span class="tui-ico-ellip">...</span>' +
-        '</a>',
-    },
-  };
-
-  const pagination = new Pagination(container, options);
-
-  pagination.on('beforeMove', e => {
-    pageNumber = e.page;
-    pageNumberCalculation()
-    filmCard.innerHTML = '';
-    if (queueButton.classList.contains('is-active')) {
-      showFilms(myLibraryList.queueList)
-    }
-    else {
-      showFilms(myLibraryList.watchedList)
-    }
-
-  });
-  function pageNumberCalculation() {
-    if (pageNumber > 1) {
-      pageNumber = (pageNumber - 1) * 9
-    }
-    else if (pageNumber === 1) {
-      pageNumber = pageNumber - 1
-    }
+  else if (pageNumber === 1) {
+    pageNumber = pageNumber - 1
   }
-  function totalFilmsPerPage(filmsList) {
-    let totalFilms = pageNumber + 9;
-    if (filmsList.length < 9) {
-      totalFilms = filmsList.length
-    } else if (filmsList.length - pageNumber < 9) {
-      totalFilms = filmsList.length
-    }
-    return totalFilms
+}
+function totalFilmsPerPage(filmsList) {
+  let totalFilms = pageNumber + 9;
+  if (filmsList.length < 9) {
+    totalFilms = filmsList.length
+  } else if (filmsList.length - pageNumber < 9) {
+    totalFilms = filmsList.length
   }
+  return totalFilms
+}
 
-  async function showFilms(filmsList) {
+async function showFilms(filmsList) {
 
-    clearGallery();
-    pagination.reset()
+  clearGallery();
+  pagination.reset()
 
-    for (let i = pageNumber; i < totalFilmsPerPage(filmsList); i++) {
-      await findMovieByID(filmsList[i]).then(answer => addMarkup(answer));
-    }
+  for (let i = pageNumber; i < totalFilmsPerPage(filmsList); i++) {
+    await findMovieByID(filmsList[i]).then(answer => addMarkup(answer));
   }
+}
 
 
 
 
 
-  function onQueueButtonClick() {
-    pageNumber = 0;
-    const savedItems = localStorage.getItem("myLibraryList");
-    const myLibraryList = JSON.parse(savedItems);
-    queueButton.classList.add('is-active');
-    watchedButton.classList.remove('is-active');
+function onQueueButtonClick() {
+  pageNumber = 0;
+  const savedItems = localStorage.getItem("myLibraryList");
+  const myLibraryList = JSON.parse(savedItems);
+  queueButton.classList.add('is-active');
+  watchedButton.classList.remove('is-active');
 
-    showFilms(myLibraryList.queueList);
-  }
+  showFilms(myLibraryList.queueList);
+}
 
-  function onWatchedButtonClick() {
-    pageNumber = 0;
-    const savedItems = localStorage.getItem("myLibraryList");
-    const myLibraryList = JSON.parse(savedItems);
-    queueButton.classList.remove('is-active');
-    watchedButton.classList.add('is-active');
+function onWatchedButtonClick() {
+  pageNumber = 0;
+  const savedItems = localStorage.getItem("myLibraryList");
+  const myLibraryList = JSON.parse(savedItems);
+  queueButton.classList.remove('is-active');
+  watchedButton.classList.add('is-active');
 
-    showFilms(myLibraryList.watchedList);
-  }
+  showFilms(myLibraryList.watchedList);
+}
 
 
 
-  showFilms(myLibraryList.watchedList)
+showFilms(myLibraryList.watchedList)
