@@ -44,6 +44,14 @@ function clearAll() {
 
 
 
+
+
+
+
+
+
+
+
   const findMovieByID = async (id) => {
     const answer = await axios.get(`https://api.themoviedb.org/3/movie/${id}?${KEY}&language=en-US`).then(response => response.data);
     return answer
