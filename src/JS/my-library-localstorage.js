@@ -1,6 +1,9 @@
 import axios from 'axios';
 import Pagination from 'tui-pagination';
-
+import Notiflix from 'notiflix';
+Notiflix.Notify.init({
+  position: 'center-top',
+})
 
 let pageNumber = 0;
 // const queueList = [13, 55, 123, 145, 158, 122, 67, 88, 95, 89, 81, 75, 86, 99, 83, 64, 77, 66, 87];
@@ -32,6 +35,7 @@ clearBtn.addEventListener('click', clearAll)
 
 function clearAll() {
   alert('Do you want to clear my-library?')
+
   clearGallery()
   myLibraryList ={
     watchedList: [],
