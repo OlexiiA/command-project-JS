@@ -1,6 +1,11 @@
 import axios from 'axios';
 import Notiflix from 'notiflix';
 
+Notiflix.Notify.init({
+  width: '280px',
+  position: 'center-top',
+})
+
 const closeBtn = document.querySelector('.close__btn');
 const backdrop = document.querySelector('.modal__backdrop');
 const galleryRef = document.querySelector('.gallery');
@@ -23,6 +28,7 @@ let myLibraryList = {
 
 function closeModal() {
   backdrop.classList.add('visually-hidden');
+  trailerRef.classList.add('visually-hidden');
 }
 
 function openModal() {
@@ -57,7 +63,7 @@ function renderModal(ans) {
   // заглушка на отсутствующий постер
   let filmIMG = `https://image.tmdb.org/t/p/w780${poster_path}`;
   if (poster_path === null || poster_path === undefined) {
-    filmIMG = './src/images/not-found.png';
+    filmIMG = "https://upload.wikimedia.org/wikipedia/commons/2/26/512pxIcon-sunset_photo_not_found.png";
   }
   // ================================
   let genresWords = genres.map(genre => genre.name).join(', ');
