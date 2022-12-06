@@ -49,7 +49,8 @@ function clearAll() {
   }
 
 
-  export function addMarkup({ title, release_date, poster_path, genres, id }) {
+  // export
+function addMarkup({ title, release_date, poster_path, genres, id }) {
 
     let releaseYear = release_date.slice(0, 4);
     let genresTextWithCommas = genres.map(genre => genre.name).join(', ')
@@ -159,10 +160,6 @@ function clearAll() {
     }
   }
 
-
-
-
-
   function onQueueButtonClick() {
     pageNumber = 0;
     const savedItems = localStorage.getItem("myLibraryList");
@@ -182,7 +179,6 @@ function clearAll() {
 
     showFilms(myLibraryList.watchedList);
   }
+}
 
-
-
-  showFilms(myLibraryList.watchedList)
+showFilms(myLibraryList.watchedList);
