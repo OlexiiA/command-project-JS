@@ -43,32 +43,6 @@ function clearAll() {
   localStorage.setItem('myLibraryList', JSON.stringify(myLibraryList));
 
 
-
-
-  // if (queueButton.classList.contains('is-active')) {
-  //   let watchedList = myLibraryList.watchedList.map(movie => movie)
-  //   const clearedObject = {
-  //     watchedList: [],
-  //     queueList: [] 
-  //   }
-  //   localStorage.setItem('myLibraryList', JSON.stringify(clearedObject))
-
-  //   watchedList = []
-
-  //   return localStorage.setItem('myLibraryList', JSON.stringify(clearedObject))
-
-  // } else if(watchedButton.classList.contains('is-active')){
-  //   let queueList = myLibraryList.queueList.map(movie => movie)
-  //   const clearedObject = {
-  //     watchedList: [],
-  //     queueList: queueList
-  //   } 
-  //   queueList = []
-  //   return localStorage.setItem('myLibraryList', JSON.stringify(clearedObject))
-
-  // }
-}
-
 const findMovieByID = async (id) => {
   const answer = await axios.get(`https://api.themoviedb.org/3/movie/${id}?${KEY}&language=en-US`).then(response => response.data);
   return answer
@@ -185,16 +159,13 @@ async function showFilms(filmsList) {
   }
 }
 
-
-
-
-
 function onQueueButtonClick() {
   pageNumber = 0;
   const savedItems = localStorage.getItem("myLibraryList");
   const myLibraryList = JSON.parse(savedItems);
   queueButton.classList.add('is-active');
   watchedButton.classList.remove('is-active');
+
 
   showFilms(myLibraryList.queueList);
 }
@@ -209,6 +180,6 @@ function onWatchedButtonClick() {
   showFilms(myLibraryList.watchedList);
 }
 
-
-
 showFilms(myLibraryList.watchedList)
+
+
