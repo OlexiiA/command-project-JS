@@ -1,16 +1,9 @@
 import axios from 'axios';
-import Notiflix from 'notiflix';
-
-Notiflix.Notify.init({
-  width: '280px',
-  position: 'center-top',
-})
 
 const closeBtn = document.querySelector('.close__btn');
 const backdrop = document.querySelector('.modal__backdrop');
 const galleryRef = document.querySelector('.gallery');
 const modalRef = document.querySelector('.new-info');
-const trailerRef = document.querySelector('.trailer-thumb')
 
 let currentId = 0
 
@@ -28,7 +21,6 @@ let myLibraryList = {
 
 function closeModal() {
   backdrop.classList.add('visually-hidden');
-  trailerRef.classList.add('visually-hidden');
 }
 
 function openModal() {
@@ -63,7 +55,7 @@ function renderModal(ans) {
   // заглушка на отсутствующий постер
   let filmIMG = `https://image.tmdb.org/t/p/w780${poster_path}`;
   if (poster_path === null || poster_path === undefined) {
-    filmIMG = "https://upload.wikimedia.org/wikipedia/commons/2/26/512pxIcon-sunset_photo_not_found.png";
+    filmIMG = './src/images/not-found.png';
   }
   // ================================
   let genresWords = genres.map(genre => genre.name).join(', ');
@@ -94,7 +86,7 @@ function renderModal(ans) {
         <button type="button" class="button queue_btn">add to queue</button>
         </li>
         <li>
-        <button type="button" class="button trailer__btn">Show trailers</button>
+        <button type="button" class="button trailer__btn">watch trailer</button>
         </li>
         </ul>
         </div>`;
@@ -102,19 +94,17 @@ function renderModal(ans) {
 }
 
 async function getModalCard(evt) {
-  if (evt.target.nodeName === "UL") {return}
   if (!evt.path.includes("li.card.gallery__item")) {
     openModal();
     currentId = evt.path.find(a => a.nodeName === "LI").id;
     let doModal = await loadMoreInfo(currentId);
-    let trailerLinks = await loadTrailerInfo(currentId);
     try {
       if (doModal.original_title !== undefined) {
       modalRef.innerHTML = '';
         renderModal(doModal);
-        renderTrailerList(trailerLinks);
         addToList();
-        doTrailerListener();
+        // doTrailerListeners();
+        loadTrailerInfo(currentId);
       } else {
         modalRef.innerHTML = ''
         alert('Sorry, nothing was found for your search.')
@@ -126,56 +116,21 @@ async function getModalCard(evt) {
 }
 //---------------------modal trailer code------------------------------
 
-function doTrailerListener() {
+function doTrailerListeners() {
+  const trailerRef = document.querySelector('.trailer-thumb');
   const trailerBtnRef = document.querySelector('.trailer__btn');
-  trailerBtnRef.addEventListener('click', toggleVision);
-}
-
-function toggleVision(evt) {
-  trailerRef.classList.toggle('visually-hidden');
-  if (evt.target.innerHTML === 'Show trailers') {
-    evt.target.innerHTML = 'Hide trailers'; 
-  } else {evt.target.innerHTML = 'Show trailers'; }
+  trailerBtnRef.addEventListener('click', showTrailer);
 }
 
 async function loadTrailerInfo(ID) {
   const KEY = 'api_key=2913964819360854cc0ff757d62600b5';
   const url = `https://api.themoviedb.org/3/movie/${ID}/videos?${KEY}&language=en-US`;
   const answer = await axios.get(url).then(response => response.data);
+
   return answer;
 }
 
-function renderTrailer(answ) {
-  const {
-    key,
-    name,
-  } = answ;
-  let resString = `<li class="trailer-item">
-        <a
-          class="trailer-link"
-          href="https://www.youtube.com/watch?v=${key}"
-          target="_blank"
-          rel="noreferrer noopener"
-          >${name}</a>
-      </li>`;
-  return resString;
-}
 
-function renderTrailerList(res) {
-  if (res.results.length !== 0) {
-    const trailerList = res.results.reduce((markup, line) => { return markup + renderTrailer(line); }, ``);
-    trailerRef.innerHTML = trailerList;
-  } else {
-    Notiflix.Notify.failure('Trailers not found!');
-    trailerRef.innerHTML = `<li class="trailer-item">
-        <a
-          class="trailer-link"
-          href="https://www.youtube.com/watch?v=iUVNspaiBAo"
-          target="_blank"
-          rel="noreferrer noopener"
-          >Oops! Nothing found. Chillout and try again later!</a>
-      </li>`;}
-}
 
 // --------------------Local Storage code------------------------------
 
@@ -190,11 +145,9 @@ function addToList() {
 function addToWatched(e) {
   if (!myLibraryList.queueList.includes(currentId) && !myLibraryList.watchedList.includes(currentId)) {  
     myLibraryList.watchedList.push(currentId);
-    Notiflix.Notify.info('Film added to "Watched"');
   }
     else if(myLibraryList.queueList.includes(currentId)) {
-    addToOtherList(currentId, myLibraryList.queueList, myLibraryList.watchedList);
-    Notiflix.Notify.info('Film turned into "Watched"');
+    addToOtherList(currentId, myLibraryList.queueList, myLibraryList.watchedList)
   }
 
   return localStorage.setItem('myLibraryList', JSON.stringify(myLibraryList))
@@ -203,11 +156,9 @@ function addToWatched(e) {
 function addToQueue(e) {
   if (!myLibraryList.queueList.includes(currentId) && !myLibraryList.watchedList.includes(currentId)) {   
     myLibraryList.queueList.push(currentId);
-    Notiflix.Notify.info('Film added to "Queue"');
   }
   else if(myLibraryList.watchedList.includes(currentId)) {
-    addToOtherList(currentId, myLibraryList.watchedList, myLibraryList.queueList);
-    Notiflix.Notify.info('Film turned into "Queue"');
+    addToOtherList(currentId, myLibraryList.watchedList, myLibraryList.queueList)
   }
   return localStorage.setItem('myLibraryList', JSON.stringify(myLibraryList))
 }
